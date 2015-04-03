@@ -1,4 +1,5 @@
 
+
 public class Robots {
 	protected String affichage;
 	protected int portee, deplacement, energie, regeneration, degat, coutAttaque, coutDeplacement;
