@@ -82,6 +82,19 @@ public class PathFinding {
 				c = co;
 				int h=tab[c.getY()][c.getX()].getH();
 				wrongPath = false;
+				if (co.getX() > this.start.getX()) 
+					for (int i=this.start.getX(); i<co.getX() ;i++) 
+						this.path.add(new Coordonne(i,co.getY()));
+				else if (co.getX()<this.start.getX())
+					for (int i=this.start.getX(); i>co.getX() ;i--)
+						this.path.add(new Coordonne(i,co.getY()));
+				
+				if (co.getY() > this.start.getY()) 
+					for (int i=this.start.getY(); i<co.getY() ;i++) 
+						this.path.add(new Coordonne(co.getX(),i));
+				else if (co.getY()<this.start.getY())
+					for (int i=this.start.getY(); i>co.getY() ;i--)
+						this.path.add(new Coordonne(co.getX(),i));
 				while((c.getX() != this.goal.getX() || c.getY() != this.goal.getY()) && !wrongPath ) {
 					wrongPath = true;
 					this.path.add(c);			
