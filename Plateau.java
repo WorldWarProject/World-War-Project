@@ -1,34 +1,46 @@
+import java.util.*;
 
 public class Plateau {
-	private Base B = new Base("B");
-	private Base b = new Base("b");
-	private Object[][] tab;
+	private Cellule[][] tab;
 
-	public Plateau () {
-		this.tab= new Object[10][15];
-		for(int i=0; i<tab.length; i++) 
-			for (int j=0; j<tab[0].length; j++) 
-				this.tab[i][j]= new Character(' ');
-		this.tab[0][0] = B;
-		this.tab[this.tab.length-1][this.tab[0].length-1]= b;
-		this.tab[4][6] = new Obstacle(4,6);
-		this.tab[4][5] = new Obstacle(4,5);
-		this.tab[4][7] = new Obstacle(4,7);
-		this.tab[4][8] = new Obstacle(4,8);
-		this.tab[4][9] = new Obstacle(4,9);
-		this.tab[4][10] = new Obstacle(4,10);
-		this.tab[5][5] = new Obstacle(5,5);
-		this.tab[6][5] = new Obstacle(6,5);
-		this.tab[4][11] = new Obstacle(4,11);
-		this.tab[7][5] = new Obstacle(6,5);
-		this.tab[8][5] = new Obstacle(6,5);
-		this.tab[9][5] = new Obstacle(6,5);
-		this.tab[4][12] = new Obstacle(4,12);
-		this.tab[4][12] = new Obstacle(4,13);
-		this.tab[4][14] = new Obstacle(4,14);
+	public Plateau (int x , int y) {
+		this.tab = new Cellule[y][x];
+		CoordonnePF start = new CoordonnePF(0,0);
+		CoordonnePF goal = new CoordonnePF(this.tab[0].length-1,this.tab.length-1);
+		PathFinding p = new PathFinding(start,goal);
+		do{
+
+			for(int i=0; i<tab.length; i++) 
+				for (int j=0; j<tab[0].length; j++) 
+					this.tab[i][j]= new Case(j,i,false,0);
+			this.tab[0][0] = new Base(0,0,1);
+			this.tab[this.tab.length-1][this.tab[0].length-1]= new Base(this.tab.length-1,this.tab[0].length-1,-1);
+		
+			boolean wrong = false;
+			
+		
+			for(int i=0; i<(int)(0.25*this.tab.length*this.tab[0].length);i++) {
+				Random ran = new Random();
+				wrong = false;
+				while (!wrong) {
+					int x1 = ran.nextInt(this.tab.length);
+					int y1 = ran.nextInt(this.tab[0].length);
+				
+					if((x1 == 0 && y1 ==0) || (x1==this.tab[0].length && y1==this.tab.length) || (this.tab[x1][y1] instanceof Obstacle))
+						wrong =true;
+					else {
+						this.tab[x1][y1] = new Obstacle(x1,y1);
+						wrong = true;
+					}
+				}
+			}
+			p.setTab(this.tab);
+		}while(!p.findPath());
+		System.out.println(p);
+		System.out.println(p.getPath());
 	}
 	
-	public Object[][] getTab() {
+	public Cellule[][] getTab() {
 		return this.tab;
 	}
 	
@@ -50,17 +62,23 @@ public class Plateau {
 		return msg;
 	}
 	
-	public void add(Robots r, int idx) {
-		if (idx<0) B.add(r);
-		else b.add(r);
-		this.tab[0][0] = B;
-		this.tab[this.tab.length-1][this.tab[0].length-1]= b;		
-	}
-	
-	public void moove(int idxY, int idxX , int mooveToX, int mooveToY) {
-		if (this.tab[mooveToX][mooveToY].toString().equals(" ") && java.lang.Math.abs(mooveToX-idxX) == 1 && java.lang.Math.abs(mooveToY-idxY) == 1) {
-			this.tab[mooveToX][mooveToY] = this.tab[idxX][idxY];
-			this.tab[idxX][idxY] = new Character(' ');
+	public void selection (int x , int y) {
+		if (this.tab[y][x] instanceof Base)
+			System.out.println("1: Deplacement\n2: Ne rien faire");
+		else if (this.tab[y][x]instanceof Case){
+			if (this.tab[y][x].isRobot())
+				System.out.println("1: Deplacement\n2: Attaquer\n3: Ne rien faire");
+			else
+				System.out.println("La case ne contient pas de robot !");
 		}
+		Scanner sc = new Scanner(System.in);
+		int nb = 0;
+		try{
+			nb = sc.nextInt();
+		}catch (InputMismatchException e){
+			System.out.println("Invalid Value !");
+		}
+		
 	}
+
 }
