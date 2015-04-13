@@ -1,21 +1,23 @@
 
-public class Base {
-	private Object[] B = new Object[5];
-	private String affich;
-	
-	public Base(String args) {
-		this.affich=args;
+public class Base extends Cellule{
+	private Robot[] B = new Robot[5];
+	private int idx = 0;
+
+	public Base(int x, int y, int equipe) {
+		super(x, y, false, equipe, true, false);
 	}
-	
-	public Object[] getB() {
-		return this.B;
-	}
-	
-	public void add(Robots o) {
+
+	public String getB() {
+		String msg ="";
 		int cpt =0;
 		while(this.B[cpt] != null)
-			cpt++;
-		this.B[cpt]=o;
+			msg+=this.B[cpt].toString()+"\n";
+		return msg;
+	}
+	
+	public void add(Robot o) {
+		this.B[this.idx]=o;
+		this.idx++;
 	}
 	
 	public void remove(int idx) {
@@ -23,6 +25,7 @@ public class Base {
 	}
 	
 	public String toString () {
-		return this.affich;
+		if (this.equipe == 1) return "B";
+		else return "b";
 	}
 }
