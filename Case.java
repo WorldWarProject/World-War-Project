@@ -1,6 +1,6 @@
 
 public class Case extends Cellule {
-	protected Robot r;
+	protected Robots r;
 	
 	public Case(int x, int y) {
 		super(x, y);
@@ -10,7 +10,7 @@ public class Case extends Cellule {
 		super(x, y,mine , equipe, false, false);
 	}
 	
-	public void setR(Robot r) {
+	public void setR(Robots r) {
 		this.r = r;
 		if (r != null)
 			super.setRobot(true);
@@ -18,7 +18,7 @@ public class Case extends Cellule {
 			super.setRobot(false);
 	}
 	
-	public Robot getR() {
+	public Robots getR() {
 		return this.r;
 	}
 	
