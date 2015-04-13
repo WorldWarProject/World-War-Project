@@ -1,6 +1,6 @@
 
 public class Base extends Cellule{
-	private Robot[] B = new Robot[5];
+	private Robots[] B = new Robots[5];
 	private int idx = 0;
 
 	public Base(int x, int y, int equipe) {
@@ -15,7 +15,7 @@ public class Base extends Cellule{
 		return msg;
 	}
 	
-	public void add(Robot o) {
+	public void add(Robots o) {
 		this.B[this.idx]=o;
 		this.idx++;
 	}
