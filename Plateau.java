@@ -17,10 +17,8 @@ public class Plateau {
 			this.tab[this.tab.length-1][this.tab[0].length-1]= new Base(this.tab.length-1,this.tab[0].length-1,-1);
 		
 			boolean wrong = false;
-			
-		
-			for(int i=0; i<(int)(0.25*this.tab.length*this.tab[0].length);i++) {
-				Random ran = new Random();
+			Random ran = new Random();
+			for(int i=0; i<(int)(ran.nextDouble()*25*this.tab.length*this.tab[0].length);i++) {
 				wrong = false;
 				while (!wrong) {
 					int x1 = ran.nextInt(this.tab.length);
@@ -36,12 +34,22 @@ public class Plateau {
 			}
 			p.setTab(this.tab);
 		}while(!p.findPath());
-		System.out.println(p);
 		System.out.println(p.getPath());
 	}
 	
 	public Cellule[][] getTab() {
 		return this.tab;
+	}
+	
+	public void add (Robot r) {
+		for(int i=0; i<tab.length; i++) 
+			for (int j=0; j<tab[0].length; j++) 
+				if(this.tab[i][j] instanceof Base && r.getEquipe()==this.tab[i][j].getEquipe())
+					this.tab[i][j].add(r);
+	}
+	
+	public void  remove (int x, int y) {
+		this.tab[y][x] = new Case(x,y,false,0);
 	}
 	
 	public String toString () {
@@ -62,23 +70,110 @@ public class Plateau {
 		return msg;
 	}
 	
-	public void selection (int x , int y) {
-		if (this.tab[y][x] instanceof Base)
-			System.out.println("1: Deplacement\n2: Ne rien faire");
-		else if (this.tab[y][x]instanceof Case){
-			if (this.tab[y][x].isRobot())
-				System.out.println("1: Deplacement\n2: Attaquer\n3: Ne rien faire");
-			else
-				System.out.println("La case ne contient pas de robot !");
-		}
+	public void action () {
 		Scanner sc = new Scanner(System.in);
-		int nb = 0;
-		try{
-			nb = sc.nextInt();
-		}catch (InputMismatchException e){
-			System.out.println("Invalid Value !");
+		int x =-1,y=-1,choixAction=-1, choixRobot =-1, choixActionRobot=-1, actionX = -1, actionY = -1;
+		boolean base = false;
+		do {
+			try{
+				System.out.println("x ?");
+				x = sc.nextInt();
+				System.out.println("y ?");
+				y = sc.nextInt();
+			}catch(Exception e) {
+				System.out.println("Invalid value !");
+			}
+		}while(x<0 || x>this.tab[0].length || y<0 || y>this.tab.length);
+		
+		if(this.tab[y][x].isBase()){
+			base = true;
+			do{
+				try{
+					System.out.println("1 Deplacement\n2 Passer son tour !");
+					choixAction = sc.nextInt();
+				}catch(Exception e) {
+					System.out.println("Invalid value !");
+				}
+			}while(choixAction<1 || choixAction >2);
+		}
+		else if (this.tab[y][x].isRobot()){
+			do{
+				try{
+					System.out.println("1 Deplacement\n2 Attaquer\n3 Passer son tour !");
+					choixActionRobot = sc.nextInt();
+				}catch(Exception e) {
+					System.out.println("Invalid value !");
+				}
+			}while(choixActionRobot<1 || choixActionRobot >3);
+		}
+		else {
+			System.out.println("Aucun élément à sélectionner. Vous passez votre tour !");
 		}
 		
+		if (base && choixAction == 1){
+			do{
+				try{
+					String msg ="";
+					Robot[] r = this.tab[y][x].getB();
+					int cpt =0;
+					while(cpt < this.tab [y][x].getIdx() ) {
+						msg+=(cpt+1)+" "+r[cpt].toString()+"\n";
+						cpt++;
+					}
+					System.out.println(msg);
+					choixRobot = sc.nextInt()-1;
+				}catch(Exception e) {
+					System.out.println("Invalid value !");
+				}
+			}while(choixRobot<0 || choixRobot > this.tab[y][x].getIdx());
+			choixActionRobot = 1;
+		}
+		
+		if(choixActionRobot == 1 ){ //déplacement
+			do{
+				try{
+					System.out.println("Ou voulez vous vous déplacer  ?");
+					System.out.println("x ?");
+					actionX = sc.nextInt();
+					System.out.println("y ?");
+					actionY = sc.nextInt();
+				}catch(Exception e) {
+					System.out.println("Invalid value !");
+				}
+			}while(actionX<0 ||actionX>this.tab[0].length || actionY<0 || actionY>this.tab.length);
+			Coordonne goal ;
+			if (base)
+				goal = Deplacement.deplacement(this.tab[y][x],this.tab[actionY][actionX],choixRobot);
+			else
+				goal = Deplacement.deplacement(this.tab[y][x],this.tab[actionY][actionX]);
+				
+			System.out.println(goal);
+			if (goal != null) {
+				Robot[] r = this.tab[y][x].getB();
+				this.tab[actionY][actionX].add(r[choixRobot]);
+				
+				if(!base)
+					this.tab[y][x].remove();
+				
+				if(base) 
+					this.tab[y][x].remove(choixRobot);
+			}
+		}
+		else if(choixActionRobot == 2) { //attaque
+			do{
+				try{
+					System.out.println("Ou voulez vous vous attaquer ?");
+					System.out.println("x ?");
+					actionX = sc.nextInt();
+					System.out.println("y ?");
+					actionY = sc.nextInt();
+				}catch(Exception e) {
+					System.out.println("Invalid value !");
+				}
+			}while((actionX<0 ||actionX>this.tab[0].length || actionY<0 || actionY>this.tab.length) && (actionX == x || actionY == y));
+			
+			//Tirer.tir(this.tab[y][x],this.tab[actionY][actionX]);
+		}
 	}
 
 }
