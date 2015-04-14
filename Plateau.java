@@ -34,6 +34,10 @@ public class Plateau {
 			}
 			p.setTab(this.tab);
 		}while(!p.findPath());
+		this.tab[1][1]=new Case(1,1,false,1);
+		this.tab[1][1].add(new Char(1));
+		this.tab[1][9] = new Case(9,1,false,-1);
+		this.tab[1][9].add(new Char(-1));
 		System.out.println(p.getPath());
 	}
 	
@@ -162,7 +166,7 @@ public class Plateau {
 		else if(choixActionRobot == 2) { //attaque
 			do{
 				try{
-					System.out.println("Ou voulez vous vous attaquer ?");
+					System.out.println("Qui voulez vous vous attaquer ?");
 					System.out.println("x ?");
 					actionX = sc.nextInt();
 					System.out.println("y ?");
@@ -172,7 +176,7 @@ public class Plateau {
 				}
 			}while((actionX<0 ||actionX>this.tab[0].length || actionY<0 || actionY>this.tab.length) && (actionX == x || actionY == y));
 			
-			//Tirer.tir(this.tab[y][x],this.tab[actionY][actionX]);
+			Tirer.tir(this.tab[y][x],this.tab[actionY][actionX], this.tab);
 		}
 	}
 
