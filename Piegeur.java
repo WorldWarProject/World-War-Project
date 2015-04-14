@@ -12,12 +12,6 @@ public class Piegeur extends Robot {
 	}
 
 	@Override
-	public int getEquipe() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public int getRegenEnergie() {
 		// TODO Auto-generated method stub
 		return Constante.REGEN_ENERGIE_PIEGEUR;
