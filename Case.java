@@ -1,6 +1,7 @@
 
+
 public class Case extends Cellule {
-	protected Robots r;
+	protected Robot r;
 	
 	public Case(int x, int y) {
 		super(x, y);
@@ -10,7 +11,7 @@ public class Case extends Cellule {
 		super(x, y,mine , equipe, false, false);
 	}
 	
-	public void setR(Robots r) {
+	public void add(Robot r) {
 		this.r = r;
 		if (r != null)
 			super.setRobot(true);
@@ -18,13 +19,32 @@ public class Case extends Cellule {
 			super.setRobot(false);
 	}
 	
-	public Robots getR() {
+	public Robot getR() {
 		return this.r;
 	}
 	
 	public String toString () {
 		if(this.r == null)
 			return " ";
-		else return r.toString();
+		else return r.getType();
+	}
+
+	public Robot[] getB() {
+		return null;
+	}
+
+	public int getIdx() {
+		return 0;
+	}
+
+
+	public void remove() {
+		super.setRobot(false);
+		this.r = null;
+	}
+
+
+	public void remove(int idx){
+		
 	}
 }
