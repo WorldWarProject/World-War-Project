@@ -7,4 +7,27 @@ public class Obstacle extends Cellule{
 	public String toString(){
 		return "O";
 	}
+
+	public Robot[] getB() {
+		return null;
+	}
+
+	public int getIdx() {
+		return 0;
+	}
+
+	public void add(Robot r) {		
+	}
+
+	public void remove() {
+		
+	}
+
+	public void remove(int idx) {
+		
+	}
+
+	public Robot getR() {
+		return null;
+	}
 }
