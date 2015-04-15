@@ -3,11 +3,15 @@ public class Tirer {
 		int cpt =0, x = c1.getX(), y =c1.getY();
 		boolean stop = false, touche = false;
 		if(c1.isRobot() && c2.isRobot() && c1.getEquipe() != c2.getEquipe())
+			System.out.println("ok1");
 			if(c1.getX() == c2.getX()) {
+				System.out.println("ok2");
 				int c = c1.getY()-c2.getY();
-				if(c < 0 && c > -c1.getR().getPortee()){
+				if(c < 0 && c >= -c1.getR().getPortee()){
+					System.out.println("ok3");
 					cpt = c1.getY();
 					while (cpt <= c2.getY() && !stop) {
+						System.out.println("ok4");
 						try {
 						if ((tab[cpt][c1.getX()].isRobot() && c1.getR().getEquipe() != tab[cpt][c1.getX()].getR().getEquipe()) || tab[cpt][c1.getX()]instanceof Obstacle)
 							stop = true;
@@ -43,7 +47,7 @@ public class Tirer {
 						System.out.println("\n\n\n\n\n\n\n");
 					}
 				}
-				else if(c>0 && c<c1.getR().getPortee()) {
+				else if(c>0 && c<=c1.getR().getPortee()) {
 					cpt = c1.getY();
 					while (cpt >= c2.getY() && !stop) {
 						try {
@@ -84,7 +88,7 @@ public class Tirer {
 			}
 			else {
 				int c = c1.getX()-c2.getX();
-				if(c < 0 && c > -c1.getR().getPortee()){
+				if(c < 0 && c >= -c1.getR().getPortee()){
 					cpt = c1.getX();
 					while (cpt <= c2.getX() && !stop) {
 						try {
@@ -122,7 +126,7 @@ public class Tirer {
 						System.out.println("\n\n\n\n\n\n\n");
 					}
 				}
-				else if(c>0 && c<c1.getR().getPortee()) {
+				else if(c>0 && c<=c1.getR().getPortee()) {
 					cpt = c1.getX();
 					while (cpt >= c2.getX() && !stop) {
 						try {
