@@ -1,5 +1,4 @@
-Vous avez changez quels fichiers ?
-pour le moment j'ai juste mis le menu que je dois encore finalise
+Nom de groupe: World War Project
+Membres du groupe: Aurélie Dequidt, Dylan Guerville, William Mayeux, Thomas Murschel, Benjamin Ostrowski, Quentin Porion
 
-
-petit erreur sur base et case manquait des s sur robots et donc ça ne faisait pas l'appel à la classe 
+Etat d'avancement:
