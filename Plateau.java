@@ -3,7 +3,7 @@ import java.util.*;
 public class Plateau {
 	private Cellule[][] tab;
 
-	public Plateau (int x , int y) {
+	public Plateau (int x , int y, double o) {
 		this.tab = new Cellule[y][x];
 		CoordonnePF start = new CoordonnePF(0,0);
 		CoordonnePF goal = new CoordonnePF(this.tab[0].length-1,this.tab.length-1);
@@ -18,7 +18,7 @@ public class Plateau {
 		
 			boolean wrong = false;
 			Random ran = new Random();
-			for(int i=0; i<(int)(ran.nextDouble()*25*this.tab.length*this.tab[0].length);i++) {
+			for(int i=0; i<(int)((o/100)*this.tab.length*this.tab[0].length);i++) {
 				wrong = false;
 				while (!wrong) {
 					int x1 = ran.nextInt(this.tab.length);
@@ -34,9 +34,8 @@ public class Plateau {
 			}
 			p.setTab(this.tab);
 		}while(!p.findPath());
-		this.tab[1][1]=new Case(1,1,false,1);
-		this.tab[1][1].add(new Char(1));
-		this.tab[1][9] = new Case(9,1,false,-1);
+		
+		this.tab[1][1].add(new Tireur(1));
 		this.tab[1][9].add(new Char(-1));
 		System.out.println(p.getPath());
 	}
@@ -147,20 +146,22 @@ public class Plateau {
 			}while(actionX<0 ||actionX>this.tab[0].length || actionY<0 || actionY>this.tab.length);
 			Coordonne goal ;
 			if (base)
-				goal = Deplacement.deplacement(this.tab[y][x],this.tab[actionY][actionX],choixRobot);
+				goal = Deplacement.deplacement(this.tab[y][x],this.tab[actionY][actionX],choixRobot,this.tab);
 			else
-				goal = Deplacement.deplacement(this.tab[y][x],this.tab[actionY][actionX]);
+				goal = Deplacement.deplacement(this.tab[y][x],this.tab[actionY][actionX], this.tab);
 				
 			System.out.println(goal);
+			Robot[] r = new Robot[5];
 			if (goal != null) {
-				Robot[] r = this.tab[y][x].getB();
-				this.tab[actionY][actionX].add(r[choixRobot]);
-				
-				if(!base)
-					this.tab[y][x].remove();
-				
-				if(base) 
+				if(base) {
+					r = this.tab[y][x].getB();
+					this.tab[actionY][actionX].add(r[choixRobot]);
 					this.tab[y][x].remove(choixRobot);
+				}
+				else {
+					this.tab[actionY][actionX].add(this.tab[y][x].getR());
+					this.tab[y][x].remove();
+				}
 			}
 		}
 		else if(choixActionRobot == 2) { //attaque
