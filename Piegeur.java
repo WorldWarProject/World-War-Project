@@ -1,5 +1,17 @@
+/**
+ * La classe piegeur represente un robot avec ses coordonnees
+ * @author guervild
+ *
+ */
 public class Piegeur extends Robot {
-
+	/** Coordonnees du robot */
+	Coordonne c;
+	
+	
+	/** 
+	 * Construit un objet piegeur qui herite de robot, avec l'equipe donnée
+	 * @param equipe - equipe du robot
+	 */
 	public Piegeur(int equipe) {
 		super(equipe, Constante.ENERGIE_PIEGEUR);
 		// TODO Auto-generated constructor stub
