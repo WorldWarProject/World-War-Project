@@ -1,7 +1,16 @@
+/**
+ * La classe char represente un robot avec ses coordonnees
+ * @author guervild
+ *
+ */
 public class Char extends Robot {
-
+	/** Coordonnees du robot */
 	Coordonne c;
 
+	/** 
+	 * Construit un objet char qui herite de robot, avec l'equipe donnée
+	 * @param equipe - equipe du robot
+	 */
 	public Char(int equipe) {
 		super(equipe, Constante.ENERGIE_CHAR);
 
@@ -51,7 +60,7 @@ public class Char extends Robot {
 
 	@Override
 	public String getType() {
-		if (super.getEquipe()==1)
+		if (super.getEquipe() == 1)
 			return Constante.NOM_CHAR;
 		else
 			return Constante.NOM_CHAR_EQUIPE2;
