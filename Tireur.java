@@ -1,16 +1,28 @@
-
+/**
+ * La classe tireur represente un robot avec ses coordonnees
+ * 
+ * @author guervild
+ *
+ */
 public class Tireur extends Robot {
+	/** Coordonnees du robot */
+	Coordonne c;
 	
+	/** 
+	 * Construit un objet tireur qui herite de robot, avec l'equipe donnée
+	 * @param equipe - equipe du robot
+	 */
 	public Tireur(int equipe) {
 		super(equipe, Constante.ENERGIE_TIREUR);
 		// TODO Auto-generated constructor stub
- 	}
+	}
 
 	@Override
 	public boolean estSurBase() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 	@Override
 	public int getRegenEnergie() {
 		// TODO Auto-generated method stub
@@ -27,6 +39,7 @@ public class Tireur extends Robot {
 	public int getCoutTir() {
 		return Constante.COUT_TIRER_TIREUR;
 	}
+
 	@Override
 	public int getDegatTir() {
 		// TODO Auto-generated method stub
@@ -47,7 +60,7 @@ public class Tireur extends Robot {
 
 	@Override
 	public String getType() {
-		if (super.getEquipe()==1)
+		if (super.getEquipe() == 1)
 			return Constante.NOM_TIREUR;
 		else
 			return Constante.NOM_TIREUR_EQUIPE2;
@@ -59,4 +72,4 @@ public class Tireur extends Robot {
 		return Constante.DEPLACEMENT_TIREUR;
 	}
 
- }
+}
