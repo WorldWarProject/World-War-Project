@@ -80,7 +80,7 @@ public class Deplacement {
 								if (tab[start.getX()+1][start.getY()] instanceof Obstacle)
 									return false;
 								else {
-									start.getR().setEnergie(start.getR().getEnergie()-start.getR().getCoutDeplacement());
+									r[idx].setEnergie(r[idx].getEnergie()-r[idx].getCoutDeplacement());
 									return true;
 								}
 							}
@@ -88,7 +88,7 @@ public class Deplacement {
 								if (tab[start.getX()-1][start.getY()] instanceof Obstacle)
 									return false;
 								else {
-									start.getR().setEnergie(start.getR().getEnergie()-start.getR().getCoutDeplacement());
+									r[idx].setEnergie(r[idx].getEnergie()-r[idx].getCoutDeplacement());
 									return true;
 								}
 							}
@@ -96,7 +96,7 @@ public class Deplacement {
 								if (tab[start.getX()][start.getY()+1] instanceof Obstacle)
 									return false;
 								else {
-									start.getR().setEnergie(start.getR().getEnergie()-start.getR().getCoutDeplacement());
+									r[idx].setEnergie(r[idx].getEnergie()-r[idx].getCoutDeplacement());
 									return true;
 								}
 							}
@@ -104,14 +104,14 @@ public class Deplacement {
 								if (tab[start.getX()][start.getY()-1] instanceof Obstacle)
 									return false;
 								else {
-									start.getR().setEnergie(start.getR().getEnergie()-start.getR().getCoutDeplacement());
+									r[idx].setEnergie(r[idx].getEnergie()-r[idx].getCoutDeplacement());
 									return true;
 								}
 							}
 							else return false;							
 						}
 						else {
-							start.getR().setEnergie(start.getR().getEnergie()-start.getR().getCoutDeplacement());
+							r[idx].setEnergie(r[idx].getEnergie()-r[idx].getCoutDeplacement());
 							return true;
 						}
 		}
