@@ -1,11 +1,18 @@
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Equipe {
 	private String nom;
-	private Robot[] E = new Robot[5];
-	private int idx = 0;
+	private String pays;
+	List<Robot> E= new ArrayList<Robot>();
 	
-	public Equipe(String nom) {
+	
+	
+	public Equipe(String nom,String pays) {
 		this.nom = nom;
+		this.pays=pays;
 		
 	}
 	public String getNom() {
@@ -14,15 +21,19 @@ public class Equipe {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public Robot[] getE() {
-		return this.E;
+	public String getPays(){
+		return pays;
+	}
+	public void setPays(String pays){
+		this.pays=pays;
 	}
 	
-	public void add(Robot r) {
-		if(idx <5) {
-			this.E[this.idx]=r;
-			this.idx++;
-		}
+	public void add(Robot r){
+		E.add(r);
 	}
+}
+	
+
+
 }
 	
