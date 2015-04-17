@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
 
-public class menu {
+public class Menu {
 	private Scanner str;
 	 	
 	/**
 	 * Affichage du menu
 	 */
-	public menu() {
+	public Menu() {
 		System.out.println("Bienvenue sur le jeu VIRTUAL WAR");
 		System.out.println("un jeu World War Project\n");
 		
@@ -45,7 +45,7 @@ public class menu {
 
 				default:
 					System.out.println("Vous avez surement mal saisi votre choix, vous devez rentrer un chiffre entre 1 et 4..");
-					new menu();
+					new Menu();
 					break;
 			}
 								
@@ -55,7 +55,7 @@ public class menu {
 		 * Gestion des cas d'exception
 		 */
 		catch (Exception e) {
-			new menu();
+			new Menu();
 		}
 		 
 	}
