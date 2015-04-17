@@ -35,9 +35,9 @@ public class Plateau {
 			p.setTab(this.tab);
 		}while(!p.findPath());
 		
-		this.tab[1][1].add(new Tireur(1));
-		this.tab[1][9].add(new Char(-1));
-		System.out.println(p.getPath());
+		//this.tab[1][1].add(new Tireur(1));
+		//this.tab[1][9].add(new Char(-1));
+		//System.out.println(p.getPath());
 	}
 	
 	public Cellule[][] getTab() {
