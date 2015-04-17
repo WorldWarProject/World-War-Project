@@ -27,7 +27,7 @@ public class Base extends Cellule{
 			if (i == idx)
 				decal = true;	
 		}
-		this.B[this.idx]=null;
+		this.B[this.idx-1]=null;
 		this.idx--;
 	}
 	
