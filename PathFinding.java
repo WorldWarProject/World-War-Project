@@ -136,7 +136,7 @@ public class PathFinding {
 					return true;
 				}
 			}
-			System.out.println("impossible");
+			//System.out.println("impossible");
 			return false;
 			
 		}
