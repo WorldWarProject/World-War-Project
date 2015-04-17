@@ -36,7 +36,7 @@ public class ReglesDuJeu {
 			String choix = str.nextLine();
 				switch (choix) {
 				case ("1"):
-					new menu();
+					new Menu();
 					break;
 
 				default:
