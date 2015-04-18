@@ -133,19 +133,24 @@ public class Jouer{
 			p1 = str.nextLine();
 			
 			if(p1.equals("0")){
-				Pays.remove(0);
 				p1 = Pays.get(0);
+				Pays.remove(0);
+				
 			}else if (p1.equals("1")){
-				Pays.remove(1);
 				p1 = Pays.get(1);
+				Pays.remove(1);
+				
 				}
 			else if(p1.equals("2")){
-				Pays.remove(2);
 				p1 = Pays.get(2);
+				Pays.remove(2);
+				
 			}
 			else if(p1.equals("3")){
-				Pays.remove(3);
 				p1 = Pays.get(3);
+				Pays.remove(3);
+				
+				
 			}else{
 				System.out.println("Choix non valide");
 				choixPays1();
@@ -190,15 +195,11 @@ public class Jouer{
 				if(ce1.equals("6"))
 					creationRobotalea(jeu);
 				else{
-				do{
+				
 					creationTireur1(jeu);
 					creationChar1(jeu);
 					creationPiegeur1(jeu);
 					choixRobotequipe2(jeu);
-				
-				if((Integer.parseInt(c)+Integer.parseInt(t)+Integer.parseInt(p))<Integer.parseInt(ce1))
-					System.out.println( "nombre insuffisant de robot");
-				}while((Integer.parseInt(c)+Integer.parseInt(t)+Integer.parseInt(p))<Integer.parseInt(ce1));
 				}
 				}catch(Exception e){
 					choixRobotequipe1(jeu);
@@ -296,12 +297,16 @@ public class Jouer{
 		public void creationChar1(Plateau jeu){
 			try{
 			do{
+				if(Integer.parseInt(t)==Integer.parseInt(ce1)){
+					c="0";
+				}else{
 				System.out.println("Nombre de Char:");
 				c = str.nextLine();
 				for(int i=0;i<Integer.parseInt(c);i++){
 					Robot ci = new Char(1);
 					jeu.add(ci);
 					E1.add(ci);
+				}
 				}
 				}while(Integer.parseInt(c)>(Integer.parseInt(ce1)-Integer.parseInt(t)));
 			}catch(Exception e){
@@ -311,16 +316,18 @@ public class Jouer{
 		
 		public void creationPiegeur1(Plateau jeu){
 			try{
-			do{
-				System.out.println("Nombre de Piegeur:");
-				p = str.nextLine();
+			
+				if((Integer.parseInt(c)+Integer.parseInt(t))==Integer.parseInt(ce1)){
+					p="0";}
+				else{
+					p = ""+(Integer.parseInt(ce1)-(Integer.parseInt(c)+Integer.parseInt(t)));
 				for(int i=0;i<Integer.parseInt(p);i++){
 					Robot pi = new Piegeur(1);
 					jeu.add(pi);
 					E1.add(pi);
 				}
-				}while(Integer.parseInt(p)>(Integer.parseInt(ce1)-(Integer.parseInt(t)+Integer.parseInt(c))));
-			}catch(Exception e){
+				}
+				}catch(Exception e){
 				creationPiegeur1(jeu);
 			}
 		}
@@ -333,16 +340,11 @@ public class Jouer{
 			try{
 				System.out.println("Choix des robots de l'équipe 2");
 				System.out.println("Le nombre de robots que vous pouvez choisir est de "+ce1);
-				do{
+				
 					creationTireur2(jeu);
 					creationChar2(jeu);
 					creationPiegeur2(jeu);
-								
-				if((Integer.parseInt(c)+Integer.parseInt(t)+Integer.parseInt(p))<Integer.parseInt(ce1))
-					System.out.println( "nombre insuffisant de robot");
-				}while((Integer.parseInt(c)+Integer.parseInt(t)+Integer.parseInt(p))<Integer.parseInt(ce1));
-				
-							
+											
 				}catch(Exception e){
 					choixRobotequipe2(jeu);
 				}
@@ -369,14 +371,18 @@ public class Jouer{
 		public void creationChar2(Plateau jeu){
 			try{
 			do{
+				if(Integer.parseInt(t)==Integer.parseInt(ce1)){
+					c="0";}
+				else{
 				System.out.println("Nombre de Char:");
 				c = str.nextLine();
 				for(int i=0;i<Integer.parseInt(c);i++){
 					Robot ci = new Char(-1);
 					jeu.add(ci);
 					E2.add(ci);
+				}	
 				}
-				}while(Integer.parseInt(t)>Integer.parseInt(ce1));
+				}while(Integer.parseInt(c)>Integer.parseInt(ce1)-Integer.parseInt(t));
 			}catch(Exception e){
 				creationChar2(jeu);
 			}
@@ -384,15 +390,18 @@ public class Jouer{
 		
 		public void creationPiegeur2(Plateau jeu){
 			try{
-				do{
-					System.out.println("Nombre de Piegeur:");
-					p = str.nextLine();
+				
+					if((Integer.parseInt(c)+Integer.parseInt(t))==Integer.parseInt(ce1)){
+						p="0";}
+					else{
+						p = ""+(Integer.parseInt(ce1)-(Integer.parseInt(c)+Integer.parseInt(t)));
 					for(int i=0;i<Integer.parseInt(p);i++){
 						Robot pi = new Piegeur(-1);
 						jeu.add(pi);
 						E2.add(pi);
+					}
 				}
-				}while(Integer.parseInt(p)>(Integer.parseInt(ce1)-(Integer.parseInt(t)+Integer.parseInt(c))));
+				
 			}catch(Exception e){
 				creationPiegeur2(jeu);
 			}
