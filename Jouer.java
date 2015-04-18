@@ -283,13 +283,14 @@ public class Jouer{
 			do{
 				System.out.println("Nombre de Tireur:");
 				t = str.nextLine();
+				
+				}while(Integer.parseInt(t)>Integer.parseInt(ce1));
 				for(int i=0;i<Integer.parseInt(t);i++){
 					Robot ti = new Tireur(1);
 					jeu.add(ti);
 					E1.add(ti);
-				}
-				}while(Integer.parseInt(t)>Integer.parseInt(ce1));
-			}catch(Exception e){
+					}
+				}catch(Exception e){
 				creationTireur1(jeu);
 			}
 		}
@@ -302,13 +303,13 @@ public class Jouer{
 				}else{
 				System.out.println("Nombre de Char:");
 				c = str.nextLine();
+				}
+				}while(Integer.parseInt(c)>(Integer.parseInt(ce1)-Integer.parseInt(t)));
 				for(int i=0;i<Integer.parseInt(c);i++){
 					Robot ci = new Char(1);
 					jeu.add(ci);
 					E1.add(ci);
 				}
-				}
-				}while(Integer.parseInt(c)>(Integer.parseInt(ce1)-Integer.parseInt(t)));
 			}catch(Exception e){
 				creationChar1(jeu);
 			}
@@ -357,12 +358,13 @@ public class Jouer{
 			do{
 				System.out.println("Nombre de Tireur:");
 				t = str.nextLine();
-				for(int i=0;i<Integer.parseInt(t);i++){
-					Robot ti = new Tireur(-1);
-					jeu.add(ti);
-					E2.add(ti);
-				}
+				
 				}while(Integer.parseInt(t)>Integer.parseInt(ce1));
+			for(int i=0;i<Integer.parseInt(t);i++){
+				Robot ti = new Tireur(-1);
+				jeu.add(ti);
+				E2.add(ti);
+			}
 			}catch(Exception e){
 				creationTireur2(jeu);
 			}
@@ -376,13 +378,13 @@ public class Jouer{
 				else{
 				System.out.println("Nombre de Char:");
 				c = str.nextLine();
-				for(int i=0;i<Integer.parseInt(c);i++){
-					Robot ci = new Char(-1);
-					jeu.add(ci);
-					E2.add(ci);
 				}	
-				}
 				}while(Integer.parseInt(c)>Integer.parseInt(ce1)-Integer.parseInt(t));
+			for(int i=0;i<Integer.parseInt(c);i++){
+				Robot ci = new Char(-1);
+				jeu.add(ci);
+				E2.add(ci);
+			}
 			}catch(Exception e){
 				creationChar2(jeu);
 			}
