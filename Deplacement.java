@@ -36,6 +36,8 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("2"):
@@ -53,6 +55,8 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("3"):
@@ -66,12 +70,16 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("4"):
+				System.out.println(jeu);
 				jeu.action(jeu,E1);
 				break;
 			default:
+					System.out.println(jeu);
 					DeplacementTP(jeu,E1,i);
 					break;
 			}
@@ -102,6 +110,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("2"):
@@ -120,6 +130,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("3"):
@@ -134,6 +146,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("4"):
@@ -152,6 +166,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case("5"):
@@ -166,12 +182,16 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("6"):
+				System.out.println(jeu);
 				jeu.action(jeu,E1);
 				break;
 			default:
+					System.out.println(jeu);
 					DeplacementTP(jeu,E1,i);
 					break;
 			}
@@ -201,6 +221,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("2"):
@@ -219,6 +241,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("3"):
@@ -233,6 +257,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("4"):
@@ -251,6 +277,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case("5"):
@@ -265,12 +293,16 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("6"):
+				System.out.println(jeu);
 				jeu.action(jeu,E1);
 				break;
 			default:
+					System.out.println(jeu);
 					DeplacementTP(jeu,E1,i);
 					break;
 			}
@@ -302,6 +334,8 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("2"):
@@ -319,6 +353,8 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("3"):
@@ -332,12 +368,16 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("4"):
+				System.out.println(jeu);
 				jeu.action(jeu,E1);
 				break;
 			default:
+					System.out.println(jeu);
 					DeplacementTP(jeu,E1,i);
 					break;
 			}
@@ -369,6 +409,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("2"):
@@ -387,6 +429,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("3"):
@@ -401,12 +445,16 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("4"):
+				System.out.println(jeu);
 				jeu.action(jeu,E1);
 				break;
 			default:
+					System.out.println(jeu);
 					DeplacementTP(jeu,E1,i);
 					break;
 				
@@ -437,6 +485,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("2"):
@@ -455,6 +505,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("3"):
@@ -469,12 +521,16 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("4"):
+				System.out.println(jeu);
 				jeu.action(jeu,E1);
 				break;
 			default:
+					System.out.println(jeu);
 					DeplacementTP(jeu,E1,i);
 					break;
 				
@@ -507,6 +563,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("2"):
@@ -525,6 +583,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("3"):
@@ -539,6 +599,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("4"):
@@ -557,6 +619,8 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("5"):
@@ -571,12 +635,16 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("6"):
+				System.out.println(jeu);
 				jeu.action(jeu,E1);
 				break;
 			default:
+					System.out.println(jeu);
 					DeplacementTP(jeu,E1,i);
 					break;
 				
@@ -610,6 +678,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("2"):
@@ -627,20 +697,25 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");}
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
+					}
 				break;
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
-				x=E1.getE().get(i).getCoordonne().getX()-1;
-				E1.getE().get(i).getCoordonne().setX(x);				
+				y=E1.getE().get(i).getCoordonne().getY()-1;
+				E1.getE().get(i).getCoordonne().setY(y);				
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
-						x=E1.getE().get(i).getCoordonne().getX()+1;
-						E1.getE().get(i).getCoordonne().setX(x);
+						y=E1.getE().get(i).getCoordonne().getY()+1;
+						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementTP(jeu, E1,  i);
 					}
 				break;
 			case ("4"):
@@ -659,6 +734,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("5"):
@@ -672,14 +749,18 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");	
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 				
 			case ("6"):
+				System.out.println(jeu);
 				jeu.action(jeu,E1);
 				break;
 			default:
+					System.out.println(jeu);
 					DeplacementTP(jeu,E1,i);
 					break;
 				
@@ -709,7 +790,9 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");			
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("2"):
@@ -728,7 +811,10 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");}
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
+					}
 				break;
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
@@ -742,6 +828,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("4"):
@@ -760,6 +848,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("5"):
@@ -774,6 +864,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("6"):
@@ -792,6 +884,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				jeu.add(E1.getE().get(i), E1, i);
 				System.out.println("déplacement impossible");
+				System.out.println(jeu);
+				DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("7"):
@@ -806,6 +900,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("8"):
@@ -824,12 +920,16 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementTP(jeu, E1,  i);
 				}
 				break;
 			case ("9"):
+				System.out.println(jeu);
 				jeu.action(jeu,E1);
 				break;
 			default:
+					System.out.println(jeu);
 					DeplacementTP(jeu,E1,i);
 					break;
 				
@@ -848,14 +948,13 @@ public class Deplacement {
 					return false;}
 					else if(E1.getE().size()==2){
 						if(i==0){
-							if(E1.getE().get(i++).estSurBase(E1, i, tab)==false){
+							if(E1.getE().get(1).estSurBase(E1, 1, tab)==false){
 								return true;
 							}else{
 								return false;
 							}
-						}
-						else{
-							if(E1.getE().get(i--).estSurBase(E1, i, tab)==false){
+						}else{
+							if(E1.getE().get(0).estSurBase(E1, 0, tab)==false){
 								return true;
 							}else{
 								return false;
@@ -863,20 +962,20 @@ public class Deplacement {
 						}
 					}else if(E1.getE().size()==3){
 							if(i==0){
-								if(E1.getE().get(i++).estSurBase(E1, i, tab)==false||E1.getE().get(i+2).estSurBase(E1, i, tab)==false){
+								if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false){
 									return true;
 								}else{
 									return false;
 								}
-							}
-							else if(i==1){
-								if(E1.getE().get(i--).estSurBase(E1, i, tab)==false||E1.getE().get(i++).estSurBase(E1, i, tab)==false){
+								
+							}else if(i==1){
+								if(E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false){
 									return true;
 								}else{
 									return false;
 								}
 							}else{
-								if(E1.getE().get(i--).estSurBase(E1, i, tab)==false||E1.getE().get(i-2).estSurBase(E1, i, tab)==false){
+								if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false){
 									return true;
 								}else{
 									return false;
@@ -886,27 +985,27 @@ public class Deplacement {
 							
 					}else if(E1.getE().size()==4){
 						if(i==0){
-							if(E1.getE().get(i++).estSurBase(E1, i, tab)==false||E1.getE().get(i+2).estSurBase(E1, i, tab)==false||E1.getE().get(i+3).estSurBase(E1, i, tab)==false){
+							if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false){
 								return true;
 							}else{
 								return false;
 							}
 						}
 						else if(i==1){
-							if(E1.getE().get(i--).estSurBase(E1, i, tab)==false||E1.getE().get(i++).estSurBase(E1, i, tab)==false||E1.getE().get(i+2).estSurBase(E1, i, tab)==false){
+							if(E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false){
 								return true;
 							}else{
 								return false;
 							}
 						}else if(i==2){
-							if(E1.getE().get(i--).estSurBase(E1, i, tab)==false||E1.getE().get(i-2).estSurBase(E1, i, tab)==false||E1.getE().get(i++).estSurBase(E1, i, tab)==false){
+							if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false){
 								return true;
 							}else{
 								return false;
 							}
 						}
 						else{
-							if(E1.getE().get(i--).estSurBase(E1, i, tab)==false||E1.getE().get(i-2).estSurBase(E1, i, tab)==false||E1.getE().get(i-3).estSurBase(E1, i, tab)==false){
+							if(E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false){
 								return true;
 							}else{
 								return false;
@@ -915,33 +1014,33 @@ public class Deplacement {
 						
 					}else{
 						if(i==0){
-							if(E1.getE().get(i++).estSurBase(E1, i, tab)==false||E1.getE().get(i+2).estSurBase(E1, i, tab)==false||E1.getE().get(i+3).estSurBase(E1, i, tab)==false||E1.getE().get(i+4).estSurBase(E1, i, tab)==false){
+							if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false||E1.getE().get(4).estSurBase(E1, 4, tab)==false){
 								return true;
 							}else{
 								return false;
 							}
 						}
 						else if(i==1){
-							if(E1.getE().get(i--).estSurBase(E1, i, tab)==false||E1.getE().get(i++).estSurBase(E1, i, tab)==false||E1.getE().get(i+2).estSurBase(E1, i, tab)==false||E1.getE().get(i+3).estSurBase(E1, i, tab)==false){
+							if(E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false||E1.getE().get(4).estSurBase(E1, 4, tab)==false){
 								return true;
 							}else{
 								return false;
 							}
 						}else if(i==2){
-							if(E1.getE().get(i--).estSurBase(E1, i, tab)==false||E1.getE().get(i-2).estSurBase(E1, i, tab)==false||E1.getE().get(i++).estSurBase(E1, i, tab)==false||E1.getE().get(i+2).estSurBase(E1, i, tab)==false){
+							if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false||E1.getE().get(4).estSurBase(E1, 4, tab)==false){
 								return true;
 							}else{
 								return false;
 							}
 						}
 						else if(i==3){
-							if(E1.getE().get(i--).estSurBase(E1, i, tab)==false||E1.getE().get(i-2).estSurBase(E1, i, tab)==false||E1.getE().get(i-3).estSurBase(E1, i, tab)==false||E1.getE().get(i++).estSurBase(E1, i, tab)==false){
+							if(E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(4).estSurBase(E1, 4, tab)==false){
 								return true;
 							}else{
 								return false;
 							}
 						}else{
-							if(E1.getE().get(i--).estSurBase(E1, i, tab)==false||E1.getE().get(i-2).estSurBase(E1, i, tab)==false||E1.getE().get(i-3).estSurBase(E1, i, tab)==false||E1.getE().get(i-4).estSurBase(E1, i, tab)==false){
+							if(E1.getE().get(3).estSurBase(E1, 3, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false){
 								return true;
 							}else{
 								return false;
