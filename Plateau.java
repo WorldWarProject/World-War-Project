@@ -92,8 +92,16 @@ public class Plateau {
 	}
 	
 	public void action (Plateau jeu,Equipe E1) {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		String cr;
+		String ch;
+		
+		System.out.println("Je peux :");
+		System.out.println("1. me déplacer");
+		System.out.println("Je choisis de :");
+		ch=sc.nextLine();
+		if(ch.equals("1")){
 		System.out.println("Equipe "+E1.getNom());
 		System.out.println("Choisissez un des robots suivants:");
 		for (int i=0;i<E1.E.size();i++){
@@ -103,52 +111,63 @@ public class Plateau {
 		cr=sc.nextLine();
 		switch(cr){
 		case ("0"):
-			if(E1.getE().get(0).getType().equals("C"))
+			if(E1.getE().get(0).getType().equals("C")||E1.getE().get(0).getType().equals("c")){
 				actionC(jeu,E1,Integer.parseInt(cr));
-			else if(E1.getE().get(0).getType().equals("T"))
+			}
+			else if(E1.getE().get(0).getType().equals("T")||E1.getE().get(0).getType().equals("t")){
 				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			else
+			}
+			else{
 				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
 			break;
 			
 		case ("1"):
-			if(E1.getE().get(1).getType().equals("C"))
+			if(E1.getE().get(1).getType().equals("C")||E1.getE().get(1).getType().equals("c")){
 				actionC(jeu,E1,Integer.parseInt(cr));
-			else if(E1.getE().get(1).getType().equals("T"))
+			}
+			else if(E1.getE().get(1).getType().equals("T")||E1.getE().get(1).getType().equals("t")){
 				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			else
+			}
+			else{
 				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			
+			}
 			break;
 			
 		case ("2"):
-			if(E1.getE().get(2).getType().equals("C"))
+			if(E1.getE().get(2).getType().equals("C")||E1.getE().get(2).getType().equals("c")){
 				actionC(jeu,E1,Integer.parseInt(cr));
-			else if(E1.getE().get(2).getType().equals("T"))
+			}
+			else if(E1.getE().get(2).getType().equals("T")||E1.getE().get(2).getType().equals("t")){
 				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			else
+			}
+			else{
 				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			
+			}
 			break;
 			
 		case ("3"):
-			if(E1.getE().get(3).getType().equals("C"))
+			if(E1.getE().get(3).getType().equals("C")||E1.getE().get(3).getType().equals("c")){
 				actionC(jeu,E1,Integer.parseInt(cr));
-			else if(E1.getE().get(3).getType().equals("T"))
+			}
+			else if(E1.getE().get(3).getType().equals("T")||E1.getE().get(3).getType().equals("t")){
 				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			else
+			}
+			else{
 				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			
+			}
 			break;
 			
 		case ("4"):
-			if(E1.getE().get(4).getType().equals("C"))
+			if(E1.getE().get(4).getType().equals("C")||E1.getE().get(4).getType().equals("c")){
 				actionC(jeu,E1,Integer.parseInt(cr));
-			else if(E1.getE().get(4).getType().equals("T"))
+			}
+			else if(E1.getE().get(4).getType().equals("T")||E1.getE().get(4).getType().equals("t")){
 				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			else
+			}
+			else{
 				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			
+			}
 			break;
 			
 			default:
@@ -156,8 +175,23 @@ public class Plateau {
 				break;
 				
 		}
+		
 		}catch(Exception e){
 			action (jeu,E1);
+		}
+		}else{
+			 /*if(E1.getE().size()==1){
+					if(E1.getE().get(0).estSurBase(E1, 0, tab)==true && E1.getE().get(0).getEnergie()!=0){
+						System.out.println("Vous ne pouvez pas passer votre tour");
+						System.out.println(jeu);
+						action (jeu,E1);
+					}else if(E1.getE().get(0).estSurBase(E1, 0, tab)==false){
+						System.out.println("Vous ne pouvez pas passer votre tour");
+						System.out.println(jeu);
+						action (jeu,E1);
+					}
+			 }*/
+			action(jeu, E1);
 		}
 	
 	}
