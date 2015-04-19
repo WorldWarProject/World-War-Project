@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * La classe Equipe represente une equipe avec son nom, son pays, et sa liste de robot.
- * @author guervild
+ * @author guervild murschet
  *
  */
 public class Equipe {
