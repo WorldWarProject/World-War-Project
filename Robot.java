@@ -48,9 +48,9 @@ public abstract class Robot {
 	 */
 	public boolean estSurBase(Equipe E1,int index,Cellule[][] tab){
 		this.tab=tab;
-		if(E1.getE().get(index).getEquipe()==1 && E1.getE().get(index).getCoordonne().getX()==0 && E1.getE().get(index).getCoordonne().getY()==0){
+		if(E1.getE().get(index).getEquipe()==1 && E1.getE().get(index).getCoordonne().getY()==0 && E1.getE().get(index).getCoordonne().getX()==0){
 			return true;
-		}else if(E1.getE().get(index).getEquipe()==-1 && E1.getE().get(index).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(index).getCoordonne().getY()==this.tab.length){
+		}else if(E1.getE().get(index).getEquipe()==-1 && E1.getE().get(index).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(index).getCoordonne().getY()==this.tab.length-1){
 			return true;
 		}else{
 			return false;
