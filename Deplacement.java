@@ -9,6 +9,7 @@ public class Deplacement {
 		DeplacementTP(jeu, E1,  i);
 	}
 		private void DeplacementTP(Plateau jeu,Equipe E1,int i) {
+			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(System.in);
 			String cr;
 			int x = 0;
@@ -16,7 +17,7 @@ public class Deplacement {
 			/**
 			 * Base en haut à gauche	
 			 */
-		if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==0){
+		if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.en bas à droite");
@@ -88,7 +89,7 @@ public class Deplacement {
 		/**
 		 * mouvement côté gauche du plateau
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1){
+		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.le haut");
 			System.out.println("2.en haut à droite");
@@ -199,13 +200,14 @@ public class Deplacement {
 		/**
 		 * mouvement côté supérieur du plateau
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0){
+		else if(E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.en bas à droite");
 			System.out.println("3.le bas");
 			System.out.println("4.en bas à gauche");
 			System.out.println("5.la gauche");
+			System.out.println("6.Retour à la sélection des robots");
 		
 			cr=sc.nextLine();
 			switch(cr){
@@ -314,7 +316,7 @@ public class Deplacement {
 		* Base en bas à droite	
 		*/
 		
-		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1){
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.le haut");
 			System.out.println("2.en haut à gauche");
@@ -388,7 +390,7 @@ public class Deplacement {
 		 * côté bas gauche
 		 */
 			
-		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1){
+		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.en haut à droite");
@@ -464,7 +466,7 @@ public class Deplacement {
 		/**
 		 * côté haut droit
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0){
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la gauche");
 			System.out.println("2.en bas à gauche");
@@ -541,7 +543,7 @@ public class Deplacement {
 		/**
 		 * mouvement côté droit du plateau
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1){
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.le haut");
 			System.out.println("2.en haut à gauche");
@@ -656,7 +658,7 @@ public class Deplacement {
 		 * mouvement côté inférieur du plateau
 		 */
 		
-		else if(E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1){
+		else if(E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la gauche");
 			System.out.println("2.en haut à gauche");
@@ -766,7 +768,7 @@ public class Deplacement {
 				
 			}
 			}
-		else{
+		else if(E1.getE().get(i).getEnergie()>0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.en bas à droite");
@@ -935,6 +937,9 @@ public class Deplacement {
 				
 				
 		}
+		}else{
+			System.out.println("Deplacement impossible par manque d'énergie");
+			jeu.action(jeu,E1);
 		}
 		}
 		public boolean estPossible(Robot r,Equipe E1, int i){
