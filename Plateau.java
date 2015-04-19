@@ -97,8 +97,7 @@ public class Plateau {
 		System.out.println("Equipe "+E1.getNom());
 		System.out.println("Choisissez un des robots suivants:");
 		for (int i=0;i<E1.E.size();i++){
-		System.out.println(i+". "+ E1.getE().get(i));
-		System.out.println(i+". "+E1.getE().get(i).getCoordonne());}
+		System.out.println(i+". "+ E1.getE().get(i)+" "+E1.getE().get(i).getCoordonne());}
 			
 		try{
 		cr=sc.nextLine();
@@ -152,16 +151,6 @@ public class Plateau {
 			
 			break;
 			
-		case ("5"):
-			if(E1.getE().get(5).getType().equals("C"))
-				actionC(jeu,E1,Integer.parseInt(cr));
-			else if(E1.getE().get(5).getType().equals("T"))
-				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			else
-				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
-			
-			break;
-			
 			default:
 				action (jeu,E1);
 				break;
@@ -174,25 +163,7 @@ public class Plateau {
 	}
 			
 			private void actionC(Plateau jeu,Equipe E1,int i) {
-				Scanner sc = new Scanner(System.in);
-				String cr;
-				if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(0).getCoordonne().getY()==0){
-					System.out.println("Vous pouvez vous déplacez vers");}
-				
-					int x=2;
-					E1.getE().get(i).getCoordonne().setX(x);
-					System.out.println("la droite en "+E1.getE().get(0).getCoordonne());
-					x=0;
-					int y=2;
-					E1.getE().get(i).getCoordonne().setY(y);
-					System.out.println("en bas en "+E1.getE().get(0).getCoordonne());
-					
-					System.out.println("Pour retourner à la sélection des robots tapez 9");
-					
-					cr=sc.nextLine();
-					if (cr.equals("9"))
-						action (jeu,E1);
-				
+							
 			}
 		}
 
