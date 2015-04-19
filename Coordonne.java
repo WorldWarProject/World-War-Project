@@ -1,7 +1,7 @@
 /**
  * La clase coordonnee represente la position d'un element avec ses parametre x,y, 
  * qui sont les positions en x et en y.
- * @author guervild
+ * @author guervild murschet
  *
  */
 public class Coordonne {
@@ -9,7 +9,7 @@ public class Coordonne {
 	protected int x,y;
 
 	/**
-	 * Construit les coordonnee d'une element, en x et en y
+	 * Construit les coordonnees d'une element, en x et en y
 	 * @param x - position en x
 	 * @param y - position en y
 	 */
