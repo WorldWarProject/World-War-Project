@@ -13,6 +13,7 @@ public class Jouer{
 	private String t;
 	private String c;
 	private String p;
+	private int cpt = 1;
 	private static Equipe E1;
 	private static Equipe E2;
 	List<String> Pays = new ArrayList<String>();
@@ -33,17 +34,21 @@ public class Jouer{
 		
 		
 		while(true){
-		System.out.println("Tour de jeu ");
-		System.out.println(jeu);
-		System.out.println("Légende");
-		System.out.println("Equipe "+ E1.getNom()+" représentant de "+E1.getPays());
-		System.out.println(E1.E);
-		System.out.println("Equipe "+ E2.getNom()+" représentant de "+E2.getPays());
-		System.out.println(E2.E);
 		
+		System.out.println("Tour de jeu "+cpt);
+		affichageRobot(jeu);
+		if(cpt%2!=0){	
+		System.out.println("Au Tour de l'équipe "+E1.getNom());
+		jeu.action(jeu,E1);
+		cpt++;
+		}else{
+		System.out.println("Au Tour de l'équipe "+E2.getNom());
+		jeu.action(jeu, E2);
+		cpt++;
 		
-		System.out.println("Choix de la position des robots et des actions à effectuer");
-		jeu.action(jeu,E1);}
+		}
+		
+		}
 	}
 	
 	
@@ -238,13 +243,13 @@ public class Jouer{
 				 p2=0;
 			}else{
 				c2=r.nextInt((nbr-t2)+1);
-				System.out.println(c1);
+				
 				
 				if(c2+t2==nbr){
 					p2=0;
 				}else{
 					p2=nbr-(c2+t2);
-					System.out.println(p2);
+					
 				}
 			}
 			
@@ -414,20 +419,21 @@ public class Jouer{
 			}
 		}
 		
+		public void affichageRobot(Plateau jeu){
+			System.out.println(jeu);
+			System.out.println("Légende");
+			System.out.println("Equipe "+ E1.getNom()+" représentant de "+E1.getPays());
+			System.out.println(E1.E);
+			System.out.println("Equipe "+ E2.getNom()+" représentant de "+E2.getPays());
+			System.out.println(E2.E);
+		}
 			/**
 			 * Fin de la partie
 			 * @return
 			 */
 		
 		public boolean findepartie(){
-			int e = 0;
-			for(int i=0;i<((List<String>) E1).size();i++)
-				e+=E1.getE().get(i).getEnergie();
-			if (e==0){
-				System.out.println("Victoire de l'equipe 2");
-				return true;}
-				
-			return false;
+			return true;
 			
 		}
 	}
