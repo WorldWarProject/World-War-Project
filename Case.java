@@ -1,6 +1,6 @@
 /**
  * La classe case represente une case du tableau, herite de cellule et de ses parametres.
- * @author guervild
+ * @author guervild murschet
  */
 
 public class Case extends Cellule {
@@ -66,7 +66,7 @@ public class Case extends Cellule {
 	}
 
 	/**
-	 * Suprime le robot de la case
+	 * Supprime le robot de la case
 	 */
 	public void remove() {
 		super.setRobot(false);
