@@ -1,5 +1,4 @@
 
-
 public abstract class Cellule extends Coordonne{
 	protected boolean mine = false, base =false, robot =false;
 	protected int equipe = 0;
