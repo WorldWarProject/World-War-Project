@@ -16,6 +16,8 @@ public class Jouer{
 	private static Equipe E1;
 	private static Equipe E2;
 	List<String> Pays = new ArrayList<String>();
+
+
 	
 	
 	
@@ -41,8 +43,9 @@ public class Jouer{
 		
 		
 		System.out.println("Choix de la position des robots et des actions à effectuer");
-		jeu.action();}
+		jeu.action(jeu,E1);}
 	}
+	
 	
 	/**
 	 * Choix du nombre de Colonne
@@ -83,7 +86,7 @@ public class Jouer{
 			do{
 				System.out.println("Veuillez saisir le pourcentage d'obstacle que vous souhaitez");
 				System.out.println("Le pourcentage d'obstacle ne peut être supérieur à 25%");
-				System.out.println("Attention: Un nombre trop important d'obstacle pouvant rendre le terrain impraticable");
+				System.out.println("Attention: Un nombre trop important d'obstacle peut rendre le terrain impraticable");
 				System.out.println("Veuillez à bien penser à votre composition d'équipe");
 				System.out.println("Pourcentage d'obstacle:");
 				o = str.nextLine();}
@@ -192,10 +195,11 @@ public class Jouer{
 				ce1 = str.nextLine();
 				}
 				while(Integer.parseInt(ce1)<1 || Integer.parseInt(ce1)>6);
+				
 				if(ce1.equals("6"))
 					creationRobotalea(jeu);
 				else{
-				
+					
 					creationTireur1(jeu);
 					creationChar1(jeu);
 					creationPiegeur1(jeu);
@@ -216,7 +220,7 @@ public class Jouer{
 				 c1=0;
 				 p1=0;
 			}else{
-				c1=r.nextInt(nbr-t1)+1;
+				c1=r.nextInt((nbr-t1)+1);
 							
 				if(c1+t1==nbr){
 					p1=0;
@@ -233,7 +237,7 @@ public class Jouer{
 				 c2=0;
 				 p2=0;
 			}else{
-				c2=r.nextInt(nbr-t2)+1;
+				c2=r.nextInt((nbr-t2)+1);
 				System.out.println(c1);
 				
 				if(c2+t2==nbr){
@@ -361,6 +365,7 @@ public class Jouer{
 				
 				}while(Integer.parseInt(t)>Integer.parseInt(ce1));
 			for(int i=0;i<Integer.parseInt(t);i++){
+				
 				Robot ti = new Tireur(-1);
 				jeu.add(ti);
 				E2.add(ti);
@@ -413,9 +418,17 @@ public class Jouer{
 			 * Fin de la partie
 			 * @return
 			 */
+		
 		public boolean findepartie(){
-			
+			int e = 0;
+			for(int i=0;i<((List<String>) E1).size();i++)
+				e+=E1.getE().get(i).getEnergie();
+			if (e==0){
+				System.out.println("Victoire de l'equipe 2");
+				return true;}
+				
 			return false;
+			
 		}
 	}
 
