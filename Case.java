@@ -1,5 +1,4 @@
 
-
 public class Case extends Cellule {
 	protected Robot r;
 	
