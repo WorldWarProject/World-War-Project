@@ -17,11 +17,6 @@ public class Tireur extends Robot {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean estSurBase() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public int getRegenEnergie() {
