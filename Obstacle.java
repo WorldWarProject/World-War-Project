@@ -1,6 +1,6 @@
 /**
  * La classe obstacle represente un obstacle heritant de cellule et de ses parametres
- * @author guervild
+ * @author guervild murschet
  *
  */
 public class Obstacle extends Cellule{
