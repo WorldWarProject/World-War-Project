@@ -1,6 +1,6 @@
 /**
  *  La classe Base represente une base heritant de Cellule et de ses parametres.
- * @author guervild
+ * @author guervild murschet
  *
  */
 
@@ -38,7 +38,7 @@ public class Base extends Cellule{
 		}
 	}
 	/**
-	 * Suprime le robot choisi du tableau de robot
+	 * Supprime le robot choisi du tableau de robot
 	 */
 	public void remove(int idx) {
 		boolean decal = false;
@@ -70,7 +70,7 @@ public class Base extends Cellule{
 	}
 
 	/**
-	 * Suprime le tableau de robots
+	 * Supprime le tableau de robots
 	 */
 	public void remove() {
 		this.B = new Robot[5];
