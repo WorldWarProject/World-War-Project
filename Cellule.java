@@ -1,6 +1,6 @@
 /**
  * La classe cellule represente une cellule du plateau, elle herite de coordonnée et de ses parametre.
- * @author guervild
+ * @author guervild murschet
  *
  */
 public abstract class Cellule extends Coordonne{
@@ -18,7 +18,7 @@ public abstract class Cellule extends Coordonne{
 		super(x, y);
 	}
 	/**
-	 * Construit une cellule selon ses coordonnéesson equipe et la presence d'une mine, d'un robot ou d'une base
+	 * Construit une cellule selon ses coordonnées, son equipe et la presence d'une mine, d'un robot ou d'une base
 	 * @param x - coordonnée en x
 	 * @param y - coordonnée en y
 	 * @param mine - represente la presence d'une mine
