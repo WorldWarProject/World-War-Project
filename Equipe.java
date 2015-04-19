@@ -31,9 +31,10 @@ public class Equipe {
 	public void add(Robot r){
 		E.add(r);
 	}
+	public List<Robot> getE() {
+		return E;
+	}
+
 }
 	
 
-
-}
-	
