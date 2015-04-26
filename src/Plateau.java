@@ -1,35 +1,76 @@
+import java.util.*;
 
 public class Plateau {
-	private Base B = new Base("B");
-	private Base b = new Base("b");
-	private Object[][] tab;
+	private Cellule[][] tab;
 
-	public Plateau () {
-		this.tab= new Object[10][15];
-		for(int i=0; i<tab.length; i++) 
-			for (int j=0; j<tab[0].length; j++) 
-				this.tab[i][j]= new Character(' ');
-		this.tab[0][0] = B;
-		this.tab[this.tab.length-1][this.tab[0].length-1]= b;
-		this.tab[4][6] = new Obstacle(4,6);
-		this.tab[4][5] = new Obstacle(4,5);
-		this.tab[4][7] = new Obstacle(4,7);
-		this.tab[4][8] = new Obstacle(4,8);
-		this.tab[4][9] = new Obstacle(4,9);
-		this.tab[4][10] = new Obstacle(4,10);
-		this.tab[5][5] = new Obstacle(5,5);
-		this.tab[6][5] = new Obstacle(6,5);
-		this.tab[4][11] = new Obstacle(4,11);
-		this.tab[7][5] = new Obstacle(6,5);
-		this.tab[8][5] = new Obstacle(6,5);
-		this.tab[9][5] = new Obstacle(6,5);
-		this.tab[4][12] = new Obstacle(4,12);
-		this.tab[4][12] = new Obstacle(4,13);
-		this.tab[4][14] = new Obstacle(4,14);
+	public Plateau (int x , int y, double o) {
+		this.tab = new Cellule[y][x];
+		CoordonnePF start = new CoordonnePF(0,0);
+		CoordonnePF goal = new CoordonnePF(this.tab[0].length-1,this.tab.length-1);
+		PathFinding p = new PathFinding(start,goal);
+		do{
+
+			for(int i=0; i<tab.length; i++) 
+				for (int j=0; j<tab[0].length; j++) 
+					this.tab[i][j]= new Case(j,i,false,0);
+			this.tab[0][0] = new Base(0,0,1);
+			this.tab[this.tab.length-1][this.tab[0].length-1]= new Base(this.tab.length-1,this.tab[0].length-1,-1);
+		
+			boolean wrong = false;
+			Random ran = new Random();
+			for(int i=0; i<(int)(((o/100))*this.tab.length*this.tab[0].length);i++) {
+				wrong = false;
+				while (!wrong) {
+					int x1 = ran.nextInt(this.tab.length);
+					int y1 = ran.nextInt(this.tab[0].length);
+				
+					if((x1 == 0 && y1 ==0) || (x1==this.tab[0].length && y1==this.tab.length) || (this.tab[x1][y1] instanceof Obstacle))
+						wrong =true;
+					else {
+						this.tab[x1][y1] = new Obstacle(x1,y1);
+						wrong = true;
+					}
+				}
+			}
+			p.setTab(this.tab);
+		}while(!p.findPath());
+		//System.out.println(p.getPath());
 	}
 	
-	public Object[][] getTab() {
+	public Cellule[][] getTab() {
 		return this.tab;
+	}
+	
+	public void add (Robot r) {
+		for(int i=0; i<tab.length; i++) 
+			for (int j=0; j<tab[0].length; j++) 
+				if(this.tab[i][j] instanceof Base && r.getEquipe()==this.tab[i][j].getEquipe()){
+					if(r.getEquipe()==1){
+					Coordonne test=new Coordonne(0,0);
+					r.setCoordonne(test);
+					this.tab[i][j].add(r);
+					}
+					else{
+					Coordonne test=new Coordonne(this.tab[0].length-1,this.tab.length-1);
+					r.setCoordonne(test);
+					this.tab[i][j].add(r);
+					}
+				
+					}
+			}
+	
+	public void add (Robot r, Equipe E1,int index) {
+		for(int i=0; i<tab.length; i++) 
+			for (int j=0; j<tab[0].length; j++)
+				this.tab[E1.getE().get(index).getCoordonne().getY()][E1.getE().get(index).getCoordonne().getX()].add(r);
+			
+				
+	}
+			
+	
+	
+	public void  remove (int x, int y) {
+		this.tab[y][x] = new Case(x,y,false,0);
 	}
 	
 	public String toString () {
@@ -50,17 +91,116 @@ public class Plateau {
 		return msg;
 	}
 	
-	public void add(Robots r, int idx) {
-		if (idx<0) B.add(r);
-		else b.add(r);
-		this.tab[0][0] = B;
-		this.tab[this.tab.length-1][this.tab[0].length-1]= b;		
-	}
-	
-	public void moove(int idxY, int idxX , int mooveToX, int mooveToY) {
-		if (this.tab[mooveToX][mooveToY].toString().equals(" ") && java.lang.Math.abs(mooveToX-idxX) == 1 && java.lang.Math.abs(mooveToY-idxY) == 1) {
-			this.tab[mooveToX][mooveToY] = this.tab[idxX][idxY];
-			this.tab[idxX][idxY] = new Character(' ');
+	public void action (Plateau jeu,Equipe E1) {
+		@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
+		String cr;
+		String ch;
+		
+		System.out.println("Je peux :");
+		System.out.println("1. me déplacer");
+		System.out.println("Je choisis de :");
+		ch=sc.nextLine();
+		if(ch.equals("1")){
+		System.out.println("Equipe "+E1.getNom());
+		System.out.println("Choisissez un des robots suivants:");
+		for (int i=0;i<E1.E.size();i++){
+		System.out.println(i+". "+ E1.getE().get(i)+" "+E1.getE().get(i).getCoordonne());}
+			
+		try{
+		cr=sc.nextLine();
+		switch(cr){
+		case ("0"):
+			if(E1.getE().get(0).getType().equals("C")||E1.getE().get(0).getType().equals("c")){
+				actionC(jeu,E1,Integer.parseInt(cr));
+			}
+			else if(E1.getE().get(0).getType().equals("T")||E1.getE().get(0).getType().equals("t")){
+				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
+			else{
+				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
+			break;
+			
+		case ("1"):
+			if(E1.getE().get(1).getType().equals("C")||E1.getE().get(1).getType().equals("c")){
+				actionC(jeu,E1,Integer.parseInt(cr));
+			}
+			else if(E1.getE().get(1).getType().equals("T")||E1.getE().get(1).getType().equals("t")){
+				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
+			else{
+				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
+			break;
+			
+		case ("2"):
+			if(E1.getE().get(2).getType().equals("C")||E1.getE().get(2).getType().equals("c")){
+				actionC(jeu,E1,Integer.parseInt(cr));
+			}
+			else if(E1.getE().get(2).getType().equals("T")||E1.getE().get(2).getType().equals("t")){
+				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
+			else{
+				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
+			break;
+			
+		case ("3"):
+			if(E1.getE().get(3).getType().equals("C")||E1.getE().get(3).getType().equals("c")){
+				actionC(jeu,E1,Integer.parseInt(cr));
+			}
+			else if(E1.getE().get(3).getType().equals("T")||E1.getE().get(3).getType().equals("t")){
+				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
+			else{
+				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
+			break;
+			
+		case ("4"):
+			if(E1.getE().get(4).getType().equals("C")||E1.getE().get(4).getType().equals("c")){
+				actionC(jeu,E1,Integer.parseInt(cr));
+			}
+			else if(E1.getE().get(4).getType().equals("T")||E1.getE().get(4).getType().equals("t")){
+				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
+			else{
+				new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+			}
+			break;
+			
+			default:
+				action (jeu,E1);
+				break;
+				
 		}
+		
+		}catch(Exception e){
+			action (jeu,E1);
+		}
+		}else{
+			 /*if(E1.getE().size()==1){
+					if(E1.getE().get(0).estSurBase(E1, 0, tab)==true && E1.getE().get(0).getEnergie()!=0){
+						System.out.println("Vous ne pouvez pas passer votre tour");
+						System.out.println(jeu);
+						action (jeu,E1);
+					}else if(E1.getE().get(0).estSurBase(E1, 0, tab)==false){
+						System.out.println("Vous ne pouvez pas passer votre tour");
+						System.out.println(jeu);
+						action (jeu,E1);
+					}
+			 }*/
+			action(jeu, E1);
+		}
+	
 	}
-}
+			
+			private void actionC(Plateau jeu,Equipe E1,int i) {
+							
+			}
+		}
+
+
+
+

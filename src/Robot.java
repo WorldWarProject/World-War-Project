@@ -11,6 +11,10 @@ public abstract class Robot {
 	private int energie;
 	/** Coordonnée du robot */
 	Coordonne c;
+	/**
+	 * Création du tableau de cellule
+	 */
+	private Cellule[][] tab;
 
 	/**
 	 * Construit un robot avec l'energie et l'equipe données
@@ -42,7 +46,16 @@ public abstract class Robot {
 	 * Retourne si le robot est sur la base
 	 * @return si le robot est sur la base
 	 */
-	public abstract boolean estSurBase();
+	public boolean estSurBase(Equipe E1,int index,Cellule[][] tab){
+		this.tab=tab;
+		if(E1.getE().get(index).getEquipe()==1 && E1.getE().get(index).getCoordonne().getY()==0 && E1.getE().get(index).getCoordonne().getX()==0){
+			return true;
+		}else if(E1.getE().get(index).getEquipe()==-1 && E1.getE().get(index).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(index).getCoordonne().getY()==this.tab.length-1){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 	
 	/**
@@ -121,7 +134,7 @@ public abstract class Robot {
 	
 	@Override 
 	public String toString() {
-		return this.getClass() + " : energie ="+this.energie;
+		return this.getType() + " : energie ="+this.energie;
 	}
 
 }

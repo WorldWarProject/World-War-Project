@@ -17,12 +17,6 @@ public class Char extends Robot {
 	}
 
 	@Override
-	public boolean estSurBase() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public int getRegenEnergie() {
 		// TODO Auto-generated method stub
 		return Constante.REGEN_ENERGIE_CHAR;

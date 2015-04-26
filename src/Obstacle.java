@@ -1,30 +1,42 @@
-
-public class Obstacle {
-
-	private int x,y;
-	
+/**
+ * La classe obstacle represente un obstacle heritant de cellule et de ses parametres
+ * @author guervild murschet
+ *
+ */
+public class Obstacle extends Cellule{
+	/**
+	 * Construit un objet obstacle avec ses coordonnée en x et en y
+	 * @param x - coordonnée en x de l'obstacle
+	 * @param y - coordonnée en y de l'obstacle
+	 */
 	public Obstacle(int x, int y) {
-		this.setX(x);
-		this.setY(y);
+		super(x,y,false,0,false,false);
 	}
-
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
-	
+	@Override
 	public String toString(){
 		return "O";
+	}
+	
+	public Robot[] getB() {
+		return null;
+	}
+
+	public int getIdx() {
+		return 0;
+	}
+
+	public void add(Robot r) {		
+	}
+
+	public void remove() {
+		
+	}
+
+	public void remove(int idx) {
+		
+	}
+
+	public Robot getR() {
+		return null;
 	}
 }
