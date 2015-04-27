@@ -18,13 +18,14 @@ public class Jouer{
 	private static Equipe E2;
 	List<String> Pays = new ArrayList<String>();
 	
-	public Jouer(Cellule[][] tab){
+	public Jouer(){
 		str = new Scanner(System.in);
 		System.out.println("Création du plateau :");
 		creationColonne();
 		creationLigne();
 		creationObstacle();
 		Plateau jeu = new Plateau(Integer.parseInt(x),Integer.parseInt(y),Integer.parseInt(o));
+		Cellule[][] tab = jeu.getTab();
 		creationEquipe();
 		choixRobotequipe1(jeu);
 		jeu.getTab();
@@ -35,7 +36,7 @@ public class Jouer{
 		affichageRobot(jeu);
 		if(cpt%2!=0){
 		System.out.println("Au Tour de l'équipe "+E1.getNom()+"\n");
-		jeu.action(jeu,E1);
+		new Action(jeu,E1,tab);
 		for(int i=0;i<E1.getE().size();i++){
 			if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
@@ -45,7 +46,13 @@ public class Jouer{
 		cpt++;
 		}else{
 		System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
-		jeu.action(jeu, E2);
+		new Action(jeu,E2,tab);
+		for(int i=0;i<E1.getE().size();i++){
+		if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
+			jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+			E1.getE().remove(i);
+			}
+		}
 		cpt++;}
 	
 		

@@ -2,11 +2,14 @@ import java.util.Scanner;
 
 
 public class Deplacement {
-
 	private Cellule[][] tab;
+	
 	Deplacement(Plateau jeu,Equipe E1,int i,Cellule[][] tab){
-		this.tab=tab;
-		DeplacementTP(jeu, E1,  i);
+		this.tab=jeu.getTab();
+		if(E1.getE().get(i).getType().equals("C")||E1.getE().get(i).getType().equals("c")){
+			DeplacementC(jeu, E1, i);}
+		else{
+		DeplacementTP(jeu, E1,  i);}
 	}
 		private void DeplacementTP(Plateau jeu,Equipe E1,int i) {
 			@SuppressWarnings("resource")
@@ -77,7 +80,7 @@ public class Deplacement {
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				jeu.action(jeu,E1);
+				new Action(jeu,E1,tab);
 				break;
 			default:
 					System.out.println(jeu);
@@ -189,7 +192,7 @@ public class Deplacement {
 				break;
 			case ("6"):
 				System.out.println(jeu);
-				jeu.action(jeu,E1);
+				new Action(jeu,E1,tab);
 				break;
 			default:
 					System.out.println(jeu);
@@ -301,7 +304,7 @@ public class Deplacement {
 				break;
 			case ("6"):
 				System.out.println(jeu);
-				jeu.action(jeu,E1);
+				new Action(jeu,E1,tab);
 				break;
 			default:
 					System.out.println(jeu);
@@ -376,7 +379,7 @@ public class Deplacement {
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				jeu.action(jeu,E1);
+				new Action(jeu,E1,tab);
 				break;
 			default:
 					System.out.println(jeu);
@@ -453,7 +456,7 @@ public class Deplacement {
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				jeu.action(jeu,E1);
+				new Action(jeu,E1,tab);
 				break;
 			default:
 					System.out.println(jeu);
@@ -529,7 +532,7 @@ public class Deplacement {
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				jeu.action(jeu,E1);
+				new Action(jeu,E1,tab);
 				break;
 			default:
 					System.out.println(jeu);
@@ -643,7 +646,7 @@ public class Deplacement {
 				break;
 			case ("6"):
 				System.out.println(jeu);
-				jeu.action(jeu,E1);
+				new Action(jeu,E1,tab);
 				break;
 			default:
 					System.out.println(jeu);
@@ -759,7 +762,7 @@ public class Deplacement {
 				
 			case ("6"):
 				System.out.println(jeu);
-				jeu.action(jeu,E1);
+			new Action(jeu,E1,tab);
 				break;
 			default:
 					System.out.println(jeu);
@@ -928,7 +931,7 @@ public class Deplacement {
 				break;
 			case ("9"):
 				System.out.println(jeu);
-				jeu.action(jeu,E1);
+				new Action(jeu,E1,tab);
 				break;
 			default:
 					System.out.println(jeu);
@@ -939,13 +942,978 @@ public class Deplacement {
 		}
 		}else{
 			System.out.println("Deplacement impossible par manque d'énergie");
-			jeu.action(jeu,E1);
+			new Action(jeu,E1,tab);
+		}
+		}
+		
+		private void DeplacementC(Plateau jeu,Equipe E1,int i) {
+			@SuppressWarnings("resource")
+			Scanner sc = new Scanner(System.in);
+			String cr;
+			int x = 0;
+			int y = 0;
+			/**
+			 * Base en haut à gauche	
+			 */
+		if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
+			System.out.println("Vous pouvez vous déplacez vers");
+			System.out.println("1.la droite");
+			System.out.println("2.le bas");
+			System.out.println("3.Retour à la sélection des robots");
+						
+			cr=sc.nextLine();
+			switch(cr){
+			case ("1"):
+				x=E1.getE().get(i).getCoordonne().getX()+1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				this.tab[y][x].remove(i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()+1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()-1;
+					if (x>tab.length-1)
+						x=tab.length-1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+					
+				}
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()-1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+			
+			case ("2"):
+				y=E1.getE().get(i).getCoordonne().getY()+1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				this.tab[y][x].remove(i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()+1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					y=E1.getE().get(i).getCoordonne().getY()-1;
+					if (y>tab.length-1)
+						y=tab.length-1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+					
+				}
+				}else{
+					y=E1.getE().get(i).getCoordonne().getY()-1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+			case ("3"):
+				System.out.println(jeu);
+				new Action(jeu,E1,tab);
+				break;
+			default:
+					System.out.println(jeu);
+					DeplacementC(jeu,E1,i);
+					break;
+			}
+			
+		}
+		/**
+		 * mouvement côté gauche du plateau
+		 */
+		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+			System.out.println("Vous pouvez vous déplacez vers");
+			System.out.println("1.le haut");
+			System.out.println("2.la droite");
+			System.out.println("3.le bas");
+			System.out.println("4.Retour à la sélection des robots");
+			cr=sc.nextLine();
+			switch(cr){
+			case ("1"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()-1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					y=E1.getE().get(i).getCoordonne().getY()-1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							y=E1.getE().get(i).getCoordonne().getY()+1;
+							if (y<0)
+								y=0;
+							E1.getE().get(i).getCoordonne().setY(y);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+							
+						}
+					}else{
+						y=E1.getE().get(i).getCoordonne().getY()+1;
+						E1.getE().get(i).getCoordonne().setY(y);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+		
+			case ("2"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()+1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					x=E1.getE().get(i).getCoordonne().getX()+1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							x=E1.getE().get(i).getCoordonne().getX()-1;
+							if (x>tab.length-1)
+								x=tab.length-1;
+							E1.getE().get(i).getCoordonne().setX(x);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+							
+						}
+				}else{
+						x=E1.getE().get(i).getCoordonne().getX()-1;
+						E1.getE().get(i).getCoordonne().setX(x);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+		
+			case("3"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()+1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					y=E1.getE().get(i).getCoordonne().getY()+1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							y=E1.getE().get(i).getCoordonne().getY()-1;
+							if (y>tab.length-1)
+								y=tab.length-1;
+							E1.getE().get(i).getCoordonne().setY(y);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+							
+						}
+				}else{
+						y=E1.getE().get(i).getCoordonne().getY()-1;
+						E1.getE().get(i).getCoordonne().setY(y);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+			case ("4"):
+				System.out.println(jeu);
+				new Action(jeu,E1,tab);
+				break;
+			default:
+					System.out.println(jeu);
+					DeplacementC(jeu,E1,i);
+					break;
+			}
+		}
+		/**
+		 * mouvement côté supérieur du plateau
+		 */
+		else if(E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
+			System.out.println("Vous pouvez vous déplacez vers");
+			System.out.println("1.la droite");
+			System.out.println("2.le bas");
+			System.out.println("3.la gauche");
+			System.out.println("4.Retour à la sélection des robots");
+		
+			cr=sc.nextLine();
+			switch(cr){
+			case ("1"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()+1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					x=E1.getE().get(i).getCoordonne().getX()+1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							x=E1.getE().get(i).getCoordonne().getX()-1;
+							if (x>tab.length-1)
+								x=tab.length-1;
+							E1.getE().get(i).getCoordonne().setX(x);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+						
+						}
+				}else{
+						x=E1.getE().get(i).getCoordonne().getX()-1;
+						E1.getE().get(i).getCoordonne().setX(x);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+			
+			case ("2"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()+1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					y=E1.getE().get(i).getCoordonne().getY()+1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							y=E1.getE().get(i).getCoordonne().getY()-1;
+							if (y>tab.length-1)
+								y=tab.length-1;
+							E1.getE().get(i).getCoordonne().setY(y);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+						
+						}
+				}else{
+						y=E1.getE().get(i).getCoordonne().getY()-1;
+						E1.getE().get(i).getCoordonne().setY(y);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+			
+			case("3"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()-1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					x=E1.getE().get(i).getCoordonne().getX()-1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							x=E1.getE().get(i).getCoordonne().getX()+1;
+							if (x<0)
+								x=0;
+							E1.getE().get(i).getCoordonne().setX(x);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+							
+						}
+				}else{
+						x=E1.getE().get(i).getCoordonne().getX()+1;
+						E1.getE().get(i).getCoordonne().setX(x);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+			case ("4"):
+				System.out.println(jeu);
+				new Action(jeu,E1,tab);
+				break;
+			default:
+					System.out.println(jeu);
+					DeplacementC(jeu,E1,i);
+					break;
+			}
+					}
+		
+		
+		
+		/**
+		* Base en bas à droite	
+		*/
+		
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+			System.out.println("Vous pouvez vous déplacez vers");
+			System.out.println("1.le haut");
+			System.out.println("2.la gauche");
+			System.out.println("3.Retour à la sélection des robots");
+			
+			cr=sc.nextLine();
+			switch(cr){
+			case ("1"):
+				y=E1.getE().get(i).getCoordonne().getY()-1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				this.tab[y][x].remove(i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()-1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					y=E1.getE().get(i).getCoordonne().getY()+1;
+					if (y<0)
+						y=0;
+					E1.getE().get(i).getCoordonne().setY(y);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+					
+				}
+				}else{
+					y=E1.getE().get(i).getCoordonne().getY()+1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+			
+			case ("2"):
+				x=E1.getE().get(i).getCoordonne().getX()-1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				this.tab[y][x].remove(i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()-1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()+1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					if (x<0)
+						x=0;
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+					
+				}
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()+1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+			case ("3"):
+				System.out.println(jeu);
+				new Action(jeu,E1,tab);
+				break;
+			default:
+					System.out.println(jeu);
+					DeplacementC(jeu,E1,i);
+					break;
+			}
+				
+			}
+		
+		/**
+		 * côté bas gauche
+		 */
+			
+		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+			System.out.println("Vous pouvez vous déplacez vers");
+			System.out.println("1.la droite");
+			System.out.println("2.le haut");
+			System.out.println("3.Retour à la sélection des robots");
+			
+			cr=sc.nextLine();
+			switch(cr){
+			case ("1"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()+1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					x=E1.getE().get(i).getCoordonne().getX()+1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							x=E1.getE().get(i).getCoordonne().getX()-1;
+							if (x>tab.length-1)
+								x=tab.length-1;
+							E1.getE().get(i).getCoordonne().setX(x);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+						
+						}
+				}else{
+						x=E1.getE().get(i).getCoordonne().getX()-1;
+						E1.getE().get(i).getCoordonne().setX(x);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+			case ("2"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()-1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					y=E1.getE().get(i).getCoordonne().getY()-1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							y=E1.getE().get(i).getCoordonne().getY()+1;
+							if (y<0)
+								y=0;
+							E1.getE().get(i).getCoordonne().setY(y);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+							
+						}
+				}else{
+						y=E1.getE().get(i).getCoordonne().getY()+1;
+						E1.getE().get(i).getCoordonne().setY(y);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+			case ("3"):
+				System.out.println(jeu);
+				new Action(jeu,E1,tab);
+				break;
+			default:
+					System.out.println(jeu);
+					DeplacementC(jeu,E1,i);
+					break;
+				
+			}
+		}
+		
+		/**
+		 * côté haut droit
+		 */
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
+			System.out.println("Vous pouvez vous déplacez vers");
+			System.out.println("1.la gauche");
+			System.out.println("2.le bas");
+			System.out.println("3.Retour à la sélection des robots");
+			
+			cr=sc.nextLine();
+			switch(cr){
+			case ("1"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()-1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					x=E1.getE().get(i).getCoordonne().getX()-1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							x=E1.getE().get(i).getCoordonne().getX()+1;
+							if (x<0)
+								x=0;
+							E1.getE().get(i).getCoordonne().setX(x);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+							
+						}
+				}else{
+						x=E1.getE().get(i).getCoordonne().getX()+1;
+						E1.getE().get(i).getCoordonne().setX(x);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+		
+			case ("2"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()+1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					y=E1.getE().get(i).getCoordonne().getY()+1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							y=E1.getE().get(i).getCoordonne().getY()-1;
+							if (y>tab.length-1)
+								y=tab.length-1;
+							E1.getE().get(i).getCoordonne().setY(y);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+							
+						}
+				}else{
+						y=E1.getE().get(i).getCoordonne().getY()-1;
+						E1.getE().get(i).getCoordonne().setY(y);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+			case ("3"):
+				System.out.println(jeu);
+			new Action(jeu,E1,tab);
+				break;
+			default:
+					System.out.println(jeu);
+					DeplacementC(jeu,E1,i);
+					break;
+				
+			}
+				
+			}
+		
+		/**
+		 * mouvement côté droit du plateau
+		 */
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+			System.out.println("Vous pouvez vous déplacez vers");
+			System.out.println("1.le haut");
+			System.out.println("2.la gauche");
+			System.out.println("3.le bas");
+			System.out.println("4.Retour à la sélection des robots");
+			cr=sc.nextLine();
+			switch(cr){
+			case ("1"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()-1;
+				E1.getE().get(i).getCoordonne().setY(y);	
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					y=E1.getE().get(i).getCoordonne().getY()-1;
+					E1.getE().get(i).getCoordonne().setY(y);	
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							y=E1.getE().get(i).getCoordonne().getY()+1;
+							if (y<0)
+								y=0;
+							E1.getE().get(i).getCoordonne().setY(y);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+						}
+				}else{
+						y=E1.getE().get(i).getCoordonne().getY()+1;
+						E1.getE().get(i).getCoordonne().setY(y);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+		
+			case ("2"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()-1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					x=E1.getE().get(i).getCoordonne().getX()-1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							x=E1.getE().get(i).getCoordonne().getX()+1;
+							if (x<0)
+								x=0;
+							E1.getE().get(i).getCoordonne().setX(x);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+						}
+				}else{
+						x=E1.getE().get(i).getCoordonne().getX()+1;
+						E1.getE().get(i).getCoordonne().setX(x);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+		
+			case ("3"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()+1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()+1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					y=E1.getE().get(i).getCoordonne().getY()-1;
+					if (y>tab.length-1)
+						y=tab.length-1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+				}
+				}else{
+					y=E1.getE().get(i).getCoordonne().getY()-1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+			case ("4"):
+				System.out.println(jeu);
+				new Action(jeu,E1,tab);
+				break;
+			default:
+					System.out.println(jeu);
+					DeplacementTP(jeu,E1,i);
+					break;
+				
+			}
+				
+			}
+		
+		/**
+		 * mouvement côté inférieur du plateau
+		 */
+		
+		else if(E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+			System.out.println("Vous pouvez vous déplacez vers");
+			System.out.println("1.la gauche");
+			System.out.println("2.le haut");
+			System.out.println("3.la droite");
+			System.out.println("4.Retour à la sélection des robots");
+			cr=sc.nextLine();
+			switch(cr){
+			case ("1"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()-1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()-1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()+1;
+					if (x<0)
+						y=0;
+					E1.getE().get(i).getCoordonne().setX(x);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+				}
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()+1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+			
+			case ("2"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()-1;
+				E1.getE().get(i).getCoordonne().setY(y);				
+				if(estPossible(E1.getE().get(i), E1, i)){
+					jeu.add(E1.getE().get(i), E1, i);
+					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					y=E1.getE().get(i).getCoordonne().getY()-1;
+					E1.getE().get(i).getCoordonne().setY(y);				
+					if(estPossible(E1.getE().get(i), E1, i)){
+						jeu.add(E1.getE().get(i), E1, i);
+						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+						}else{
+							y=E1.getE().get(i).getCoordonne().getY()+1;
+							if (y<0)
+								y=0;
+							E1.getE().get(i).getCoordonne().setY(y);
+							jeu.add(E1.getE().get(i), E1, i);
+							System.out.println("Obstacle infranchissable");
+						}	
+				}else{
+						y=E1.getE().get(i).getCoordonne().getY()+1;
+						E1.getE().get(i).getCoordonne().setY(y);
+						jeu.add(E1.getE().get(i), E1, i);
+						System.out.println("déplacement impossible");
+						System.out.println(jeu);
+						DeplacementC(jeu, E1,  i);
+					}
+				break;
+		
+			case ("3"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()+1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()+1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()-1;
+					if (x>tab.length-1)
+						x=0;
+					E1.getE().get(i).getCoordonne().setX(x);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+				}
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()-1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+				
+			case ("4"):
+				System.out.println(jeu);
+				new Action(jeu,E1,tab);
+				break;
+			default:
+					System.out.println(jeu);
+					DeplacementC(jeu,E1,i);
+					break;
+				
+			}
+			}
+		else if(E1.getE().get(i).getEnergie()>0){
+			System.out.println("Vous pouvez vous déplacez vers");
+			System.out.println("1.la droite");
+			System.out.println("2.en bas");
+			System.out.println("3.la gauche");
+			System.out.println("4.en haut");
+			System.out.println("5.Retour à la sélection des robots");
+			cr=sc.nextLine();
+			switch(cr){
+			case ("1"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()+1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()+1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()-1;
+					if (x>tab.length-1)
+						x=tab.length-1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+				}
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()-1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+		
+			case ("2"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()+1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()+1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					y=E1.getE().get(i).getCoordonne().getY()-1;
+					if (y>tab.length-1)
+						y=tab.length-1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+				}
+				}else{
+					y=E1.getE().get(i).getCoordonne().getY()-1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+			
+			case ("3"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()-1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				x=E1.getE().get(i).getCoordonne().getX()-1;
+				E1.getE().get(i).getCoordonne().setX(x);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()+1;
+					if (x<0)
+						x=0;
+					E1.getE().get(i).getCoordonne().setX(x);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+				}
+				}else{
+					x=E1.getE().get(i).getCoordonne().getX()+1;
+					E1.getE().get(i).getCoordonne().setX(x);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+		
+			case ("4"):
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()-1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				y=E1.getE().get(i).getCoordonne().getY()-1;
+				E1.getE().get(i).getCoordonne().setY(y);
+				if(estPossible(E1.getE().get(i), E1, i)){
+				jeu.add(E1.getE().get(i), E1, i);
+				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
+				}else{
+					y=E1.getE().get(i).getCoordonne().getY()+1;
+					if (y<0)
+						y=0;
+					E1.getE().get(i).getCoordonne().setY(y);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("Obstacle infranchissable");
+				}
+				}else{
+					y=E1.getE().get(i).getCoordonne().getY()+1;
+					E1.getE().get(i).getCoordonne().setY(y);
+					jeu.add(E1.getE().get(i), E1, i);
+					System.out.println("déplacement impossible");
+					System.out.println(jeu);
+					DeplacementC(jeu, E1,  i);
+				}
+				break;
+		
+			case ("5"):
+				System.out.println(jeu);
+				new Action(jeu,E1,tab);
+				break;
+			default:
+					System.out.println(jeu);
+					DeplacementC(jeu,E1,i);
+					break;
+				
+				
+		}
+		}else{
+			System.out.println("Deplacement impossible par manque d'énergie");
+			new Action(jeu,E1,tab);
 		}
 		}
 		public boolean estPossible(Robot r,Equipe E1, int i){
 			int y= E1.getE().get(i).getCoordonne().getY();
 			int x= E1.getE().get(i).getCoordonne().getX(); 
-			if(tab[y][x] instanceof Base == false && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false ){
+			if(tab[y][x] instanceof Base == false && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false && y>=0 && x >=0 && y<=tab.length-1 && x<=tab.length-1){
 				return true;	
 			}else if(tab[y][x] instanceof Base == true && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false){
 				if(r.getEquipe()==tab[y][x].getEquipe()){

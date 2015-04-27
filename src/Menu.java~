@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class Menu {
 	private Scanner str;
-	
 	 	
 	/**
 	 * Affichage du menu
@@ -29,7 +28,7 @@ public class Menu {
 			String choix = str.nextLine();
 				switch (choix) {
 				case ("1"):
-					new Jouer();
+					new Jouer(tab);
 					break;
 
 				case ("2"):
