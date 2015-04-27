@@ -20,7 +20,7 @@ public class Deplacement {
 			/**
 			 * Base en haut à gauche	
 			 */
-		if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
+		if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.en bas à droite");
@@ -92,7 +92,7 @@ public class Deplacement {
 		/**
 		 * mouvement côté gauche du plateau
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.le haut");
 			System.out.println("2.en haut à droite");
@@ -203,7 +203,7 @@ public class Deplacement {
 		/**
 		 * mouvement côté supérieur du plateau
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.en bas à droite");
@@ -319,7 +319,7 @@ public class Deplacement {
 		* Base en bas à droite	
 		*/
 		
-		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.le haut");
 			System.out.println("2.en haut à gauche");
@@ -393,7 +393,7 @@ public class Deplacement {
 		 * côté bas gauche
 		 */
 			
-		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.en haut à droite");
@@ -469,7 +469,7 @@ public class Deplacement {
 		/**
 		 * côté haut droit
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la gauche");
 			System.out.println("2.en bas à gauche");
@@ -546,7 +546,7 @@ public class Deplacement {
 		/**
 		 * mouvement côté droit du plateau
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.le haut");
 			System.out.println("2.en haut à gauche");
@@ -661,7 +661,7 @@ public class Deplacement {
 		 * mouvement côté inférieur du plateau
 		 */
 		
-		else if(E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la gauche");
 			System.out.println("2.en haut à gauche");
@@ -771,7 +771,7 @@ public class Deplacement {
 				
 			}
 			}
-		else if(E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.en bas à droite");
@@ -955,7 +955,7 @@ public class Deplacement {
 			/**
 			 * Base en haut à gauche	
 			 */
-		if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
+		if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.le bas");
@@ -972,17 +972,24 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
+				if (x>tab.length-1){
+					x=tab.length-1;
+					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
+					
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					x=E1.getE().get(i).getCoordonne().getX()-1;
-					if (x>tab.length-1)
-						x=tab.length-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
+					
 					
 				}
 				}else{
@@ -1003,17 +1010,23 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
+				if (y>tab.length-1){
+					y=tab.length-1;
+				System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					y=E1.getE().get(i).getCoordonne().getY()-1;
-					if (y>tab.length-1)
-						y=tab.length-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
+					
 					
 				}
 				}else{
@@ -1038,7 +1051,7 @@ public class Deplacement {
 		/**
 		 * mouvement côté gauche du plateau
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.le haut");
 			System.out.println("2.la droite");
@@ -1055,17 +1068,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()-1;
+					if (y<0){
+						y=0;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setY(y);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							y=E1.getE().get(i).getCoordonne().getY()+1;
-							if (y<0)
-								y=0;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 							
 						}
 					}else{
@@ -1087,17 +1106,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()+1;
+					if (x>tab.length-1){
+						x=tab.length-1;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							x=E1.getE().get(i).getCoordonne().getX()-1;
-							if (x>tab.length-1)
-								x=tab.length-1;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 							
 						}
 				}else{
@@ -1119,17 +1144,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()+1;
+					if (y>tab.length-1){
+						y=tab.length-1;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setY(y);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							y=E1.getE().get(i).getCoordonne().getY()-1;
-							if (y>tab.length-1)
-								y=tab.length-1;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 							
 						}
 				}else{
@@ -1154,7 +1185,7 @@ public class Deplacement {
 		/**
 		 * mouvement côté supérieur du plateau
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.le bas");
@@ -1172,17 +1203,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()+1;
+					if (x>tab.length-1){
+						x=tab.length-1;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							x=E1.getE().get(i).getCoordonne().getX()-1;
-							if (x>tab.length-1)
-								x=tab.length-1;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 						
 						}
 				}else{
@@ -1204,17 +1241,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()+1;
+					if (y>tab.length-1){
+						y=tab.length-1;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setY(y);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							y=E1.getE().get(i).getCoordonne().getY()-1;
-							if (y>tab.length-1)
-								y=tab.length-1;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 						
 						}
 				}else{
@@ -1236,17 +1279,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()-1;
+					if (x<0){
+						x=0;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							x=E1.getE().get(i).getCoordonne().getX()+1;
-							if (x<0)
-								x=0;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 							
 						}
 				}else{
@@ -1275,7 +1324,7 @@ public class Deplacement {
 		* Base en bas à droite	
 		*/
 		
-		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.le haut");
 			System.out.println("2.la gauche");
@@ -1292,18 +1341,23 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
+				if (y<0){
+					y=0;
+					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					y=E1.getE().get(i).getCoordonne().getY()+1;
-					if (y<0)
-						y=0;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
-					
+										
 				}
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
@@ -1323,17 +1377,23 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
+				if (x<0){
+					x=0;
+					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
-					if (x<0)
-						x=0;
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
+					
 					
 				}
 				}else{
@@ -1360,7 +1420,7 @@ public class Deplacement {
 		 * côté bas gauche
 		 */
 			
-		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()==0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.le haut");
@@ -1377,17 +1437,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()+1;
+					if (x>tab.length-1){
+						x=tab.length-1;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							x=E1.getE().get(i).getCoordonne().getX()-1;
-							if (x>tab.length-1)
-								x=tab.length-1;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 						
 						}
 				}else{
@@ -1408,17 +1474,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()-1;
+					if (y<0){
+						y=0;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setY(y);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							y=E1.getE().get(i).getCoordonne().getY()+1;
-							if (y<0)
-								y=0;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 							
 						}
 				}else{
@@ -1445,7 +1517,7 @@ public class Deplacement {
 		/**
 		 * côté haut droit
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()==0 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la gauche");
 			System.out.println("2.le bas");
@@ -1462,17 +1534,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()-1;
+					if (x<0){
+						x=0;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							x=E1.getE().get(i).getCoordonne().getX()+1;
-							if (x<0)
-								x=0;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 							
 						}
 				}else{
@@ -1494,17 +1572,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()+1;
+					if (y>tab.length-1){
+						y=tab.length-1;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setY(y);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							y=E1.getE().get(i).getCoordonne().getY()-1;
-							if (y>tab.length-1)
-								y=tab.length-1;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 							
 						}
 				}else{
@@ -1532,7 +1616,7 @@ public class Deplacement {
 		/**
 		 * mouvement côté droit du plateau
 		 */
-		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()==this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getY()!=0 && E1.getE().get(i).getCoordonne().getY()!=this.tab.length-1 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.le haut");
 			System.out.println("2.la gauche");
@@ -1549,17 +1633,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()-1;
+					if (y<0){
+						y=0;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setY(y);	
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							y=E1.getE().get(i).getCoordonne().getY()+1;
-							if (y<0)
-								y=0;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 						}
 				}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
@@ -1580,17 +1670,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()-1;
+					if (x<0){
+						x=0;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							x=E1.getE().get(i).getCoordonne().getX()+1;
-							if (x<0)
-								x=0;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 						}
 				}else{
 						x=E1.getE().get(i).getCoordonne().getX()+1;
@@ -1611,17 +1707,23 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
+				if (y>tab.length-1){
+					y=tab.length-1;
+					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					y=E1.getE().get(i).getCoordonne().getY()-1;
-					if (y>tab.length-1)
-						y=tab.length-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
+					
 				}
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()-1;
@@ -1649,7 +1751,7 @@ public class Deplacement {
 		 * mouvement côté inférieur du plateau
 		 */
 		
-		else if(E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getCoordonne().getX()!=this.tab[0].length-1 && E1.getE().get(i).getCoordonne().getX()!=0 && E1.getE().get(i).getCoordonne().getY()==this.tab.length-1 && E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la gauche");
 			System.out.println("2.le haut");
@@ -1666,17 +1768,23 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
+				if (x<0){
+					x=0;
+					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					x=E1.getE().get(i).getCoordonne().getX()+1;
-					if (x<0)
-						y=0;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
+					
 				}
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()+1;
@@ -1697,17 +1805,23 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()-1;
+					if (y<0){
+						y=0;
+						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+					}
 					E1.getE().get(i).getCoordonne().setY(y);				
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
-						E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 						}else{
+							if(tab[y][x].isBase())
+								System.out.println("Retour en base impossible");
+							else
+								System.out.println("Obstacle infranchissable");
+							
 							y=E1.getE().get(i).getCoordonne().getY()+1;
-							if (y<0)
-								y=0;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
-							System.out.println("Obstacle infranchissable");
+							
 						}	
 				}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
@@ -1728,17 +1842,23 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
+				if (x>tab.length-1){
+					x=tab.length-1;
+					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					x=E1.getE().get(i).getCoordonne().getX()-1;
-					if (x>tab.length-1)
-						x=0;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
+					
 				}
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()-1;
@@ -1761,7 +1881,7 @@ public class Deplacement {
 				
 			}
 			}
-		else if(E1.getE().get(i).getEnergie()>0){
+		else if(E1.getE().get(i).getEnergie()>0 && (E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement())>=0){
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.en bas");
@@ -1779,17 +1899,23 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
+				if (x>tab.length-1){
+					x=tab.length-1;
+					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					x=E1.getE().get(i).getCoordonne().getX()-1;
-					if (x>tab.length-1)
-						x=tab.length-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
+					
 				}
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()-1;
@@ -1810,17 +1936,23 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
+				if (y>tab.length-1){
+					y=tab.length-1;
+					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					y=E1.getE().get(i).getCoordonne().getY()-1;
-					if (y>tab.length-1)
-						y=tab.length-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
+					
 				}
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()-1;
@@ -1841,17 +1973,23 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
+				if (x<0){
+					x=0;
+					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					x=E1.getE().get(i).getCoordonne().getX()+1;
-					if (x<0)
-						x=0;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
+					
 				}
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()+1;
@@ -1872,17 +2010,23 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
+				if (y<0){
+					y=0;
+					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
+				}
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
-				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
+					if(tab[y][x].isBase())
+						System.out.println("Retour en base impossible");
+					else
+						System.out.println("Obstacle infranchissable");
+					
 					y=E1.getE().get(i).getCoordonne().getY()+1;
-					if (y<0)
-						y=0;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("Obstacle infranchissable");
+					
 				}
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
@@ -1918,18 +2062,21 @@ public class Deplacement {
 			}else if(tab[y][x] instanceof Base == true && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false){
 				if(r.getEquipe()==tab[y][x].getEquipe()){
 					if(E1.getE().size()==1){
+					System.out.println("Retour en base impossible");
 					return false;}
 					else if(E1.getE().size()==2){
 						if(i==0){
 							if(E1.getE().get(1).estSurBase(E1, 1, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}else{
 							if(E1.getE().get(0).estSurBase(E1, 0, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}
@@ -1938,6 +2085,7 @@ public class Deplacement {
 								if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false){
 									return true;
 								}else{
+									System.out.println("Retour en base impossible");
 									return false;
 								}
 								
@@ -1945,12 +2093,14 @@ public class Deplacement {
 								if(E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false){
 									return true;
 								}else{
+									System.out.println("Retour en base impossible");
 									return false;
 								}
 							}else{
 								if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false){
 									return true;
 								}else{
+									System.out.println("Retour en base impossible");
 									return false;
 								}
 								
@@ -1961,6 +2111,7 @@ public class Deplacement {
 							if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}
@@ -1968,12 +2119,14 @@ public class Deplacement {
 							if(E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}else if(i==2){
 							if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}
@@ -1981,6 +2134,7 @@ public class Deplacement {
 							if(E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}
@@ -1990,6 +2144,7 @@ public class Deplacement {
 							if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false||E1.getE().get(4).estSurBase(E1, 4, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}
@@ -1997,12 +2152,14 @@ public class Deplacement {
 							if(E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false||E1.getE().get(4).estSurBase(E1, 4, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}else if(i==2){
 							if(E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(3).estSurBase(E1, 3, tab)==false||E1.getE().get(4).estSurBase(E1, 4, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}
@@ -2010,12 +2167,14 @@ public class Deplacement {
 							if(E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false||E1.getE().get(4).estSurBase(E1, 4, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}else{
 							if(E1.getE().get(3).estSurBase(E1, 3, tab)==false||E1.getE().get(2).estSurBase(E1, 2, tab)==false||E1.getE().get(1).estSurBase(E1, 1, tab)==false||E1.getE().get(0).estSurBase(E1, 0, tab)==false){
 								return true;
 							}else{
+								System.out.println("Retour en base impossible");
 								return false;
 							}
 						}
