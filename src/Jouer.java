@@ -42,15 +42,16 @@ public class Jouer{
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				E1.getE().remove(i);
 			}
+			
 		}
 		cpt++;
 		}else{
 		System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
 		new Action(jeu,E2,tab);
 		for(int i=0;i<E1.getE().size();i++){
-		if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
-			jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
-			E1.getE().remove(i);
+		if(E2.getE().get(i).getEnergie()==0 && E2.getE().get(i).estSurBase(E2, i, tab)==false){
+			jeu.remove(E2.getE().get(i).getCoordonne().getX(), E2.getE().get(i).getCoordonne().getY());
+			E2.getE().remove(i);
 			}
 		}
 		cpt++;}

@@ -39,8 +39,8 @@ public class Action {
 			System.out.println(i+". "+ E1.getE().get(i)+" "+E1.getE().get(i).getCoordonne());}
 			System.out.println(E1.getE().size()+". Retour au menu action");
 			cr=sc.nextLine();
-			if(E1.getE().get(Integer.parseInt(cr)).getType()=="C");
-			new Tirer();
+			if(E1.getE().get(Integer.parseInt(cr)).getType()=="C"|| E1.getE().get(Integer.parseInt(cr)).getType()=="c");
+			
 			
 		
 			}
