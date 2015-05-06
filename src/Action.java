@@ -3,10 +3,8 @@ import java.util.Scanner;
 
 public class Action {
 	
-	private Cellule[][] tab;
-
-	public Action(Plateau jeu,Equipe E1, Cellule [][]tab) {
-		this.tab=jeu.getTab();
+	public Action(Plateau jeu,Plateau joueur1,Plateau joueur2,Equipe E1, Cellule [][]tab,Cellule [][]tab1,Cellule [][]tab2) {
+		jeu.getTab();
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		String cr;
@@ -28,9 +26,9 @@ public class Action {
 		System.out.println(E1.getE().size()+". Retour au menu action");
 		cr=sc.nextLine();
 		if (Integer.parseInt(cr)==E1.getE().size())
-			new Action(jeu, E1, tab);
+			new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
 		else
-		new Deplacement(jeu,E1,Integer.parseInt(cr),tab);
+		new Deplacement(jeu,joueur1,joueur2,E1,Integer.parseInt(cr));
 		
 		}else if (ch.equals("2")){
 			System.out.println("Equipe "+E1.getNom());
@@ -39,38 +37,42 @@ public class Action {
 			System.out.println(i+". "+ E1.getE().get(i)+" "+E1.getE().get(i).getCoordonne());}
 			System.out.println(E1.getE().size()+". Retour au menu action");
 			cr=sc.nextLine();
-			if(E1.getE().get(Integer.parseInt(cr)).getType()=="C"|| E1.getE().get(Integer.parseInt(cr)).getType()=="c");
-			
+			if (Integer.parseInt(cr)==E1.getE().size())
+				new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
+			else{
+				if(E1.getE().get(Integer.parseInt(cr)).getType()=="P"|| E1.getE().get(Integer.parseInt(cr)).getType()=="p"){
+					new Miner(jeu,joueur1,joueur2, E1,Integer.parseInt(cr));
+				}else{ 
+					new Tirer(jeu,joueur1,joueur2, E1,Integer.parseInt(cr));
 			
 		
-			}
+				}}}
 		else if(ch.equals("3")){
 			
 			 if(E1.getE().size()==1){
-					if(E1.getE().get(0).estSurBase(E1, 0, tab)==true && E1.getE().get(0).getEnergie()==0){
+					if(E1.getE().get(0).estSurBase(E1, 0, tab)==true && E1.getE().get(0).getEnergie()<E1.getE().get(0).getCoutDeplacement()){
 						
 					}else{	
 						System.out.println("Vous ne pouvez pas passer votre tour");
 						System.out.println(jeu);
-						new Action (jeu,E1,tab);}
+						new Action (jeu,joueur1, joueur2, E1,tab, tab1, tab2);}
 			 
 			 }else{
 				System.out.println("Vous ne pouvez pas passer votre tour");
 				System.out.println(jeu);
-				new Action (jeu,E1,tab);}
+				new Action (jeu,joueur1, joueur2, E1,tab, tab1, tab2);}
 		}else if (ch.equals("4")){
-			for(int i = 0;i<E1.getE().size();i++){
 				E1.getE().clear();
-			}
+			
 			
 		}else{
 			System.out.println("choix invalide");
-			new Action (jeu,E1,tab);
+			new Action (jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 			}
 				
 		}catch(Exception e){
 			System.out.println(e);
-			new Action (jeu,E1,tab);
+			new Action (jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 		}
 	}
 }

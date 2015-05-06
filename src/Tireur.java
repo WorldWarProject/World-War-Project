@@ -67,4 +67,11 @@ public class Tireur extends Robot {
 		return Constante.DEPLACEMENT_TIREUR;
 	}
 
+
+	@Override
+	public int getCoutMine() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

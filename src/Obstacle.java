@@ -39,4 +39,9 @@ public class Obstacle extends Cellule{
 	public Robot getR() {
 		return null;
 	}
+	
+	public void add(Mine m) {
+		
+		
+	}
 }

@@ -13,12 +13,14 @@ public class Jouer{
 	private String t;
 	private String c;
 	private String p;
-	private int cpt = 1;
+	private int turn = 1;
+	private int cpt;
 	private static Equipe E1;
 	private static Equipe E2;
 	List<String> Pays = new ArrayList<String>();
 	
 	public Jouer(){
+		
 		str = new Scanner(System.in);
 		System.out.println("Création du plateau :");
 		creationColonne();
@@ -26,17 +28,22 @@ public class Jouer{
 		creationObstacle();
 		Plateau jeu = new Plateau(Integer.parseInt(x),Integer.parseInt(y),Integer.parseInt(o));
 		Cellule[][] tab = jeu.getTab();
+		Plateau joueur1 = new Plateau(Integer.parseInt(x),Integer.parseInt(y),Integer.parseInt(o));
+		Cellule[][] tab1 = joueur1.getTab();
+		Plateau joueur2 = new Plateau(Integer.parseInt(x),Integer.parseInt(y),Integer.parseInt(o));
+		Cellule[][] tab2 = joueur2.getTab();
 		creationEquipe();
-		choixRobotequipe1(jeu);
-		jeu.getTab();
+		choixRobotequipe1(jeu, joueur1, joueur2);
+		
 		
 		while(!findepartie(E1, E2)){
-		
-		System.out.println("Tour de jeu "+cpt);
-		affichageRobot(jeu);
+		Random r = new Random();
+		cpt=r.nextInt(1000);
+		System.out.println("Tour de jeu "+turn);
+		affichageRobot(jeu, joueur2, joueur2);
 		if(cpt%2!=0){
 		System.out.println("Au Tour de l'équipe "+E1.getNom()+"\n");
-		new Action(jeu,E1,tab);
+		new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 		for(int i=0;i<E1.getE().size();i++){
 			if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
@@ -44,21 +51,46 @@ public class Jouer{
 			}
 			
 		}
-		cpt++;
-		}else{
+		affichageRobot(jeu, joueur2, joueur2);
 		System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
-		new Action(jeu,E2,tab);
-		for(int i=0;i<E1.getE().size();i++){
+		new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
+		for(int i=0;i<E2.getE().size();i++){
 		if(E2.getE().get(i).getEnergie()==0 && E2.getE().get(i).estSurBase(E2, i, tab)==false){
 			jeu.remove(E2.getE().get(i).getCoordonne().getX(), E2.getE().get(i).getCoordonne().getY());
 			E2.getE().remove(i);
 			}
 		}
-		cpt++;}
-	
 		
+		}else{
+		System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
+		new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
+		for(int i=0;i<E2.getE().size();i++){
+		if(E2.getE().get(i).getEnergie()==0 && E2.getE().get(i).estSurBase(E2, i, tab)==false){
+			jeu.remove(E2.getE().get(i).getCoordonne().getX(), E2.getE().get(i).getCoordonne().getY());
+			E2.getE().remove(i);
+			}
 		}
+		affichageRobot(jeu, joueur2, joueur2);
+		System.out.println("Au Tour de l'équipe "+E1.getNom()+"\n");
+		new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
+		for(int i=0;i<E1.getE().size();i++){
+			if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
+				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				E1.getE().remove(i);
+			}
+		}
+		}
+		turn++;
+			
+		}
+		try {
+			Thread.sleep(1000);
 			new Menu();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 			
 		
 		
@@ -210,7 +242,7 @@ public class Jouer{
 		 * Choix des Robots equipe1
 		 * @param jeu 
 		 */
-		public void choixRobotequipe1(Plateau jeu){
+		public void choixRobotequipe1(Plateau jeu,Plateau joueur1,Plateau joueur2){
 			try{
 				do{
 				System.out.println("Choix des robots de l'équipe 1");
@@ -222,20 +254,20 @@ public class Jouer{
 				while(Integer.parseInt(ce1)<1 || Integer.parseInt(ce1)>6);
 				
 				if(ce1.equals("6"))
-					creationRobotalea(jeu);
+					creationRobotalea(jeu, joueur1,joueur2);
 				else{
 					
-					creationTireur1(jeu);
-					creationChar1(jeu);
-					creationPiegeur1(jeu);
-					choixRobotequipe2(jeu);
+					creationTireur1(jeu,joueur1,joueur2);
+					creationChar1(jeu,joueur1,joueur2);
+					creationPiegeur1(jeu,joueur1,joueur2);
+					choixRobotequipe2(jeu,joueur1,joueur2);
 				}
 				}catch(Exception e){
-					choixRobotequipe1(jeu);
+					choixRobotequipe1(jeu, joueur1, joueur2);
 				}
 		}
 		
-		private void creationRobotalea(Plateau jeu) {
+		private void creationRobotalea(Plateau jeu, Plateau joueur1, Plateau joueur2) {
 			Random r = new Random();
 			int nbr = r.nextInt(5)+1;
 			int t1 = r.nextInt(nbr)+1;
@@ -276,38 +308,50 @@ public class Jouer{
 			for(int i=0;i<t1;i++){
 				Robot ti = new Tireur(1);
 				jeu.add(ti);
+				joueur1.add(ti);
+				joueur2.add(ti);
 				E1.add(ti);
 			}
 			for(int i=0;i<c1;i++){
 				Robot ci = new Char(1);
 				jeu.add(ci);
+				joueur1.add(ci);
+				joueur2.add(ci);
 				E1.add(ci);
 			}
 			for(int i=0;i<p1;i++){
 				Robot pi = new Piegeur(1);
 				jeu.add(pi);
+				joueur1.add(pi);
+				joueur2.add(pi);
 				E1.add(pi);
 			}
 			
 			for(int i=0;i<t2;i++){
 				Robot ti = new Tireur(-1);
 				jeu.add(ti);
+				joueur1.add(ti);
+				joueur2.add(ti);
 				E2.add(ti);
 			}
 			for(int i=0;i<c2;i++){
 				Robot ci = new Char(-1);
 				jeu.add(ci);
+				joueur1.add(ci);
+				joueur2.add(ci);
 				E2.add(ci);
 			}
 			for(int i=0;i<p2;i++){
 				Robot pi = new Piegeur(-1);
 				jeu.add(pi);
+				joueur1.add(pi);
+				joueur2.add(pi);
 				E2.add(pi);
 			}
 			
 		}
 
-		public void creationTireur1(Plateau jeu){
+		public void creationTireur1(Plateau jeu, Plateau joueur1, Plateau joueur2){
 			try{
 			do{
 				System.out.println("Nombre de Tireur:");
@@ -317,14 +361,16 @@ public class Jouer{
 				for(int i=0;i<Integer.parseInt(t);i++){
 					Robot ti = new Tireur(1);
 					jeu.add(ti);
+					joueur1.add(ti);
+					joueur2.add(ti);
 					E1.add(ti);
 					}
 				}catch(Exception e){
-				creationTireur1(jeu);
+				creationTireur1(jeu, joueur1, joueur2);
 			}
 		}
 		
-		public void creationChar1(Plateau jeu){
+		public void creationChar1(Plateau jeu, Plateau joueur1, Plateau joueur2){
 			try{
 			do{
 				if(Integer.parseInt(t)==Integer.parseInt(ce1)){
@@ -337,14 +383,16 @@ public class Jouer{
 				for(int i=0;i<Integer.parseInt(c);i++){
 					Robot ci = new Char(1);
 					jeu.add(ci);
+					joueur1.add(ci);
+					joueur2.add(ci);
 					E1.add(ci);
 				}
 			}catch(Exception e){
-				creationChar1(jeu);
+				creationChar1(jeu, joueur1, joueur2);
 			}
 		}
 		
-		public void creationPiegeur1(Plateau jeu){
+		public void creationPiegeur1(Plateau jeu, Plateau joueur1, Plateau joueur2){
 			try{
 			
 				if((Integer.parseInt(c)+Integer.parseInt(t))==Integer.parseInt(ce1)){
@@ -354,35 +402,39 @@ public class Jouer{
 				for(int i=0;i<Integer.parseInt(p);i++){
 					Robot pi = new Piegeur(1);
 					jeu.add(pi);
+					joueur1.add(pi);
+					joueur2.add(pi);
 					E1.add(pi);
 				}
 				}
 				}catch(Exception e){
-				creationPiegeur1(jeu);
+				creationPiegeur1(jeu, joueur1, joueur2);
 			}
 		}
 		
 		/**
 		 * Choix des robots equipe 2
 		 * @param jeu
+		 * @param joueur2 
+		 * @param joueur1 
 		 */
-		public void choixRobotequipe2(Plateau jeu){
+		public void choixRobotequipe2(Plateau jeu, Plateau joueur1, Plateau joueur2){
 			try{
 				System.out.println("Choix des robots de l'équipe 2");
 				System.out.println("Le nombre de robots que vous pouvez choisir est de "+ce1);
 				
-					creationTireur2(jeu);
-					creationChar2(jeu);
-					creationPiegeur2(jeu);
+					creationTireur2(jeu,joueur1,joueur2);
+					creationChar2(jeu,joueur1,joueur2);
+					creationPiegeur2(jeu,joueur1,joueur2);
 											
 				}catch(Exception e){
-					choixRobotequipe2(jeu);
+					choixRobotequipe2(jeu, joueur1, joueur2);
 				}
 		}
 		
 		
 		
-		public void creationTireur2(Plateau jeu){
+		public void creationTireur2(Plateau jeu, Plateau joueur1, Plateau joueur2){
 			try{
 			do{
 				System.out.println("Nombre de Tireur:");
@@ -393,14 +445,16 @@ public class Jouer{
 				
 				Robot ti = new Tireur(-1);
 				jeu.add(ti);
+				joueur1.add(ti);
+				joueur2.add(ti);
 				E2.add(ti);
 			}
 			}catch(Exception e){
-				creationTireur2(jeu);
+				creationTireur2(jeu, joueur1, joueur2);
 			}
 		}
 		
-		public void creationChar2(Plateau jeu){
+		public void creationChar2(Plateau jeu, Plateau joueur1, Plateau joueur2){
 			try{
 			do{
 				if(Integer.parseInt(t)==Integer.parseInt(ce1)){
@@ -413,14 +467,16 @@ public class Jouer{
 			for(int i=0;i<Integer.parseInt(c);i++){
 				Robot ci = new Char(-1);
 				jeu.add(ci);
+				joueur1.add(ci);
+				joueur2.add(ci);
 				E2.add(ci);
 			}
 			}catch(Exception e){
-				creationChar2(jeu);
+				creationChar2(jeu, joueur1, joueur2);
 			}
 		}
 		
-		public void creationPiegeur2(Plateau jeu){
+		public void creationPiegeur2(Plateau jeu, Plateau joueur1, Plateau joueur2){
 			try{
 				
 					if((Integer.parseInt(c)+Integer.parseInt(t))==Integer.parseInt(ce1)){
@@ -430,16 +486,20 @@ public class Jouer{
 					for(int i=0;i<Integer.parseInt(p);i++){
 						Robot pi = new Piegeur(-1);
 						jeu.add(pi);
+						joueur1.add(pi);
+						joueur2.add(pi);
 						E2.add(pi);
 					}
 				}
 				
 			}catch(Exception e){
-				creationPiegeur2(jeu);
+				creationPiegeur2(jeu, joueur1, joueur2);
 			}
 		}
 		
-		public void affichageRobot(Plateau jeu){
+		public void affichageRobot(Plateau jeu,Plateau joueur1, Plateau joueur2){
+			System.out.println(joueur1);
+			System.out.println(joueur2);
 			System.out.println(jeu);
 			System.out.println("Légende");
 			System.out.println("Equipe "+ E1.getNom()+" représentant de "+E1.getPays());

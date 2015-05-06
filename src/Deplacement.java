@@ -3,15 +3,19 @@ import java.util.Scanner;
 
 public class Deplacement {
 	private Cellule[][] tab;
+	private Cellule[][] tab1;
+	private Cellule[][] tab2;
 	
-	Deplacement(Plateau jeu,Equipe E1,int i,Cellule[][] tab){
+	Deplacement(Plateau jeu,Plateau joueur1,Plateau joueur2,Equipe E1,int i){
 		this.tab=jeu.getTab();
+		this.tab1=joueur1.getTab();
+		this.tab2=joueur2.getTab();
 		if(E1.getE().get(i).getType().equals("C")||E1.getE().get(i).getType().equals("c")){
-			DeplacementC(jeu, E1, i);}
+			DeplacementC(jeu,joueur1,joueur2, E1, i);}
 		else{
-		DeplacementTP(jeu, E1,  i);}
+		DeplacementTP(jeu,joueur1,joueur2, E1,  i);}
 	}
-		private void DeplacementTP(Plateau jeu,Equipe E1,int i) {
+		private void DeplacementTP(Plateau jeu,Plateau joueur1, Plateau joueur2, Equipe E1,int i) {
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(System.in);
 			String cr;
@@ -25,7 +29,7 @@ public class Deplacement {
 			System.out.println("1.la droite");
 			System.out.println("2.en bas à droite");
 			System.out.println("3.le bas");
-			System.out.println("4.Retour à la sélection des robots");
+			System.out.println("4.Retour au menu action");
 						
 			cr=sc.nextLine();
 			switch(cr){
@@ -35,13 +39,17 @@ public class Deplacement {
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				this.tab1[y][x].remove(i);
+				joueur2.add(E1.getE().get(i), E1, i);
+				this.tab2[y][x].remove(i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			case ("2"):
@@ -52,6 +60,10 @@ public class Deplacement {
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				this.tab1[y][x].remove(i);
+				joueur2.add(E1.getE().get(i), E1, i);
+				this.tab2[y][x].remove(i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()-1;
@@ -60,7 +72,7 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			case ("3"):
@@ -69,22 +81,26 @@ public class Deplacement {
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				this.tab1[y][x].remove(i);
+				joueur2.add(E1.getE().get(i), E1, i);
+				this.tab2[y][x].remove(i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementTP(jeu,E1,i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 			}
 			
@@ -99,33 +115,43 @@ public class Deplacement {
 			System.out.println("3.la droite");
 			System.out.println("4.en bas à droite");
 			System.out.println("5.le bas");
-			System.out.println("6.Retour à la sélection des robots");
+			System.out.println("6.Retour au menu action");
 			cr=sc.nextLine();
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
@@ -135,7 +161,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("3"):
@@ -151,7 +177,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("4"):
@@ -171,7 +197,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case("5"):
@@ -187,16 +213,16 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("6"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementTP(jeu,E1,i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 			}
 		}
@@ -210,7 +236,7 @@ public class Deplacement {
 			System.out.println("3.le bas");
 			System.out.println("4.en bas à gauche");
 			System.out.println("5.la gauche");
-			System.out.println("6.Retour à la sélection des robots");
+			System.out.println("6.Retour au menu action");
 		
 			cr=sc.nextLine();
 			switch(cr){
@@ -227,7 +253,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("2"):
@@ -247,7 +273,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
@@ -263,7 +289,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("4"):
@@ -283,7 +309,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case("5"):
@@ -299,16 +325,16 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("6"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementTP(jeu,E1,i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 			}
 					}
@@ -324,7 +350,7 @@ public class Deplacement {
 			System.out.println("1.le haut");
 			System.out.println("2.en haut à gauche");
 			System.out.println("3.la gauche");
-			System.out.println("4.Retour à la sélection des robots");
+			System.out.println("4.Retour au menu action");
 			
 			cr=sc.nextLine();
 			switch(cr){
@@ -340,7 +366,7 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("2"):
@@ -359,7 +385,7 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("3"):
@@ -374,16 +400,16 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementTP(jeu,E1,i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 			}
 				
@@ -398,7 +424,7 @@ public class Deplacement {
 			System.out.println("1.la droite");
 			System.out.println("2.en haut à droite");
 			System.out.println("3.le haut");
-			System.out.println("4.Retour à la sélection des robots");
+			System.out.println("4.Retour au menu action");
 			
 			cr=sc.nextLine();
 			switch(cr){
@@ -415,7 +441,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("2"):
@@ -435,7 +461,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
@@ -451,16 +477,16 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementTP(jeu,E1,i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 				
 			}
@@ -474,7 +500,7 @@ public class Deplacement {
 			System.out.println("1.la gauche");
 			System.out.println("2.en bas à gauche");
 			System.out.println("3.le bas");
-			System.out.println("4.Retour à la sélection des robots");
+			System.out.println("4.Retour au menu action");
 			
 			cr=sc.nextLine();
 			switch(cr){
@@ -491,7 +517,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("2"):
@@ -511,7 +537,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
@@ -527,16 +553,16 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementTP(jeu,E1,i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 				
 			}
@@ -553,7 +579,7 @@ public class Deplacement {
 			System.out.println("3.la gauche");
 			System.out.println("4.en bas à gauche");
 			System.out.println("5.le bas");
-			System.out.println("6.Retour à la sélection des robots");
+			System.out.println("6.Retour au menu action");
 			cr=sc.nextLine();
 			switch(cr){
 			case ("1"):
@@ -569,7 +595,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("2"):
@@ -589,7 +615,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
@@ -605,7 +631,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("4"):
@@ -625,7 +651,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("5"):
@@ -641,16 +667,16 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("6"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementTP(jeu,E1,i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 				
 			}
@@ -668,7 +694,7 @@ public class Deplacement {
 			System.out.println("3.le haut");
 			System.out.println("4.en haut à droite");
 			System.out.println("5.la droite");
-			System.out.println("6.Retour à la sélection des robots");
+			System.out.println("6.Retour au menu action");
 			cr=sc.nextLine();
 			switch(cr){
 			case ("1"):
@@ -684,7 +710,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("2"):
@@ -704,7 +730,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
@@ -720,7 +746,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementTP(jeu, E1,  i);
+						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("4"):
@@ -740,7 +766,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("5"):
@@ -756,17 +782,17 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 				
 			case ("6"):
 				System.out.println(jeu);
-			new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);;
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementTP(jeu,E1,i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 				
 			}
@@ -781,7 +807,7 @@ public class Deplacement {
 			System.out.println("6.en haut à gauche");
 			System.out.println("7.en haut");
 			System.out.println("8.en haut à droite");
-			System.out.println("9.Retour à la sélection des robots");
+			System.out.println("9.Retour au menu action");
 			cr=sc.nextLine();
 			switch(cr){
 			case ("1"):
@@ -797,7 +823,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("2"):
@@ -818,7 +844,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
@@ -834,7 +860,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("4"):
@@ -854,7 +880,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("5"):
@@ -870,7 +896,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("6"):
@@ -890,7 +916,7 @@ public class Deplacement {
 				jeu.add(E1.getE().get(i), E1, i);
 				System.out.println("déplacement impossible");
 				System.out.println(jeu);
-				DeplacementTP(jeu, E1,  i);
+				DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("7"):
@@ -906,7 +932,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("8"):
@@ -926,27 +952,27 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementTP(jeu, E1,  i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("9"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementTP(jeu,E1,i);
+					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 				
 				
 		}
 		}else{
 			System.out.println("Deplacement impossible par manque d'énergie");
-			new Action(jeu,E1,tab);
+			new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 		}
 		}
 		
-		private void DeplacementC(Plateau jeu,Equipe E1,int i) {
+		private void DeplacementC(Plateau jeu,Plateau joueur1, Plateau joueur2, Equipe E1,int i) {
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(System.in);
 			String cr;
@@ -959,7 +985,7 @@ public class Deplacement {
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.le bas");
-			System.out.println("3.Retour à la sélection des robots");
+			System.out.println("3.Retour au menu action");
 						
 			cr=sc.nextLine();
 			switch(cr){
@@ -972,8 +998,8 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
-				if (x>tab.length-1){
-					x=tab.length-1;
+				if (x>tab[0].length-1){
+					x=tab[0].length-1;
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 					
@@ -997,7 +1023,7 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			
@@ -1034,16 +1060,16 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			case ("3"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementC(jeu,E1,i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 			}
 			
@@ -1056,7 +1082,7 @@ public class Deplacement {
 			System.out.println("1.le haut");
 			System.out.println("2.la droite");
 			System.out.println("3.le bas");
-			System.out.println("4.Retour à la sélection des robots");
+			System.out.println("4.Retour au menu action");
 			cr=sc.nextLine();
 			switch(cr){
 			case ("1"):
@@ -1093,7 +1119,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
@@ -1106,8 +1132,8 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()+1;
-					if (x>tab.length-1){
-						x=tab.length-1;
+					if (x>tab[0].length-1){
+						x=tab[0].length-1;
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setX(x);
@@ -1131,7 +1157,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
@@ -1169,16 +1195,16 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementC(jeu,E1,i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 			}
 		}
@@ -1190,7 +1216,7 @@ public class Deplacement {
 			System.out.println("1.la droite");
 			System.out.println("2.le bas");
 			System.out.println("3.la gauche");
-			System.out.println("4.Retour à la sélection des robots");
+			System.out.println("4.Retour au menu action");
 		
 			cr=sc.nextLine();
 			switch(cr){
@@ -1203,8 +1229,8 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()+1;
-					if (x>tab.length-1){
-						x=tab.length-1;
+					if (x>tab[0].length-1){
+						x=tab[0].length-1;
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setX(x);
@@ -1228,7 +1254,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			
@@ -1266,7 +1292,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			
@@ -1304,16 +1330,16 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementC(jeu,E1,i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 			}
 					}
@@ -1328,7 +1354,7 @@ public class Deplacement {
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.le haut");
 			System.out.println("2.la gauche");
-			System.out.println("3.Retour à la sélection des robots");
+			System.out.println("3.Retour au menu action");
 			
 			cr=sc.nextLine();
 			switch(cr){
@@ -1364,7 +1390,7 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			
@@ -1401,16 +1427,16 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			case ("3"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementC(jeu,E1,i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 			}
 				
@@ -1424,7 +1450,7 @@ public class Deplacement {
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la droite");
 			System.out.println("2.le haut");
-			System.out.println("3.Retour à la sélection des robots");
+			System.out.println("3.Retour au menu action");
 			
 			cr=sc.nextLine();
 			switch(cr){
@@ -1437,8 +1463,8 @@ public class Deplacement {
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()+1;
-					if (x>tab.length-1){
-						x=tab.length-1;
+					if (x>tab[0].length-1){
+						x=tab[0].length-1;
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setX(x);
@@ -1462,7 +1488,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("2"):
@@ -1499,16 +1525,16 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("3"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementC(jeu,E1,i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 				
 			}
@@ -1521,7 +1547,7 @@ public class Deplacement {
 			System.out.println("Vous pouvez vous déplacez vers");
 			System.out.println("1.la gauche");
 			System.out.println("2.le bas");
-			System.out.println("3.Retour à la sélection des robots");
+			System.out.println("3.Retour au menu action");
 			
 			cr=sc.nextLine();
 			switch(cr){
@@ -1559,7 +1585,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
@@ -1597,16 +1623,16 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("3"):
 				System.out.println(jeu);
-			new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementC(jeu,E1,i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 				
 			}
@@ -1621,7 +1647,7 @@ public class Deplacement {
 			System.out.println("1.le haut");
 			System.out.println("2.la gauche");
 			System.out.println("3.le bas");
-			System.out.println("4.Retour à la sélection des robots");
+			System.out.println("4.Retour au menu action");
 			cr=sc.nextLine();
 			switch(cr){
 			case ("1"):
@@ -1657,7 +1683,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
@@ -1694,7 +1720,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
@@ -1731,16 +1757,16 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			case ("4"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementTP(jeu,E1,i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 				
 			}
@@ -1756,7 +1782,7 @@ public class Deplacement {
 			System.out.println("1.la gauche");
 			System.out.println("2.le haut");
 			System.out.println("3.la droite");
-			System.out.println("4.Retour à la sélection des robots");
+			System.out.println("4.Retour au menu action");
 			cr=sc.nextLine();
 			switch(cr){
 			case ("1"):
@@ -1792,7 +1818,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			
@@ -1829,7 +1855,7 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
 						System.out.println(jeu);
-						DeplacementC(jeu, E1,  i);
+						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
@@ -1842,8 +1868,8 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
-				if (x>tab.length-1){
-					x=tab.length-1;
+				if (x>tab[0].length-1){
+					x=tab[0].length-1;
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setX(x);
@@ -1866,17 +1892,17 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 				
 			case ("4"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementC(jeu,E1,i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 				
 			}
@@ -1887,7 +1913,7 @@ public class Deplacement {
 			System.out.println("2.en bas");
 			System.out.println("3.la gauche");
 			System.out.println("4.en haut");
-			System.out.println("5.Retour à la sélection des robots");
+			System.out.println("5.Retour au menu action");
 			cr=sc.nextLine();
 			switch(cr){
 			case ("1"):
@@ -1899,8 +1925,8 @@ public class Deplacement {
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
-				if (x>tab.length-1){
-					x=tab.length-1;
+				if (x>tab[0].length-1){
+					x=tab[0].length-1;
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setX(x);
@@ -1923,7 +1949,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 		
@@ -1960,7 +1986,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			
@@ -1997,7 +2023,7 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 		
@@ -2034,30 +2060,30 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
-					DeplacementC(jeu, E1,  i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 		
 			case ("5"):
 				System.out.println(jeu);
-				new Action(jeu,E1,tab);
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
 					System.out.println(jeu);
-					DeplacementC(jeu,E1,i);
+					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 				
 				
 		}
 		}else{
 			System.out.println("Deplacement impossible par manque d'énergie");
-			new Action(jeu,E1,tab);
+			new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 		}
 		}
 		public boolean estPossible(Robot r,Equipe E1, int i){
 			int y= E1.getE().get(i).getCoordonne().getY();
 			int x= E1.getE().get(i).getCoordonne().getX(); 
-			if(tab[y][x] instanceof Base == false && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false && y>=0 && x >=0 && y<=tab.length-1 && x<=tab.length-1){
+			if(tab[y][x] instanceof Base == false && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false && y>=0 && x >=0 && y<=tab.length-1 && x<=tab[0].length-1){
 				return true;	
 			}else if(tab[y][x] instanceof Base == true && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false){
 				if(r.getEquipe()==tab[y][x].getEquipe()){

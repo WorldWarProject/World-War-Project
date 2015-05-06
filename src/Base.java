@@ -79,4 +79,9 @@ public class Base extends Cellule{
 	public Robot getR() {
 		return null;
 	}
+
+	
+	public void add(Mine m) {
+				
+	}
 }

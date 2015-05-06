@@ -17,7 +17,12 @@ public class Constante {
     public final static int REGEN_ENERGIE_PIEGEUR = 2;
     public final static int REGEN_ENERGIE_CHAR    = 2;
     
+    public final static int NB_MINE				  = 10;
+    public final static int RECUP_MINE            = 1;
     public final static int COUT_MINER            = 2;
+    public final static String NOM_MINE        	  = "M";
+    public final static String NOM_MINE_EQUIPE2   = "m";
+    
     public final static int COUT_TIRER_TIREUR     = 2;
     public final static int COUT_TIRER_CHAR       = 1;
     public final static int COUT_TIRER_PIEGEUR    = 0;
@@ -37,5 +42,7 @@ public class Constante {
     public final static String NOM_PIEGEUR_EQUIPE2= "p";
     public final static String NOM_CHAR_EQUIPE2   = "c";
     public final static String NOM_TIREUR_EQUIPE2 = "t";
+    
+   
 
 }

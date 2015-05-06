@@ -56,6 +56,7 @@ public class Menu {
 		 * Gestion des cas d'exception
 		 */
 		catch (Exception e) {
+			System.out.println(e);
 			new Menu();
 		}
 		 

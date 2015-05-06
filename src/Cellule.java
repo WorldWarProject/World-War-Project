@@ -96,10 +96,11 @@ public abstract class Cellule extends Coordonne{
 		this.base = base;
 	}
 
-	public abstract Robot[] getB();
+	
 	public abstract int getIdx();
 	public abstract void add(Robot r);
 	public abstract void remove();
 	public abstract void remove(int idx);
 	public abstract Robot getR();
+	public abstract void add(Mine m); 
 }

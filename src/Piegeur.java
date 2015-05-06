@@ -58,6 +58,13 @@ public class Piegeur extends Robot {
 		// TODO Auto-generated method stub
 		return Constante.COUT_MINER;
 	}
+	
+	public int getNBMine() {
+		// TODO Auto-generated method stub
+		return Constante.NB_MINE;
+	}
+
+
 
 	@Override
 	public String getType() {

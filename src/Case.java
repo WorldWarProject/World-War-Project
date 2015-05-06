@@ -10,6 +10,11 @@ public class Case extends Cellule {
 	protected Robot r;
 	
 	/**
+	 * Represente une mine
+	 */
+	protected Mine m;
+	
+	/**
 	 * Construit une case avec ses coordonnée en x,y
 	 * @param x - coordonnée en x
 	 * @param y - coordonnée en y
@@ -50,15 +55,33 @@ public class Case extends Cellule {
 		return this.r;
 	}
 	
+	/**
+	 * Ajoute une Mine dans la case
+	 */
+	public void add(Mine m) {
+		this.m = m;
+		if (m != null)
+			super.setMine(true);
+		else 
+			super.setMine(false);
+	}
+	
+	
+	/**
+	 * Retourne la mine présente dans la case
+	 * return - la mine présente dans la case
+	 */
+	public Mine getM() {
+		return this.m;
+	}
 	@Override
 	public String toString () {
-		if(this.r == null)
+		if(this.r == null && this.m == null)
 			return " ";
-		else return r.getType();
-	}
-
-	public Robot[] getB() {
-		return null;
+		else if(this.m == null)
+			return r.getType();
+		else
+			return m.getType();
 	}
 
 	public int getIdx() {
@@ -66,15 +89,13 @@ public class Case extends Cellule {
 	}
 
 	/**
-	 * Supprime le robot de la case
+	 * Supprime la mine de la case
 	 */
 	public void remove() {
-		super.setRobot(false);
-		this.r = null;
+		this.m = null;
 	}
 
 
 	public void remove(int idx){
-		
 	}
 }

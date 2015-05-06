@@ -117,14 +117,19 @@ public abstract class Robot {
 	 * @return les degats de la mine
 	 */
 	public abstract int getDegatMine();
-
+	
+	/**
+	 * Retourne le cout de mine du robot
+	 * @return le cout de mine du robot
+	 */
+	public abstract int getCoutMine();
 	/**
 	 * Retourne la portee du robot
 	 * @return la portee du robot
 	 */
 	public abstract int getPortee();
 
-	// public abstract int getCoutMine();
+	
 
 	/**
 	 * Retourne le type du robot

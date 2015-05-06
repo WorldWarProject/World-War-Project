@@ -66,4 +66,10 @@ public class Char extends Robot {
 		return Constante.DEPLACEMENT_CHAR;
 	}
 
+	@Override
+	public int getCoutMine() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
