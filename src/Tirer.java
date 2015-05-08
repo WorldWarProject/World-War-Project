@@ -34,6 +34,11 @@ public class Tirer {
 				 x = E1.getE().get(index).getCoordonne().getX();
 				 if(y<0){
 						System.out.println("tir hors limite, choisissez une autre direction pour votre tir");
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						new Tirer(jeu, joueur1, joueur2, E1, index);
 				}else{
 				if(tab[y][x]instanceof Obstacle){
@@ -41,6 +46,11 @@ public class Tirer {
 					i=E1.getE().get(index).getPortee()+1;
 					}else if (tab[y][x].isRobot() && tab[y][x].getR().getEquipe()==E1.getE().get(index).getEquipe()){
 						System.out.println("Vous ne pouvez pas tirer sur un allié");
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						new Tirer(jeu, joueur1, joueur2, E1, index);
 					}else if(tab[y][x].isRobot() && tab[y][x].getR().getEquipe()!=E1.getE().get(index).getEquipe()){
 					System.out.println("Vous avez effectuer un tir avec succès");
@@ -50,6 +60,11 @@ public class Tirer {
 					}else{
 						if(i==E1.getE().get(index).getPortee()){
 					System.out.println("tir inutile, choisissez une autre direction pour votre tir");
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 						new Tirer(jeu, joueur1, joueur2, E1, index);
 						}else{
 						i++;
@@ -64,6 +79,11 @@ public class Tirer {
 				 x = E1.getE().get(index).getCoordonne().getX()+i;
 				 if(y<0){
 						System.out.println("tir hors limite, choisissez une autre direction pour votre tir");
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						new Tirer(jeu, joueur1, joueur2, E1, index);
 				}else{
 				if(tab[y][x]instanceof Obstacle){
@@ -71,6 +91,11 @@ public class Tirer {
 					i=E1.getE().get(index).getPortee()+1;
 					}else if (tab[y][x].isRobot() && tab[y][x].getR().getEquipe()==E1.getE().get(index).getEquipe()){
 						System.out.println("Vous ne pouvez pas tirer sur un allié");
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						new Tirer(jeu, joueur1, joueur2, E1, index);
 					}else if(tab[y][x].isRobot() && tab[y][x].getR().getEquipe()!=E1.getE().get(index).getEquipe()){
 					System.out.println("Vous avez effectuer un tir avec succès");
@@ -80,6 +105,11 @@ public class Tirer {
 					}else{
 						if(i==E1.getE().get(index).getPortee()){
 							System.out.println("tir inutile, choisissez une autre direction pour votre tir");
+							if(E1.getE().get(i).getEquipe()==1){
+								System.out.println(joueur1);
+							}else{
+								System.out.println(joueur2);
+							}
 							new Tirer(jeu, joueur1, joueur2, E1, index);
 								}else{
 								i++;
@@ -95,6 +125,11 @@ public class Tirer {
 				 x = E1.getE().get(index).getCoordonne().getX();
 				 if(y<0){
 						System.out.println("tir hors limite, choisissez une autre direction pour votre tir");
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						new Tirer(jeu, joueur1, joueur2, E1, index);
 				}else{
 				if(tab[y][x]instanceof Obstacle){
@@ -102,6 +137,11 @@ public class Tirer {
 					i=E1.getE().get(index).getPortee()+1;
 					}else if (tab[y][x].isRobot() && tab[y][x].getR().getEquipe()==E1.getE().get(index).getEquipe()){
 						System.out.println("Vous ne pouvez pas tirer sur un allié");
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						new Tirer(jeu, joueur1, joueur2, E1, index);
 					}else if(tab[y][x].isRobot() && tab[y][x].getR().getEquipe()!=E1.getE().get(index).getEquipe()){
 					System.out.println("Vous avez effectuer un tir avec succès");
@@ -111,6 +151,11 @@ public class Tirer {
 					}else{
 						if(i==E1.getE().get(index).getPortee()){
 							System.out.println("tir inutile, choisissez une autre direction pour votre tir");
+							if(E1.getE().get(i).getEquipe()==1){
+								System.out.println(joueur1);
+							}else{
+								System.out.println(joueur2);
+							}
 							new Tirer(jeu, joueur1, joueur2, E1, index);
 								}else{
 								i++;
@@ -126,6 +171,11 @@ public class Tirer {
 				 x = E1.getE().get(index).getCoordonne().getX()-i;
 				 if(y<0){
 						System.out.println("tir hors limite, choisissez une autre direction pour votre tir");
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						new Tirer(jeu, joueur1, joueur2, E1, index);
 				}else{
 				if(tab[y][x]instanceof Obstacle){
@@ -133,6 +183,11 @@ public class Tirer {
 					i=E1.getE().get(index).getPortee()+1;
 					}else if (tab[y][x].isRobot() && tab[y][x].getR().getEquipe()==E1.getE().get(index).getEquipe()){
 						System.out.println("Vous ne pouvez pas tirer sur un allié");
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						new Tirer(jeu, joueur1, joueur2, E1, index);
 					}else if(tab[y][x].isRobot() && tab[y][x].getR().getEquipe()!=E1.getE().get(index).getEquipe()){
 					System.out.println("Vous avez effectuer un tir avec succès");
@@ -142,6 +197,11 @@ public class Tirer {
 					}else{
 						if(i==E1.getE().get(index).getPortee()){
 							System.out.println("tir inutile, choisissez une autre direction pour votre tir");
+							if(E1.getE().get(i).getEquipe()==1){
+								System.out.println(joueur1);
+							}else{
+								System.out.println(joueur2);
+							}
 							new Tirer(jeu, joueur1, joueur2, E1, index);
 								}else{
 								i++;
@@ -155,6 +215,11 @@ public class Tirer {
 			break;
 			default:
 				System.out.println("choix invalide");
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Tirer(jeu, joueur1, joueur2, E1, index);
 				break;
 		}

@@ -40,8 +40,10 @@ public class Jouer{
 		Random r = new Random();
 		cpt=r.nextInt(1000);
 		System.out.println("Tour de jeu "+turn);
-		affichageRobot(jeu, joueur2, joueur2);
+		
 		if(cpt%2!=0){
+		System.out.println(joueur1);
+		affichageRobot();
 		System.out.println("Au Tour de l'équipe "+E1.getNom()+"\n");
 		new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 		for(int i=0;i<E1.getE().size();i++){
@@ -51,7 +53,8 @@ public class Jouer{
 			}
 			
 		}
-		affichageRobot(jeu, joueur2, joueur2);
+		System.out.println(joueur2);
+		affichageRobot();
 		System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
 		new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
 		for(int i=0;i<E2.getE().size();i++){
@@ -62,6 +65,8 @@ public class Jouer{
 		}
 		
 		}else{
+			System.out.println(joueur2);
+			affichageRobot();
 		System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
 		new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
 		for(int i=0;i<E2.getE().size();i++){
@@ -70,7 +75,8 @@ public class Jouer{
 			E2.getE().remove(i);
 			}
 		}
-		affichageRobot(jeu, joueur2, joueur2);
+		System.out.println(joueur1);
+		affichageRobot();
 		System.out.println("Au Tour de l'équipe "+E1.getNom()+"\n");
 		new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 		for(int i=0;i<E1.getE().size();i++){
@@ -497,10 +503,7 @@ public class Jouer{
 			}
 		}
 		
-		public void affichageRobot(Plateau jeu,Plateau joueur1, Plateau joueur2){
-			System.out.println(joueur1);
-			System.out.println(joueur2);
-			System.out.println(jeu);
+		public void affichageRobot(){
 			System.out.println("Légende");
 			System.out.println("Equipe "+ E1.getNom()+" représentant de "+E1.getPays());
 			System.out.println(E1.E);

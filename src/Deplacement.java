@@ -48,7 +48,11 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -71,7 +75,11 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -90,16 +98,28 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			case ("4"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 			}
@@ -136,7 +156,11 @@ public class Deplacement {
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -159,35 +183,55 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()-1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						x=E1.getE().get(i).getCoordonne().getX()-1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("4"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()-1;
@@ -195,33 +239,57 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()-1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case("5"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()-1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("6"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 			}
@@ -242,28 +310,42 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						x=E1.getE().get(i).getCoordonne().getX()-1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()-1;
@@ -271,35 +353,55 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()-1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()-1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("4"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()-1;
@@ -307,33 +409,57 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()+1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case("5"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						x=E1.getE().get(i).getCoordonne().getX()+1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("6"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 			}
@@ -359,13 +485,21 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
+				this.tab1[y][x].remove(i);
+				this.tab2[y][x].remove(i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -376,7 +510,11 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
+				this.tab1[y][x].remove(i);
+				this.tab2[y][x].remove(i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
@@ -384,7 +522,11 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -393,22 +535,38 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
+				this.tab1[y][x].remove(i);
+				this.tab2[y][x].remove(i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("4"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 			}
@@ -430,28 +588,42 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						x=E1.getE().get(i).getCoordonne().getX()-1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
@@ -459,33 +631,57 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()-1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("4"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 				
@@ -506,28 +702,42 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						x=E1.getE().get(i).getCoordonne().getX()+1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()-1;
@@ -535,33 +745,57 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()+1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()-1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("4"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 				
@@ -584,28 +818,42 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);	
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
@@ -613,35 +861,55 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()+1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						x=E1.getE().get(i).getCoordonne().getX()+1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("4"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						x=E1.getE().get(i).getCoordonne().getX()+1;
@@ -650,32 +918,54 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("5"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("6"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 				
@@ -699,28 +989,42 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
@@ -728,6 +1032,8 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
@@ -735,28 +1041,42 @@ public class Deplacement {
 				break;
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);				
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("4"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()-1;
@@ -764,34 +1084,58 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("5"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 				
 			case ("6"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);;
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 				
@@ -812,29 +1156,43 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("2"):
 				
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()-1;
@@ -843,34 +1201,52 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("4"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()+1;
@@ -878,6 +1254,8 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
@@ -885,15 +1263,21 @@ public class Deplacement {
 				break;
 			case ("5"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
 					System.out.println(jeu);
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
@@ -901,12 +1285,16 @@ public class Deplacement {
 				break;
 			case ("6"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());	
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 				x=E1.getE().get(i).getCoordonne().getX()+1;
@@ -914,6 +1302,8 @@ public class Deplacement {
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				System.out.println("déplacement impossible");
 				System.out.println(jeu);
 				DeplacementTP(jeu,joueur1, joueur2, E1,i);
@@ -921,28 +1311,42 @@ public class Deplacement {
 				break;
 			case ("7"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("8"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
@@ -950,17 +1354,31 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
 			case ("9"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					break;
 				
@@ -994,9 +1412,15 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
+				this.tab1[y][x].remove(i);
+				this.tab2[y][x].remove(i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				if (x>tab[0].length-1){
 					x=tab[0].length-1;
@@ -1006,6 +1430,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -1022,7 +1448,11 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -1032,9 +1462,15 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
+				this.tab1[y][x].remove(i);
+				this.tab2[y][x].remove(i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				if (y>tab.length-1){
 					y=tab.length-1;
@@ -1043,6 +1479,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -1052,6 +1490,8 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					
 					
 				}
@@ -1059,16 +1499,28 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			case ("3"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 			}
@@ -1087,12 +1539,18 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					if (y<0){
 						y=0;
@@ -1101,6 +1559,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1110,6 +1570,8 @@ public class Deplacement {
 							y=E1.getE().get(i).getCoordonne().getY()+1;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 							
 						}
@@ -1117,20 +1579,32 @@ public class Deplacement {
 						y=E1.getE().get(i).getCoordonne().getY()+1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					if (x>tab[0].length-1){
 						x=tab[0].length-1;
@@ -1139,6 +1613,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1148,6 +1624,8 @@ public class Deplacement {
 							x=E1.getE().get(i).getCoordonne().getX()-1;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 							
 						}
@@ -1155,20 +1633,32 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()-1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
 			case("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					if (y>tab.length-1){
 						y=tab.length-1;
@@ -1177,6 +1667,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1186,6 +1678,8 @@ public class Deplacement {
 							y=E1.getE().get(i).getCoordonne().getY()-1;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 							
 						}
@@ -1193,17 +1687,31 @@ public class Deplacement {
 						y=E1.getE().get(i).getCoordonne().getY()-1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("4"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 			}
@@ -1222,12 +1730,18 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					if (x>tab[0].length-1){
 						x=tab[0].length-1;
@@ -1236,6 +1750,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1245,6 +1761,8 @@ public class Deplacement {
 							x=E1.getE().get(i).getCoordonne().getX()-1;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 						
 						}
@@ -1252,20 +1770,32 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()-1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					if (y>tab.length-1){
 						y=tab.length-1;
@@ -1274,6 +1804,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1291,19 +1823,29 @@ public class Deplacement {
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			
 			case("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					if (x<0){
 						x=0;
@@ -1312,6 +1854,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1321,6 +1865,8 @@ public class Deplacement {
 							x=E1.getE().get(i).getCoordonne().getX()+1;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 							
 						}
@@ -1328,17 +1874,31 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()+1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("4"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 			}
@@ -1363,9 +1923,15 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
+				this.tab1[y][x].remove(i);
+				this.tab2[y][x].remove(i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				if (y<0){
 					y=0;
@@ -1374,6 +1940,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -1383,13 +1951,19 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 										
 				}
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -1399,9 +1973,15 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
+				this.tab1[y][x].remove(i);
+				this.tab2[y][x].remove(i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				if (x<0){
 					x=0;
@@ -1410,6 +1990,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -1419,6 +2001,8 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					
 					
 				}
@@ -1426,16 +2010,28 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			case ("3"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 			}
@@ -1456,12 +2052,18 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					if (x>tab[0].length-1){
 						x=tab[0].length-1;
@@ -1470,6 +2072,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1479,6 +2083,8 @@ public class Deplacement {
 							x=E1.getE().get(i).getCoordonne().getX()-1;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 						
 						}
@@ -1486,19 +2092,31 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()-1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					if (y<0){
 						y=0;
@@ -1507,6 +2125,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1516,6 +2136,8 @@ public class Deplacement {
 							y=E1.getE().get(i).getCoordonne().getY()+1;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 							
 						}
@@ -1523,17 +2145,31 @@ public class Deplacement {
 						y=E1.getE().get(i).getCoordonne().getY()+1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("3"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 				
@@ -1553,12 +2189,18 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					if (x<0){
 						x=0;
@@ -1567,6 +2209,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1576,6 +2220,8 @@ public class Deplacement {
 							x=E1.getE().get(i).getCoordonne().getX()+1;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 							
 						}
@@ -1583,20 +2229,32 @@ public class Deplacement {
 						x=E1.getE().get(i).getCoordonne().getX()+1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					if (y>tab.length-1){
 						y=tab.length-1;
@@ -1605,6 +2263,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1614,6 +2274,8 @@ public class Deplacement {
 							y=E1.getE().get(i).getCoordonne().getY()-1;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 							
 						}
@@ -1621,17 +2283,31 @@ public class Deplacement {
 						y=E1.getE().get(i).getCoordonne().getY()-1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 			case ("3"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 				
@@ -1652,12 +2328,18 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);	
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					if (y<0){
 						y=0;
@@ -1666,6 +2348,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);	
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1675,26 +2359,40 @@ public class Deplacement {
 							y=E1.getE().get(i).getCoordonne().getY()+1;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 						}
 				}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					if (x<0){
 						x=0;
@@ -1703,6 +2401,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1712,26 +2412,40 @@ public class Deplacement {
 							x=E1.getE().get(i).getCoordonne().getX()+1;
 							E1.getE().get(i).getCoordonne().setX(x);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 						}
 				}else{
 						x=E1.getE().get(i).getCoordonne().getX()+1;
 						E1.getE().get(i).getCoordonne().setX(x);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				if (y>tab.length-1){
 					y=tab.length-1;
@@ -1740,6 +2454,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -1749,23 +2465,39 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					
 				}
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			case ("4"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 				
@@ -1787,12 +2519,18 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				if (x<0){
 					x=0;
@@ -1801,6 +2539,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -1810,26 +2550,40 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					
 				}
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);				
 				if(estPossible(E1.getE().get(i), E1, i)){
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					if (y<0){
 						y=0;
@@ -1838,6 +2592,8 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);				
 					if(estPossible(E1.getE().get(i), E1, i)){
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						}else{
 							if(tab[y][x].isBase())
 								System.out.println("Retour en base impossible");
@@ -1847,26 +2603,40 @@ public class Deplacement {
 							y=E1.getE().get(i).getCoordonne().getY()+1;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 						}	
 				}else{
 						y=E1.getE().get(i).getCoordonne().getY()+1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						System.out.println("déplacement impossible");
-						System.out.println(jeu);
+						if(E1.getE().get(i).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
 		
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				if (x>tab[0].length-1){
 					x=tab[0].length-1;
@@ -1875,6 +2645,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -1884,24 +2656,40 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					
 				}
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 				
 			case ("4"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 				
@@ -1918,12 +2706,18 @@ public class Deplacement {
 			switch(cr){
 			case ("1"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				if (x>tab[0].length-1){
 					x=tab[0].length-1;
@@ -1932,6 +2726,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -1947,20 +2743,32 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 		
 			case ("2"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				if (y>tab.length-1){
 					y=tab.length-1;
@@ -1969,6 +2777,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -1978,26 +2788,40 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					
 				}
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 			
 			case ("3"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				if (x<0){
 					x=0;
@@ -2006,6 +2830,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -2015,26 +2841,40 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					
 				}
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 		
 			case ("4"):
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				E1.getE().get(i).setEnergie(E1.getE().get(i).getEnergie()-E1.getE().get(i).getCoutDeplacement());
 				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				if (y<0){
 					y=0;
@@ -2043,6 +2883,8 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				if(estPossible(E1.getE().get(i), E1, i)){
 				jeu.add(E1.getE().get(i), E1, i);
+				joueur1.add(E1.getE().get(i), E1, i);
+				joueur2.add(E1.getE().get(i), E1, i);
 				}else{
 					if(tab[y][x].isBase())
 						System.out.println("Retour en base impossible");
@@ -2052,24 +2894,40 @@ public class Deplacement {
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					
 				}
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					E1.getE().get(i).getCoordonne().setY(y);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
 		
 			case ("5"):
-				System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 				break;
 			default:
-					System.out.println(jeu);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					break;
 				
