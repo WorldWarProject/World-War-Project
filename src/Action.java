@@ -49,7 +49,7 @@ public class Action {
 				if(E1.getE().get(Integer.parseInt(cr)).getType()=="P"|| E1.getE().get(Integer.parseInt(cr)).getType()=="p"){
 					if(E1.getE().get(Integer.parseInt(cr)).getEnergie()-E1.getE().get(Integer.parseInt(cr)).getCoutMine()>=0)
 					new Miner(jeu,joueur1,joueur2, E1,Integer.parseInt(cr));
-					else
+					else{
 						System.out.println("Energie insuffisante pour miner");
 					if(E1.getE().get(0).getEquipe()==1){
 						System.out.println(joueur1);
@@ -57,10 +57,10 @@ public class Action {
 						System.out.println(joueur2);
 					}
 						new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
-				}else{ 
+					}}else{ 
 					if(E1.getE().get(Integer.parseInt(cr)).getEnergie()-E1.getE().get(Integer.parseInt(cr)).getCoutTir()>=0)
 					new Tirer(jeu,joueur1,joueur2, E1,Integer.parseInt(cr));
-					else 
+					else{ 
 						System.out.println("Energie insuffisante pour tirer");
 					if(E1.getE().get(0).getEquipe()==1){
 						System.out.println(joueur1);
@@ -70,7 +70,7 @@ public class Action {
 						new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
 			
 		
-				}}}
+					}}}}
 		else if(ch.equals("3")){
 			
 			 if(E1.getE().size()==1){
@@ -95,7 +95,7 @@ public class Action {
 				new Action (jeu,joueur1, joueur2, E1,tab, tab1, tab2);}
 		}else if (ch.equals("4")){
 				E1.getE().clear();
-			
+				
 			
 		}else{
 			System.out.println("choix invalide");

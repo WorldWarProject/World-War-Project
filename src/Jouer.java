@@ -29,8 +29,10 @@ public class Jouer{
 		Plateau jeu = new Plateau(Integer.parseInt(x),Integer.parseInt(y),Integer.parseInt(o));
 		Cellule[][] tab = jeu.getTab();
 		Plateau joueur1 = new Plateau(Integer.parseInt(x),Integer.parseInt(y),Integer.parseInt(o));
+		joueur1=jeu;
 		Cellule[][] tab1 = joueur1.getTab();
 		Plateau joueur2 = new Plateau(Integer.parseInt(x),Integer.parseInt(y),Integer.parseInt(o));
+		joueur2=jeu;
 		Cellule[][] tab2 = joueur2.getTab();
 		creationEquipe();
 		choixRobotequipe1(jeu, joueur1, joueur2);
