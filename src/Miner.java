@@ -15,12 +15,27 @@ public class Miner {
 		this.tab=jeu.getTab();
 		this.tab1=joueur1.getTab();
 		this.tab2=joueur2.getTab();
+		if(E1.getE().get(index).getNBMine()==0){
+			if(E1.getE().get(index).getEquipe()==1){
+				System.out.println(joueur1);
+			}else{
+				System.out.println(joueur2);
+			}
+			System.out.println("Vous n'avez plus assez de mine");
+			new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
+		}else{
 		if(E1.getE().get(index).estSurBase(E1, index, tab)){
+			if(E1.getE().get(index).getEquipe()==1){
+				System.out.println(joueur1);
+			}else{
+				System.out.println(joueur2);
+			}
 			System.out.println("Vous ne pouvez miner tant que vous êtes sur une base");
 			new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
 		}else{
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Il me reste "+E1.getE().get(index).getNBMine()+" mine sur ce piegeur");
 		System.out.println("Je peux miner vers :");
 		System.out.println("1. en haut ");
 		System.out.println("2. en haut à droite ");
@@ -40,31 +55,33 @@ public class Miner {
 				 y = E1.getE().get(index).getCoordonne().getY()-i;
 				 x = E1.getE().get(index).getCoordonne().getX();
 				 if(y<0){
-						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
-						if(E1.getE().get(i).getEquipe()==1){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else if(tab[y][x]instanceof Obstacle||tab[y][x].isRobot()||tab[y][x].isBase()||tab[y][x].isMine()){
-						System.out.println("Vous ne pouvez pas miner ici");
-						if(E1.getE().get(i).getEquipe()==1){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez pas miner ici");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else{ 
 					if(E1.getE().get(index).getEquipe()==1){
 						Mine M = new Mine(1);
 						tab[y][x].add(M);
 						tab1[y][x].add(M);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}else{
 						Mine m = new Mine(-1);
 						tab[y][x].add(m);
 						tab2[y][x].add(m);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}
 				}
@@ -75,32 +92,34 @@ public class Miner {
 			i=1;
 				 y = E1.getE().get(index).getCoordonne().getY()-i;
 				 x = E1.getE().get(index).getCoordonne().getX()+i;
-				 if(y<0){
-						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
-						if(E1.getE().get(i).getEquipe()==1){
+				 if(y<0||x>tab[0].length){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else if(tab[y][x]instanceof Obstacle||tab[y][x].isRobot()||tab[y][x].isBase()||tab[y][x].isMine()){
-						System.out.println("Vous ne pouvez pas miner ici");
-						if(E1.getE().get(i).getEquipe()==1){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez pas miner ici");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else{ 
 					if(E1.getE().get(index).getEquipe()==1){
 						Mine M = new Mine(1);
 						tab[y][x].add(M);
 						tab1[y][x].add(M);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}else{
 						Mine m = new Mine(-1);
 						tab[y][x].add(m);
 						tab2[y][x].add(m);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}
 				}
@@ -110,32 +129,34 @@ public class Miner {
 			i=1;
 				 y = E1.getE().get(index).getCoordonne().getY();
 				 x = E1.getE().get(index).getCoordonne().getX()+i;
-				 if(y<0){
-						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
-						if(E1.getE().get(i).getEquipe()==1){
+				 if(x>tab[0].length){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else if(tab[y][x]instanceof Obstacle||tab[y][x].isRobot()||tab[y][x].isBase()||tab[y][x].isMine()){
-						System.out.println("Vous ne pouvez pas miner ici");
-						if(E1.getE().get(i).getEquipe()==1){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez pas miner ici");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else{ 
 					if(E1.getE().get(index).getEquipe()==1){
 						Mine M = new Mine(1);
 						tab[y][x].add(M);
 						tab1[y][x].add(M);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}else{
 						Mine m = new Mine(-1);
 						tab[y][x].add(m);
 						tab2[y][x].add(m);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}
 				}
@@ -145,32 +166,35 @@ public class Miner {
 			i=1;
 				 y = E1.getE().get(index).getCoordonne().getY()+i;
 				 x = E1.getE().get(index).getCoordonne().getX()+i;
-				 if(y<0){
-						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
-						if(E1.getE().get(i).getEquipe()==1){
+				 if(y>tab.length||x>tab[0].length){
+						
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else if(tab[y][x]instanceof Obstacle||tab[y][x].isRobot()||tab[y][x].isBase()||tab[y][x].isMine()){
-						System.out.println("Vous ne pouvez pas miner ici");
-						if(E1.getE().get(i).getEquipe()==1){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez pas miner ici");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else{ 
 					if(E1.getE().get(index).getEquipe()==1){
 						Mine M = new Mine(1);
 						tab[y][x].add(M);
 						tab1[y][x].add(M);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}else{
 						Mine m = new Mine(-1);
 						tab[y][x].add(m);
 						tab2[y][x].add(m);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}
 				}
@@ -180,33 +204,35 @@ public class Miner {
 			i=1;
 				 y = E1.getE().get(index).getCoordonne().getY()+i;
 				 x = E1.getE().get(index).getCoordonne().getX();
-				 if(y<0){
-						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
-						if(E1.getE().get(i).getEquipe()==1){
+				 if(y>tab.length){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else if(tab[y][x]instanceof Obstacle||tab[y][x].isRobot()||tab[y][x].isBase()||tab[y][x].isMine()){
-						System.out.println("Vous ne pouvez pas miner ici");
-						if(E1.getE().get(i).getEquipe()==1){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez pas miner ici");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else{ 
 					if(E1.getE().get(index).getEquipe()==1){
 						Mine M = new Mine(1);
 						tab[y][x].add(M);
 						tab1[y][x].add(M);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 						
 					}else{
 						Mine m = new Mine(-1);
 						tab[y][x].add(m);
 						tab2[y][x].add(m);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}
 				}
@@ -217,32 +243,34 @@ public class Miner {
 			i=1;
 				 y = E1.getE().get(index).getCoordonne().getY()+i;
 				 x = E1.getE().get(index).getCoordonne().getX()-i;
-				 if(y<0){
-						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
-						if(E1.getE().get(i).getEquipe()==1){
+				 if(x<0||y>tab.length){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else if(tab[y][x]instanceof Obstacle||tab[y][x].isRobot()||tab[y][x].isBase()||tab[y][x].isMine()){
-						System.out.println("Vous ne pouvez pas miner ici");
-						if(E1.getE().get(i).getEquipe()==1){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez pas miner ici");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else{ 
 					if(E1.getE().get(index).getEquipe()==1){
 						Mine M = new Mine(1);
 						tab[y][x].add(M);
 						tab1[y][x].add(M);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}else{
 						Mine m = new Mine(-1);
 						tab[y][x].add(m);
 						tab2[y][x].add(m);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}
 				}
@@ -252,32 +280,34 @@ public class Miner {
 			i=1;
 				 y = E1.getE().get(index).getCoordonne().getY();
 				 x = E1.getE().get(index).getCoordonne().getX()-i;
-				 if(y<0){
-						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
-						if(E1.getE().get(i).getEquipe()==1){
+				 if(x<0){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else if(tab[y][x]instanceof Obstacle||tab[y][x].isRobot()||tab[y][x].isBase()||tab[y][x].isMine()){
-						System.out.println("Vous ne pouvez pas miner ici");
-						if(E1.getE().get(i).getEquipe()==1){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez pas miner ici");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else{ 
 					if(E1.getE().get(index).getEquipe()==1){
 						Mine M = new Mine(1);
 						tab[y][x].add(M);
 						tab1[y][x].add(M);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}else{
 						Mine m = new Mine(-1);
 						tab[y][x].add(m);
 						tab2[y][x].add(m);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}
 				}
@@ -288,50 +318,57 @@ public class Miner {
 			i=1;
 				 y = E1.getE().get(index).getCoordonne().getY()-i;
 				 x = E1.getE().get(index).getCoordonne().getX()-i;
-				 if(y<0){
-						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
-						if(E1.getE().get(i).getEquipe()==1){
+				 if(y<0||x<0){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez miner en dehors du champs de bataille");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else if(tab[y][x]instanceof Obstacle||tab[y][x].isRobot()||tab[y][x].isBase()||tab[y][x].isMine()){
-						System.out.println("Vous ne pouvez pas miner ici");
-						if(E1.getE().get(i).getEquipe()==1){
+						if(E1.getE().get(index).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("Vous ne pouvez pas miner ici");
 						new Miner(jeu, joueur1, joueur2, E1, index);
 				}else{ 
 					if(E1.getE().get(index).getEquipe()==1){
 						Mine M = new Mine(1);
 						tab[y][x].add(M);
 						tab1[y][x].add(M);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}else{
 						Mine m = new Mine(-1);
 						tab[y][x].add(m);
 						tab2[y][x].add(m);
+						E1.getE().get(index).setNBMine(E1.getE().get(index).getNBMine()-1);
 						E1.getE().get(index).setEnergie(E1.getE().get(index).getEnergie()-E1.getE().get(index).getCoutMine());
 					}
 				}
 			break;
 			
 		case "9":
+			if(E1.getE().get(index).getEquipe()==1){
+				System.out.println(joueur1);
+			}else{
+				System.out.println(joueur2);
+			}
 			new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
 			break;
 			default:
-				System.out.println("choix invalide");
-				if(E1.getE().get(i).getEquipe()==1){
+				if(E1.getE().get(index).getEquipe()==1){
 					System.out.println(joueur1);
 				}else{
 					System.out.println(joueur2);
 				}
+				System.out.println("choix invalide");
 				new Miner(jeu, joueur1, joueur2, E1, index);
 				break;
 		}
 		
-	}}
+	}}}
 }

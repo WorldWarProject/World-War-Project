@@ -12,7 +12,7 @@ public class Char extends Robot {
 	 * @param equipe - equipe du robot
 	 */
 	public Char(int equipe) {
-		super(equipe, Constante.ENERGIE_CHAR);
+		super(equipe, Constante.ENERGIE_CHAR,0);
 
 	}
 
@@ -71,5 +71,19 @@ public class Char extends Robot {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int getNBMine() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getRecupMine() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
 
 }

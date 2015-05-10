@@ -9,6 +9,8 @@ public abstract class Robot {
 	private int equipe;
 	/** L'energie du robot */
 	private int energie;
+	/** nombre de mine du piegeur */
+	protected int NBMine;
 	/** Coordonnée du robot */
 	Coordonne c;
 	/**
@@ -21,9 +23,10 @@ public abstract class Robot {
 	 * @param equipe - equipe du robot
 	 * @param energie - energie du robot
 	 */
-	public Robot(int equipe, int energie) {
+	public Robot(int equipe, int energie,int NBMine) {
 		this.energie = energie;
 		this.equipe = equipe;
+		this.NBMine = NBMine;
 	}
 
 	/**
@@ -123,6 +126,23 @@ public abstract class Robot {
 	 * @return le cout de mine du robot
 	 */
 	public abstract int getCoutMine();
+	
+	/**
+	 * Retourne le nombre de mine du robot
+	 * @return le nombre de mine du robot
+	 */
+	public  int getNBMine(){
+		return this.NBMine;
+	}
+	
+	/**
+	 * Retourne le nombre de mine recupere par le robot
+	 * @return le nombre de mine recupere par le robot
+	 */
+	public abstract int getRecupMine();
+	
+	
+
 	/**
 	 * Retourne la portee du robot
 	 * @return la portee du robot
@@ -141,5 +161,16 @@ public abstract class Robot {
 	public String toString() {
 		return this.getType() + " : energie ="+this.energie;
 	}
+	
+	/**
+	 * Attribue des mines  à un robot
+	 * @param mine attribue des mines à un robot
+	 */
+	public void setNBMine(int NBMine) {
+		this.NBMine=NBMine;
+		
+	}
+
+	
 
 }

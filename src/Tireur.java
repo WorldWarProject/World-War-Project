@@ -13,7 +13,7 @@ public class Tireur extends Robot {
 	 * @param equipe - equipe du robot
 	 */
 	public Tireur(int equipe) {
-		super(equipe, Constante.ENERGIE_TIREUR);
+		super(equipe, Constante.ENERGIE_TIREUR, 0);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -73,5 +73,20 @@ public class Tireur extends Robot {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
+	@Override
+	public int getNBMine() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int getRecupMine() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }

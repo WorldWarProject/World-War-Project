@@ -47,12 +47,12 @@ public class Deplacement {
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -74,12 +74,12 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setX(x);
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -97,12 +97,12 @@ public class Deplacement {
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -155,12 +155,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -185,12 +185,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -211,12 +211,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -241,12 +241,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -267,12 +267,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -325,12 +325,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -355,12 +355,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -381,12 +381,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -411,12 +411,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -437,12 +437,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -494,12 +494,12 @@ public class Deplacement {
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					E1.getE().get(i).getCoordonne().setY(y);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -521,12 +521,12 @@ public class Deplacement {
 					E1.getE().get(i).getCoordonne().setY(y);				
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -544,12 +544,12 @@ public class Deplacement {
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -603,12 +603,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -633,12 +633,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -659,12 +659,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -717,12 +717,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -747,12 +747,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -773,12 +773,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -833,12 +833,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -863,12 +863,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -889,12 +889,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -917,12 +917,12 @@ public class Deplacement {
 						y=E1.getE().get(i).getCoordonne().getY()-1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -943,12 +943,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1004,12 +1004,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1034,8 +1034,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -1056,12 +1060,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -1086,12 +1090,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1112,12 +1116,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1171,12 +1175,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1200,12 +1204,12 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 					}
 				break;
@@ -1226,12 +1230,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1256,8 +1260,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1278,8 +1286,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
+					if(E1.getE().get(i).getEquipe()==1){
+						System.out.println(joueur1);
+					}else{
+						System.out.println(joueur2);
+					}
 					System.out.println("déplacement impossible");
-					System.out.println(jeu);
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1304,8 +1316,12 @@ public class Deplacement {
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
+				if(E1.getE().get(i).getEquipe()==1){
+					System.out.println(joueur1);
+				}else{
+					System.out.println(joueur2);
+				}
 				System.out.println("déplacement impossible");
-				System.out.println(jeu);
 				DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1326,12 +1342,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1356,12 +1372,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementTP(jeu,joueur1, joueur2, E1,i);
 				}
 				break;
@@ -1441,18 +1457,20 @@ public class Deplacement {
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
 					jeu.add(E1.getE().get(i), E1, i);
+					joueur1.add(E1.getE().get(i), E1, i);
+					joueur2.add(E1.getE().get(i), E1, i);
 					
 					
 				}
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()-1;
 					E1.getE().get(i).getCoordonne().setX(x);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -1498,12 +1516,12 @@ public class Deplacement {
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()-1;
 					E1.getE().get(i).getCoordonne().setY(y);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -1581,12 +1599,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -1635,12 +1653,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -1689,12 +1707,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -1772,12 +1790,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -1815,6 +1833,8 @@ public class Deplacement {
 							y=E1.getE().get(i).getCoordonne().getY()-1;
 							E1.getE().get(i).getCoordonne().setY(y);
 							jeu.add(E1.getE().get(i), E1, i);
+							joueur1.add(E1.getE().get(i), E1, i);
+							joueur2.add(E1.getE().get(i), E1, i);
 							
 						
 						}
@@ -1822,12 +1842,14 @@ public class Deplacement {
 						y=E1.getE().get(i).getCoordonne().getY()-1;
 						E1.getE().get(i).getCoordonne().setY(y);
 						jeu.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
+						joueur1.add(E1.getE().get(i), E1, i);
+						joueur2.add(E1.getE().get(i), E1, i);
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -1876,12 +1898,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -1958,12 +1980,12 @@ public class Deplacement {
 				}else{
 					y=E1.getE().get(i).getCoordonne().getY()+1;
 					E1.getE().get(i).getCoordonne().setY(y);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -2009,12 +2031,13 @@ public class Deplacement {
 				}else{
 					x=E1.getE().get(i).getCoordonne().getX()+1;
 					E1.getE().get(i).getCoordonne().setX(x);
-					System.out.println("déplacement impossible");
+					
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -2094,12 +2117,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -2147,12 +2170,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -2231,12 +2254,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -2285,12 +2308,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -2369,12 +2392,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -2422,12 +2445,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -2475,12 +2498,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -2560,12 +2583,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -2613,12 +2636,12 @@ public class Deplacement {
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
-						System.out.println("déplacement impossible");
 						if(E1.getE().get(i).getEquipe()==1){
 							System.out.println(joueur1);
 						}else{
 							System.out.println(joueur2);
 						}
+						System.out.println("déplacement impossible");
 						DeplacementC(jeu, joueur1, joueur2, E1,  i);
 					}
 				break;
@@ -2666,12 +2689,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -2745,12 +2768,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -2798,12 +2821,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -2851,12 +2874,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -2904,12 +2927,12 @@ public class Deplacement {
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
-					System.out.println("déplacement impossible");
 					if(E1.getE().get(i).getEquipe()==1){
 						System.out.println(joueur1);
 					}else{
 						System.out.println(joueur2);
 					}
+					System.out.println("déplacement impossible");
 					DeplacementC(jeu, joueur1, joueur2, E1,  i);
 				}
 				break;
@@ -2934,6 +2957,11 @@ public class Deplacement {
 				
 		}
 		}else{
+			if(E1.getE().get(i).getEquipe()==1){
+				System.out.println(joueur1);
+			}else{
+				System.out.println(joueur2);
+			}
 			System.out.println("Deplacement impossible par manque d'énergie");
 			new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 		}

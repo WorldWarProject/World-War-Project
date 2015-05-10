@@ -8,17 +8,17 @@ public class Piegeur extends Robot {
 	Coordonne c;
 	
 	
+	
+	
 	/** 
 	 * Construit un objet piegeur qui herite de robot, avec l'equipe donnée
 	 * @param equipe - equipe du robot
 	 */
 	public Piegeur(int equipe) {
-		super(equipe, Constante.ENERGIE_PIEGEUR);
+		super(equipe, Constante.ENERGIE_PIEGEUR, 10);
 		// TODO Auto-generated constructor stub
 	}
-
-
-	@Override
+	
 	public int getRegenEnergie() {
 		// TODO Auto-generated method stub
 		return Constante.REGEN_ENERGIE_PIEGEUR;
@@ -59,11 +59,18 @@ public class Piegeur extends Robot {
 		return Constante.COUT_MINER;
 	}
 	
-	public int getNBMine() {
-		// TODO Auto-generated method stub
-		return Constante.NB_MINE;
+	/**
+	 * Retourne le nombre de mine du robot
+	 * @return le nombre de mine du robot
+	 */
+	public  int getNBMine(){
+		return this.NBMine;
 	}
-
+	
+	public int getRecupMine() {
+		// TODO Auto-generated method stub
+		return Constante.RECUP_MINE;
+	}
 
 
 	@Override
@@ -79,5 +86,7 @@ public class Piegeur extends Robot {
 		// TODO Auto-generated method stub
 		return Constante.DEPLACEMENT_PIEGEUR;
 	}
+
+
 
 }
