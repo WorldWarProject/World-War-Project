@@ -36,7 +36,7 @@ public class Deplacement {
 			case ("1"):
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
 				joueur1.add(E1.getE().get(i), E1, i);
@@ -61,7 +61,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
 				joueur1.add(E1.getE().get(i), E1, i);
@@ -86,7 +86,7 @@ public class Deplacement {
 			case ("3"):
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				this.tab[y][x].remove(i);
 				joueur1.add(E1.getE().get(i), E1, i);
@@ -144,7 +144,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -172,7 +172,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -200,7 +200,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -228,7 +228,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -256,7 +256,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -314,7 +314,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -342,7 +342,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -370,7 +370,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -398,7 +398,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -426,7 +426,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -483,7 +483,7 @@ public class Deplacement {
 			case ("1"):
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -508,7 +508,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);				
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -533,7 +533,7 @@ public class Deplacement {
 			case ("3"):
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -592,7 +592,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -620,7 +620,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -648,7 +648,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -706,7 +706,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -734,7 +734,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -762,7 +762,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -822,7 +822,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);	
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -850,7 +850,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -878,7 +878,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -906,7 +906,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -932,7 +932,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -993,7 +993,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1021,7 +1021,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1045,7 +1045,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);				
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -1073,7 +1073,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1101,7 +1101,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1160,7 +1160,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1189,7 +1189,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1215,7 +1215,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1243,7 +1243,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1267,7 +1267,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1291,7 +1291,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setX(x);
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1315,7 +1315,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1343,7 +1343,7 @@ public class Deplacement {
 				E1.getE().get(i).getCoordonne().setY(y);
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1410,7 +1410,7 @@ public class Deplacement {
 			case ("1"):
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1428,7 +1428,7 @@ public class Deplacement {
 				}
 					
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1460,7 +1460,7 @@ public class Deplacement {
 			case ("2"):
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1477,7 +1477,7 @@ public class Deplacement {
 				System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1543,7 +1543,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -1557,7 +1557,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setY(y);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -1597,7 +1597,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -1611,7 +1611,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setX(x);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -1651,7 +1651,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -1665,7 +1665,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setY(y);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -1734,7 +1734,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -1748,7 +1748,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setX(x);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -1788,7 +1788,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -1802,7 +1802,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setY(y);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -1838,7 +1838,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -1852,7 +1852,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setX(x);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -1921,7 +1921,7 @@ public class Deplacement {
 			case ("1"):
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1938,7 +1938,7 @@ public class Deplacement {
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1971,7 +1971,7 @@ public class Deplacement {
 			case ("2"):
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -1988,7 +1988,7 @@ public class Deplacement {
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2056,7 +2056,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -2070,7 +2070,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setX(x);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -2109,7 +2109,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -2123,7 +2123,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setY(y);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -2193,7 +2193,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -2207,7 +2207,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setX(x);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -2247,7 +2247,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -2261,7 +2261,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setY(y);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -2332,7 +2332,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);	
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -2346,7 +2346,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setY(y);	
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -2385,7 +2385,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -2399,7 +2399,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setX(x);
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -2438,7 +2438,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2452,7 +2452,7 @@ public class Deplacement {
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2523,7 +2523,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2537,7 +2537,7 @@ public class Deplacement {
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2576,7 +2576,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);				
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 					jeu.add(E1.getE().get(i), E1, i);
 					joueur1.add(E1.getE().get(i), E1, i);
 					joueur2.add(E1.getE().get(i), E1, i);
@@ -2590,7 +2590,7 @@ public class Deplacement {
 						System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 					}
 					E1.getE().get(i).getCoordonne().setY(y);				
-					if(estPossible(E1.getE().get(i), E1, i)){
+					if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 						jeu.add(E1.getE().get(i), E1, i);
 						joueur1.add(E1.getE().get(i), E1, i);
 						joueur2.add(E1.getE().get(i), E1, i);
@@ -2629,7 +2629,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2643,7 +2643,7 @@ public class Deplacement {
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2710,7 +2710,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()+1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2724,7 +2724,7 @@ public class Deplacement {
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2761,7 +2761,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()+1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2775,7 +2775,7 @@ public class Deplacement {
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2814,7 +2814,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				x=E1.getE().get(i).getCoordonne().getX()-1;
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2828,7 +2828,7 @@ public class Deplacement {
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setX(x);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2867,7 +2867,7 @@ public class Deplacement {
 				joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
 				y=E1.getE().get(i).getCoordonne().getY()-1;
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2881,7 +2881,7 @@ public class Deplacement {
 					System.out.println("Vous ne pouvez pas fuir le champ de bataille");
 				}
 				E1.getE().get(i).getCoordonne().setY(y);
-				if(estPossible(E1.getE().get(i), E1, i)){
+				if(estPossible(E1.getE().get(i), E1, i, jeu, joueur1, joueur2)){
 				jeu.add(E1.getE().get(i), E1, i);
 				joueur1.add(E1.getE().get(i), E1, i);
 				joueur2.add(E1.getE().get(i), E1, i);
@@ -2938,11 +2938,24 @@ public class Deplacement {
 			new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
 		}
 		}
-		public boolean estPossible(Robot r,Equipe E1, int i){
+		public boolean estPossible(Robot r,Equipe E1, int i, Plateau jeu, Plateau joueur1, Plateau joueur2){
 			int y= E1.getE().get(i).getCoordonne().getY();
 			int x= E1.getE().get(i).getCoordonne().getX(); 
-			if(tab[y][x] instanceof Base == false && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false && y>=0 && x >=0 && y<=tab.length-1 && x<=tab[0].length-1){
-				return true;	
+			if(tab[y][x] instanceof Base == false && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false && tab[y][x].isMine() == true && y>=0 && x >=0 && y<=tab.length-1 && x<=tab[0].length-1){
+				if(r.getEnergie()-r.getDegatMine()<0){
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+				r.setEnergie(0);
+				}else{
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					joueur2.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					r.setEnergie(r.getEnergie()-r.getDegatMine());
+				}
+				return true;
+			}else if(tab[y][x] instanceof Base == false && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false && y>=0 && x >=0 && y<=tab.length-1 && x<=tab[0].length-1){
+					return true;	
 			}else if(tab[y][x] instanceof Base == true && tab[y][x] instanceof Obstacle == false && tab[y][x].isRobot() == false){
 				if(r.getEquipe()==tab[y][x].getEquipe()){
 					if(E1.getE().size()==1){

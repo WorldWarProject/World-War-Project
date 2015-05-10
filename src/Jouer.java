@@ -28,12 +28,21 @@ public class Jouer{
 		creationObstacle();
 		Plateau jeu = new Plateau(Integer.parseInt(x),Integer.parseInt(y),Integer.parseInt(o));
 		Cellule[][] tab = jeu.getTab();
-		Plateau joueur1 = new Plateau(Integer.parseInt(x),Integer.parseInt(y),Integer.parseInt(o));
-		joueur1=jeu;
+		Plateau joueur1 = new Plateau(Integer.parseInt(x),Integer.parseInt(y),0);
 		Cellule[][] tab1 = joueur1.getTab();
-		Plateau joueur2 = new Plateau(Integer.parseInt(x),Integer.parseInt(y),Integer.parseInt(o));
-		joueur2=jeu;
+		Plateau joueur2 = new Plateau(Integer.parseInt(x),Integer.parseInt(y),0);
 		Cellule[][] tab2 = joueur2.getTab();
+		for(int k=0;k<tab.length;k++){
+			for(int l=0;l<tab[0].length;l++){
+				if(tab[k][l]instanceof Obstacle){
+					tab1[k][l]= new Obstacle(k,l);
+					tab2[k][l]= new Obstacle(k,l);
+				}else{
+					
+				}
+					
+			}
+		}
 		creationEquipe();
 		choixRobotequipe1(jeu, joueur1, joueur2);
 		
@@ -41,63 +50,110 @@ public class Jouer{
 		while(!findepartie(E1, E2)){
 		Random r = new Random();
 		cpt=r.nextInt(1000);
+		clearAffichage();
 		System.out.println("Tour de jeu "+turn);
-		
 		if(cpt%2!=0){
-		System.out.println(joueur1);
-		affichageRobot();
-		System.out.println("Au Tour de l'équipe "+E1.getNom()+"\n");
-		new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
-		for(int i=0;i<E1.getE().size();i++){
-			if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
-				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
-				E1.getE().remove(i);
+			try {
+				System.out.println("Au Tour de l'équipe "+E1.getNom()+"\n");
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			System.out.println(joueur1);
+			affichageRobot();
+			new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
+			for(int i=0;i<E1.getE().size();i++){
+				if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					E1.getE().remove(i);
+				}
 			
-		}
-		System.out.println(joueur2);
-		affichageRobot();
-		System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
-		new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
-		for(int i=0;i<E2.getE().size();i++){
-		if(E2.getE().get(i).getEnergie()==0 && E2.getE().get(i).estSurBase(E2, i, tab)==false){
-			jeu.remove(E2.getE().get(i).getCoordonne().getX(), E2.getE().get(i).getCoordonne().getY());
-			E2.getE().remove(i);
 			}
-		}
-		
-		}else{
+			if(findepartie(E1, E2)){
+			try {
+				Thread.sleep(1000);
+				clearAffichage();
+				new Menu();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+			else{
+			clearAffichage();
+			try {
+				System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.out.println(joueur2);
 			affichageRobot();
-		System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
-		new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
-		for(int i=0;i<E2.getE().size();i++){
-		if(E2.getE().get(i).getEnergie()==0 && E2.getE().get(i).estSurBase(E2, i, tab)==false){
-			jeu.remove(E2.getE().get(i).getCoordonne().getX(), E2.getE().get(i).getCoordonne().getY());
-			E2.getE().remove(i);
+			new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
+			for(int i=0;i<E2.getE().size();i++){
+				if(E2.getE().get(i).getEnergie()==0 && E2.getE().get(i).estSurBase(E2, i, tab)==false){
+					jeu.remove(E2.getE().get(i).getCoordonne().getX(), E2.getE().get(i).getCoordonne().getY());
+				E2.getE().remove(i);
+				}
+			}}
+		
+		}else{
+			try {
+				System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		}
-		System.out.println(joueur1);
-		affichageRobot();
-		System.out.println("Au Tour de l'équipe "+E1.getNom()+"\n");
-		new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
-		for(int i=0;i<E1.getE().size();i++){
-			if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
-				jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
-				E1.getE().remove(i);
+			System.out.println(joueur2);
+			affichageRobot();
+			new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
+			for(int i=0;i<E2.getE().size();i++){
+				if(E2.getE().get(i).getEnergie()==0 && E2.getE().get(i).estSurBase(E2, i, tab)==false){
+					jeu.remove(E2.getE().get(i).getCoordonne().getX(), E2.getE().get(i).getCoordonne().getY());
+					E2.getE().remove(i);
+				}
 			}
-		}
-		}
-		turn++;
+			if(findepartie(E1, E2)){
+				try {
+					Thread.sleep(1000);
+					clearAffichage();
+					new Menu();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}}
+				else{
+			clearAffichage();
+			try {
+				System.out.println("Au Tour de l'équipe "+E1.getNom()+"\n");
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(joueur1);
+			affichageRobot();
+			new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
+			for(int i=0;i<E1.getE().size();i++){
+				if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
+					jeu.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
+					E1.getE().remove(i);
+				}
+			}
+			}}
+			turn++;
 			
 		}
-		try {
-			Thread.sleep(1000);
-			new Menu();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				Thread.sleep(1000);
+				clearAffichage();
+				new Menu();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			
 		
@@ -503,6 +559,11 @@ public class Jouer{
 			}catch(Exception e){
 				creationPiegeur2(jeu, joueur1, joueur2);
 			}
+		}
+		
+		public void clearAffichage(){
+			for(int i=0;i<100;i++)
+				System.out.println();
 		}
 		
 		public void affichageRobot(){

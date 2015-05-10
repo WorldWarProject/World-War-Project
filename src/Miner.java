@@ -15,6 +15,10 @@ public class Miner {
 		this.tab=jeu.getTab();
 		this.tab1=joueur1.getTab();
 		this.tab2=joueur2.getTab();
+		if(E1.getE().get(index).estSurBase(E1, index, tab)){
+			System.out.println("Vous ne pouvez miner tant que vous êtes sur une base");
+			new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
+		}else{
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Je peux miner vers :");
@@ -329,5 +333,5 @@ public class Miner {
 				break;
 		}
 		
-	}
+	}}
 }

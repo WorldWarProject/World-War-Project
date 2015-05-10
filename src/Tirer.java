@@ -15,9 +15,13 @@ public class Tirer {
 		this.tab=jeu.getTab();
 		this.tab1=joueur1.getTab();
 		this.tab2=joueur2.getTab();
+		if(E1.getE().get(index).estSurBase(E1, index, tab)){
+			System.out.println("Tir impossible tant que vous êtes sur une base");
+			new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
+		}else{
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Je peux tirer vers :");
+		System.out.println("Je souhaite tirer vers :");
 		System.out.println("1. en haut ");
 		System.out.println("2. la droite ");
 		System.out.println("3. en bas ");
@@ -222,7 +226,7 @@ public class Tirer {
 				}
 				new Tirer(jeu, joueur1, joueur2, E1, index);
 				break;
-		}
+		}}
 		
 	}
 	

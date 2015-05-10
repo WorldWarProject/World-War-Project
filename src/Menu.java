@@ -14,9 +14,8 @@ public class Menu {
 		
 		System.out.println("Menu du jeu:");
 		System.out.println("1. Jouer");
-		System.out.println("2. Editeur de niveaux");
-		System.out.println("3. Regles du jeu");
-		System.out.println("4. Quitter");
+		System.out.println("2. Regles du jeu");
+		System.out.println("3. Quitter");
 		str = new Scanner(System.in);
 		System.out.println("Que voulez-vous faire ?");
 		
@@ -33,14 +32,10 @@ public class Menu {
 					break;
 
 				case ("2"):
-					new EditeurDeNiveaux();
-					break;
-
-				case ("3"):
 					new ReglesDuJeu();
 					break;
 
-				case ("4"):
+				case ("3"):
 					new Quitter();
 					break;
 
