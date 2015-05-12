@@ -28,7 +28,7 @@ public class Action {
 		if (Integer.parseInt(cr)==E1.getE().size())
 			new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
 		else
-		new Deplacement(jeu,joueur1,joueur2,E1,Integer.parseInt(cr));
+			new Deplacement(jeu,joueur1,joueur2,E1,Integer.parseInt(cr));
 		
 		}else if (ch.equals("2")){
 			System.out.println("Equipe "+E1.getNom());
@@ -44,29 +44,28 @@ public class Action {
 					System.out.println(joueur2);
 				}
 				new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
-			}
-			else{
+			}else{
 				if(E1.getE().get(Integer.parseInt(cr)).getType()=="P"|| E1.getE().get(Integer.parseInt(cr)).getType()=="p"){
 					if(E1.getE().get(Integer.parseInt(cr)).getEnergie()-E1.getE().get(Integer.parseInt(cr)).getCoutMine()>=0)
 					new Miner(jeu,joueur1,joueur2, E1,Integer.parseInt(cr));
 					else{
+						if(E1.getE().get(0).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						System.out.println("Energie insuffisante pour miner");
-					if(E1.getE().get(0).getEquipe()==1){
-						System.out.println(joueur1);
-					}else{
-						System.out.println(joueur2);
-					}
 						new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
 					}}else{ 
 					if(E1.getE().get(Integer.parseInt(cr)).getEnergie()-E1.getE().get(Integer.parseInt(cr)).getCoutTir()>=0)
 					new Tirer(jeu,joueur1,joueur2, E1,Integer.parseInt(cr));
 					else{ 
+						if(E1.getE().get(0).getEquipe()==1){
+							System.out.println(joueur1);
+						}else{
+							System.out.println(joueur2);
+						}
 						System.out.println("Energie insuffisante pour tirer");
-					if(E1.getE().get(0).getEquipe()==1){
-						System.out.println(joueur1);
-					}else{
-						System.out.println(joueur2);
-					}
 						new Action(jeu, joueur1, joueur2, E1, tab, tab1, tab2);
 			
 		

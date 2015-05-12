@@ -20,6 +20,8 @@ public class Jouer{
 	List<String> Pays = new ArrayList<String>();
 	private Random r;
 	private int nbr;
+	private int joueur1IA;
+	private int joueur2IA;
 	
 	public Jouer(){
 		
@@ -64,7 +66,11 @@ public class Jouer{
 			}
 			System.out.println(joueur1);
 			affichageRobot();
-			new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
+			if(joueur1IA==1)
+				new ActionIA(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
+			else
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
+			
 			for(int i=0;i<E1.getE().size();i++){
 				if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
 					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
@@ -94,7 +100,11 @@ public class Jouer{
 			}
 			System.out.println(joueur2);
 			affichageRobot();
-			new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
+			if(joueur2IA==1)
+				new ActionIA(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
+			else
+				new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
+			
 			for(int i=0;i<E2.getE().size();i++){
 				if(E2.getE().get(i).getEnergie()==0 && E2.getE().get(i).estSurBase(E2, i, tab)==false){
 					joueur1.remove(E2.getE().get(i).getCoordonne().getX(), E2.getE().get(i).getCoordonne().getY());
@@ -153,7 +163,11 @@ public class Jouer{
 			}
 			System.out.println(joueur2);
 			affichageRobot();
-			new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
+			if(joueur2IA==1)
+				new ActionIA(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
+			else
+				new Action(jeu,joueur1, joueur2, E2,tab, tab1, tab2);
+			
 			for(int i=0;i<E2.getE().size();i++){
 				if(E2.getE().get(i).getEnergie()==0 && E2.getE().get(i).estSurBase(E2, i, tab)==false){
 					joueur1.remove(E2.getE().get(i).getCoordonne().getX(), E2.getE().get(i).getCoordonne().getY());
@@ -182,7 +196,11 @@ public class Jouer{
 			}
 			System.out.println(joueur1);
 			affichageRobot();
-			new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
+			if(joueur1IA==1)
+				new ActionIA(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
+			else
+				new Action(jeu,joueur1, joueur2, E1,tab, tab1, tab2);
+			
 			for(int i=0;i<E1.getE().size();i++){
 				if(E1.getE().get(i).getEnergie()==0 && E1.getE().get(i).estSurBase(E1, i, tab)==false){
 					joueur1.remove(E1.getE().get(i).getCoordonne().getX(), E1.getE().get(i).getCoordonne().getY());
@@ -440,6 +458,7 @@ public class Jouer{
 						creationTireur1(jeu,joueur1,joueur2);
 						creationChar1(jeu,joueur1,joueur2);
 						creationPiegeur1(jeu,joueur1,joueur2);
+						joueur1IA=1;
 						choixModedecombat2(jeu,joueur1,joueur2, Integer.parseInt(ce1));
 					
 					break;
@@ -447,6 +466,7 @@ public class Jouer{
 					r = new Random();
 					nbr = r.nextInt(5)+1;
 					creationRobotalea1(jeu, joueur1, joueur2, nbr);
+					joueur1IA=1;
 					choixModedecombat2(jeu,joueur1,joueur2, nbr);
 					break;
 					default:
@@ -596,11 +616,13 @@ public class Jouer{
 					creationTireur2(jeu,joueur1,joueur2, nbr);
 					creationChar2(jeu,joueur1,joueur2, nbr);
 					creationPiegeur2(jeu,joueur1,joueur2, nbr);
+					joueur2IA=1;
 					
 				break;
 			case "4":
 				
 				creationRobotalea2(jeu, joueur1, joueur2, nbr);
+				joueur2IA=1;
 				
 				break;
 				default:
