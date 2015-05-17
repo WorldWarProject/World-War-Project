@@ -256,7 +256,7 @@ public class Tirer {
 				break;
 		}}
 		
-	}
+		}
 	
 	public void tirObstacle(Equipe E1, int index, Cellule[][] tab, Plateau jeu, Plateau joueur1, Plateau joueur2){
 		@SuppressWarnings("resource")

@@ -18,10 +18,11 @@ public class Jouer{
 	private static Equipe E1;
 	private static Equipe E2;
 	List<String> Pays = new ArrayList<String>();
-	private Random r;
+	private Random r = new Random();
 	private int nbr;
 	private int joueur1IA;
 	private int joueur2IA;
+	private String c1;
 	
 	public Jouer(){
 		
@@ -54,7 +55,8 @@ public class Jouer{
 		while(!findepartie(E1, E2)){
 		Random r = new Random();
 		cpt=r.nextInt(1000);
-		clearAffichage();
+		if(joueur1IA==1 && joueur2IA==1){}
+		else{clearAffichage();}
 		System.out.println("Tour de jeu "+turn);
 		if(cpt%2!=0){
 			try {
@@ -83,14 +85,13 @@ public class Jouer{
 			if(findepartie(E1, E2)){
 			try {
 				Thread.sleep(1000);
-				clearAffichage();
 				new Menu();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}}
-			else{
-			clearAffichage();
+			}}else{
+				if(joueur1IA==1 && joueur2IA==1){}
+				else{clearAffichage();}
 			try {
 				System.out.println("Au Tour de l'équipe "+E2.getNom()+"\n");
 				Thread.sleep(1500);
@@ -179,14 +180,13 @@ public class Jouer{
 			if(findepartie(E1, E2)){
 				try {
 					Thread.sleep(1000);
-					clearAffichage();
 					new Menu();
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}}
-				else{
-			clearAffichage();
+				}}else{
+					if(joueur1IA==1 && joueur2IA==1){}
+					else{clearAffichage();}
 			try {
 				System.out.println("Au Tour de l'équipe "+E1.getNom()+"\n");
 				Thread.sleep(1500);
@@ -253,7 +253,6 @@ public class Jouer{
 		}
 			try {
 				Thread.sleep(1000);
-				clearAffichage();
 				new Menu();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -275,9 +274,13 @@ public class Jouer{
 		do{
 		System.out.println("Le nombre de Colonnes doit être supérieur à 2 et inférieur à 20");
 		System.out.println("Nombre de Colonne:");
-		x = str.nextLine();}
-		while( Integer.parseInt(x)<3|| Integer.parseInt(x)>20);
+		x = str.nextLine();
+		if( Integer.parseInt(x)<3|| Integer.parseInt(x)>20){
+		System.out.println("Saisie incorrecte");
+		}
+		}while( Integer.parseInt(x)<3|| Integer.parseInt(x)>20);
 		}catch(Exception e){
+			System.out.println("Saisie incorrecte");	
 			creationColonne();
 		}
 	}
@@ -291,9 +294,13 @@ public class Jouer{
 			System.out.println("Le nombre de Lignes doit être supérieur à 2 et inférieur à 20");
 			System.out.println("Nombre de ligne:");
 			y = str.nextLine();
+			if( Integer.parseInt(y)<3|| Integer.parseInt(y)>20){
+			System.out.println("Saisie incorrecte");
+			}
 			}
 			while( Integer.parseInt(y)<3|| Integer.parseInt(y)>20);
 		}catch(Exception e){
+			System.out.println("Saisie incorrecte");	
 			creationLigne();
 		}
 	}
@@ -309,9 +316,14 @@ public class Jouer{
 				System.out.println("Attention: Un nombre trop important d'obstacles peut rendre le terrain impraticable");
 				System.out.println("Veuillez à bien penser à votre composition d'équipe");
 				System.out.println("Pourcentage d'obstacles:");
-				o = str.nextLine();}
+				o = str.nextLine();
+				if(Integer.parseInt(o)<0||Integer.parseInt(o)>25){
+				System.out.println("Saisie incorrecte");	
+				}
+			}
 			while(Integer.parseInt(o)<0||Integer.parseInt(o)>25);
 			}catch(Exception e){
+				System.out.println("Saisie incorrecte");
 				creationObstacle();
 			}
 		}  
@@ -342,6 +354,7 @@ public class Jouer{
 			choixPays2();
 			E2=new Equipe(e2,p2);
 			}catch(Exception e){
+				System.out.println("Saisie incorrecte");	
 				creationEquipe();
 			}
 			
@@ -422,54 +435,35 @@ public class Jouer{
 				ce1 = str.nextLine();
 				switch(ce1){
 				case "1":
-					try{
-						do{
-							System.out.println("Veuillez donner le nombre de robots que vous souhaitez voir combattre ");
-							System.out.println("Ce nombre ne peut être supérieur à 5 et doit être d'au moins 1");
-							ce1 = str.nextLine();
-						}
-						while(Integer.parseInt(ce1)<1 || Integer.parseInt(ce1)>5);
-					}catch(Exception e){
-						choixModedecombat1(jeu, joueur1, joueur2);
-					}
+						saisieRobot();
 						creationTireur1(jeu,joueur1,joueur2);
 						creationChar1(jeu,joueur1,joueur2);
 						creationPiegeur1(jeu,joueur1,joueur2);
-						choixModedecombat2(jeu,joueur1,joueur2, Integer.parseInt(ce1));
-					
+						nbr=Integer.parseInt(c1);
+						choixModedecombat2(jeu,joueur1,joueur2,nbr );
 					break;
 				case "2":
-					r = new Random();
-					nbr = r.nextInt(5)+1;
+					nbr = (r.nextInt(5)+1);
 					creationRobotalea1(jeu, joueur1, joueur2, nbr);
 					choixModedecombat2(jeu,joueur1,joueur2, nbr);
 					break;
 				case "3":
-					try{
-						do{
-							System.out.println("Veuillez donner le nombre de robots que vous souhaitez voir combattre ");
-							System.out.println("Ce nombre ne peut être supérieur à 5 et doit être d'au moins 1");
-							ce1 = str.nextLine();
-						}
-						while(Integer.parseInt(ce1)<1 || Integer.parseInt(ce1)>5);
-						}catch(Exception e){
-						choixModedecombat1(jeu, joueur1, joueur2);
-						}
-						creationTireur1(jeu,joueur1,joueur2);
-						creationChar1(jeu,joueur1,joueur2);
-						creationPiegeur1(jeu,joueur1,joueur2);
-						joueur1IA=1;
-						choixModedecombat2(jeu,joueur1,joueur2, Integer.parseInt(ce1));
-					
+					saisieRobot();
+					creationTireur1(jeu,joueur1,joueur2);
+					creationChar1(jeu,joueur1,joueur2);
+					creationPiegeur1(jeu,joueur1,joueur2);
+					joueur1IA=1;
+					nbr=Integer.parseInt(c1);
+					choixModedecombat2(jeu,joueur1,joueur2, nbr);
 					break;
 				case "4":
-					r = new Random();
 					nbr = r.nextInt(5)+1;
 					creationRobotalea1(jeu, joueur1, joueur2, nbr);
 					joueur1IA=1;
 					choixModedecombat2(jeu,joueur1,joueur2, nbr);
 					break;
 					default:
+						System.out.println("Saisie incorrecte");
 						choixModedecombat1(jeu, joueur1, joueur2);
 						break;
 				}
@@ -482,60 +476,69 @@ public class Jouer{
 			do{
 				System.out.println("Nombre de Tireur:");
 				t = str.nextLine();
+				if(Integer.parseInt(t)>Integer.parseInt(c1)){
+				System.out.println("Saisie incorrecte");	
+				}
 				
-				}while(Integer.parseInt(t)>Integer.parseInt(ce1));
-				for(int i=0;i<Integer.parseInt(t);i++){
-					Robot ti = new Tireur(1);
-					jeu.add(ti);
-					joueur1.add(ti);
-					joueur2.add(ti);
-					E1.add(ti);
-					}
-				}catch(Exception e){
+				}while(Integer.parseInt(t)>Integer.parseInt(c1));
+			}catch(Exception e){
 				creationTireur1(jeu, joueur1, joueur2);
 			}
+				
+				
+				
 		}
 		
 		public void creationChar1(Plateau jeu, Plateau joueur1, Plateau joueur2){
 			try{
 			do{
-				if(Integer.parseInt(t)==Integer.parseInt(ce1)){
+				if(Integer.parseInt(t)==Integer.parseInt(c1)){
 					c="0";
 				}else{
 				System.out.println("Nombre de Char:");
 				c = str.nextLine();
+				if(Integer.parseInt(c)>(Integer.parseInt(c1)-Integer.parseInt(t))){
+				System.out.println("Saisie incorrecte");	
 				}
-				}while(Integer.parseInt(c)>(Integer.parseInt(ce1)-Integer.parseInt(t)));
-				for(int i=0;i<Integer.parseInt(c);i++){
-					Robot ci = new Char(1);
-					jeu.add(ci);
-					joueur1.add(ci);
-					joueur2.add(ci);
-					E1.add(ci);
 				}
+				}while(Integer.parseInt(c)>(Integer.parseInt(c1)-Integer.parseInt(t)));
 			}catch(Exception e){
 				creationChar1(jeu, joueur1, joueur2);
-			}
+			}	
+			
+			
 		}
 		
 		public void creationPiegeur1(Plateau jeu, Plateau joueur1, Plateau joueur2){
-			try{
-			
-				if((Integer.parseInt(c)+Integer.parseInt(t))==Integer.parseInt(ce1)){
-					p="0";}
-				else{
-					p = ""+(Integer.parseInt(ce1)-(Integer.parseInt(c)+Integer.parseInt(t)));
-				for(int i=0;i<Integer.parseInt(p);i++){
-					Robot pi = new Piegeur(1);
-					jeu.add(pi);
-					joueur1.add(pi);
-					joueur2.add(pi);
-					E1.add(pi);
-				}
-				}
-				}catch(Exception e){
-				creationPiegeur1(jeu, joueur1, joueur2);
+			if((Integer.parseInt(c)+Integer.parseInt(t))==Integer.parseInt(c1)){
+				p="0";}
+			else{
+				p = ""+(Integer.parseInt(c1)-(Integer.parseInt(c)+Integer.parseInt(t)));
 			}
+			
+			for(int i=0;i<Integer.parseInt(t);i++){
+				Robot ti = new Tireur(1);
+				jeu.add(ti);
+				joueur1.add(ti);
+				joueur2.add(ti);
+				E1.add(ti);
+				}
+			for(int i=0;i<Integer.parseInt(c);i++){
+				Robot ci = new Char(1);
+				jeu.add(ci);
+				joueur1.add(ci);
+				joueur2.add(ci);
+				E1.add(ci);
+			}
+			for(int i=0;i<Integer.parseInt(p);i++){
+				Robot pi = new Piegeur(1);
+				jeu.add(pi);
+				joueur1.add(pi);
+				joueur2.add(pi);
+				E1.add(pi);
+				}
+				
+				
 		}
 		
 		private void creationRobotalea1(Plateau jeu, Plateau joueur1, Plateau joueur2, int nbr) {
@@ -602,17 +605,18 @@ public class Jouer{
 			ce1 = str.nextLine();
 			switch(ce1){
 			case "1":
+				System.out.println("Vous pouvez selectionner "+nbr+" robots\n");
 					creationTireur2(jeu,joueur1,joueur2, nbr);
 					creationChar2(jeu,joueur1,joueur2, nbr);
 					creationPiegeur2(jeu,joueur1,joueur2, nbr);
 							
 				break;
 			case "2":
+				System.out.println(nbr);
 				creationRobotalea2(jeu, joueur1, joueur2, nbr);
-				
 				break;
 			case "3":
-				
+				System.out.println("Vous pouvez selectionner "+nbr+" robots\n");
 					creationTireur2(jeu,joueur1,joueur2, nbr);
 					creationChar2(jeu,joueur1,joueur2, nbr);
 					creationPiegeur2(jeu,joueur1,joueur2, nbr);
@@ -620,12 +624,11 @@ public class Jouer{
 					
 				break;
 			case "4":
-				
 				creationRobotalea2(jeu, joueur1, joueur2, nbr);
 				joueur2IA=1;
-				
 				break;
 				default:
+					System.out.println("Saisie incorrecte");
 					choixModedecombat2(jeu, joueur1, joueur2, nbr);
 					break;
 			}
@@ -640,19 +643,15 @@ public class Jouer{
 			do{
 				System.out.println("Nombre de Tireur:");
 				t = str.nextLine();
-				
+				if(Integer.parseInt(t)>nbr){
+				System.out.println("Saisie incorrecte");
+				}
 				}while(Integer.parseInt(t)>nbr);
-			for(int i=0;i<Integer.parseInt(t);i++){
-				
-				Robot ti = new Tireur(-1);
-				jeu.add(ti);
-				joueur1.add(ti);
-				joueur2.add(ti);
-				E2.add(ti);
-			}
 			}catch(Exception e){
 				creationTireur2(jeu, joueur1, joueur2, nbr);
 			}
+			
+			
 		}
 		
 		public void creationChar2(Plateau jeu, Plateau joueur1, Plateau joueur2,int nbr){
@@ -663,39 +662,50 @@ public class Jouer{
 				else{
 				System.out.println("Nombre de Char:");
 				c = str.nextLine();
+				if(Integer.parseInt(c)>nbr-Integer.parseInt(t)){
+					System.out.println("Saisie incorrecte");
+				}
 				}	
 				}while(Integer.parseInt(c)>nbr-Integer.parseInt(t));
-			for(int i=0;i<Integer.parseInt(c);i++){
-				Robot ci = new Char(-1);
-				jeu.add(ci);
-				joueur1.add(ci);
-				joueur2.add(ci);
-				E2.add(ci);
-			}
 			}catch(Exception e){
 				creationChar2(jeu, joueur1, joueur2, nbr);
 			}
+			
+			
 		}
 		
 		public void creationPiegeur2(Plateau jeu, Plateau joueur1, Plateau joueur2, int nbr){
-			try{
 				
 					if((Integer.parseInt(c)+Integer.parseInt(t))==nbr){
 						p="0";}
 					else{
 						p = ""+(nbr-(Integer.parseInt(c)+Integer.parseInt(t)));
-					for(int i=0;i<Integer.parseInt(p);i++){
+					
+						
+					}
+						for(int i=0;i<Integer.parseInt(t);i++){
+								Robot ti = new Tireur(-1);
+								jeu.add(ti);
+								joueur1.add(ti);	
+								joueur2.add(ti);
+								E2.add(ti);
+						}
+						for(int i=0;i<Integer.parseInt(c);i++){
+							Robot ci = new Char(-1);
+							jeu.add(ci);
+							joueur1.add(ci);
+							joueur2.add(ci);
+							E2.add(ci);
+						}
+						for(int i=0;i<Integer.parseInt(p);i++){
 						Robot pi = new Piegeur(-1);
 						jeu.add(pi);
 						joueur1.add(pi);
 						joueur2.add(pi);
 						E2.add(pi);
 					}
-				}
 				
-			}catch(Exception e){
-				creationPiegeur2(jeu, joueur1, joueur2, nbr);
-			}
+			
 		}
 		
 		private void creationRobotalea2(Plateau jeu, Plateau joueur1, Plateau joueur2, int nbr) {
@@ -738,6 +748,22 @@ public class Jouer{
 				E2.add(pi);
 			}
 		
+		}
+		
+		public void saisieRobot(){
+			try{
+				do{
+					System.out.println("Veuillez donner le nombre de robots que vous souhaitez voir combattre ");
+					System.out.println("Ce nombre ne peut être supérieur à 5 et doit être d'au moins 1");
+					c1 = str.nextLine();
+					if(Integer.parseInt(c1)<1 || Integer.parseInt(c1)>5){
+						System.out.println("Saisie incorrecte");
+					}
+					}while(Integer.parseInt(c1)<1 || Integer.parseInt(c1)>5);
+				}catch(Exception e){
+					System.out.println("Saisie incorrecte");
+					saisieRobot();
+				}
 		}
 		
 		public void clearAffichage(){

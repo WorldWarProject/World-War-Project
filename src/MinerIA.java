@@ -11,6 +11,7 @@ public class MinerIA {
 	
 
 	public MinerIA(Plateau jeu,Plateau joueur1,Plateau joueur2,Equipe E1, int index) {
+		try{
 		this.tab=jeu.getTab();
 		this.tab1=joueur1.getTab();
 		this.tab2=joueur2.getTab();
@@ -357,6 +358,6 @@ public class MinerIA {
 				break;
 		}
 		
-	}}}
+	}}}catch(Exception e){}}
 }
 

@@ -13,6 +13,7 @@ public class TirerIA {
 	
 
 	public TirerIA(Plateau jeu,Plateau joueur1,Plateau joueur2,Equipe E1, int index) {
+		try{
 		this.tab=jeu.getTab();
 		this.tab1=joueur1.getTab();
 		this.tab2=joueur2.getTab();
@@ -33,6 +34,7 @@ public class TirerIA {
 		case 1:
 			i=1;
 			while(i<=E1.getE().get(index).getPortee()){
+				
 				 y = E1.getE().get(index).getCoordonne().getY()-i;
 				 x = E1.getE().get(index).getCoordonne().getX();
 				 if(y<0){
@@ -247,7 +249,12 @@ public class TirerIA {
 				System.out.println("choix invalide");
 				new TirerIA(jeu, joueur1, joueur2, E1, index);
 				break;
-		}}
+		}
+		
+		}
+		}catch(Exception e){
+			
+		}
 		
 	}
 	
