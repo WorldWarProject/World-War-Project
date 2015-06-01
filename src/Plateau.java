@@ -25,7 +25,7 @@ public class Plateau {
 					int y1 = ran.nextInt(this.tab[0].length);
 				
 					if((x1 == 0 && y1 ==0) || (x1==this.tab[0].length && y1==this.tab.length) || (this.tab[x1][y1] instanceof Obstacle))
-						wrong =true;
+						wrong =false;
 					else {
 						this.tab[x1][y1] = new Obstacle(x1,y1);
 						wrong = true;
